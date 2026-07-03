@@ -1,3 +1,9 @@
+.vscode
+addons/*/examples
+# Godot-specific ignores
+export_presets.cfg
+Export/*
+
 # Godot 4+ specific ignores
 .godot/
 .nomedia
