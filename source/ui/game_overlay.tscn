@@ -1,6 +1,8 @@
 [gd_scene format=3 uid="uid://cvjwgpxux62ux"]
 
 [ext_resource type="Script" uid="uid://bawigsubev76o" path="res://source/ui/game_overlay.gd" id="1_8u6aj"]
+[ext_resource type="Texture2D" uid="uid://dnqotrs8qb25k" path="res://icon.svg" id="2_c2ti5"]
+[ext_resource type="Texture2D" uid="uid://b158i2iswples" path="res://assets/visuals/menu/menu_background.png" id="3_3oe6q"]
 [ext_resource type="Texture2D" uid="uid://dbc1q8bqreire" path="res://assets/visuals/Buttons/Button_Start_Game.png" id="2_ht8o4"]
 [ext_resource type="Texture2D" uid="uid://cxssrb0af4mgg" path="res://assets/visuals/bloodyhikingshoes.png" id="3_pfxqu"]
 [ext_resource type="PackedScene" uid="uid://club6y110m5hq" path="res://source/ui/clickable_resource.tscn" id="4_kyklt"]
@@ -12,6 +14,13 @@
 [ext_resource type="PackedScene" uid="uid://ffojj7sgkjug" path="res://source/powers/Storm.tscn" id="10_h5itu"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_uiud0"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_7wt8e"]
+texture = ExtResource("3_3oe6q")
+texture_margin_left = 10.0
+texture_margin_top = 10.0
+texture_margin_right = 10.0
+texture_margin_bottom = 10.0
 
 [node name="GameOverlay" type="CanvasLayer" unique_id=142451924]
 script = ExtResource("1_8u6aj")
@@ -29,8 +38,8 @@ theme_override_styles/panel = SubResource("StyleBoxEmpty_uiud0")
 [node name="MarginContainer" type="MarginContainer" parent="MainPanel" unique_id=1631087191]
 layout_mode = 2
 theme_override_constants/margin_left = 64
-theme_override_constants/margin_top = 64
-theme_override_constants/margin_right = 64
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
 theme_override_constants/margin_bottom = 64
 
 [node name="StartLevelButton" type="TextureButton" parent="MainPanel/MarginContainer" unique_id=327561670]
@@ -46,7 +55,8 @@ stretch_mode = 5
 [node name="ResourcesPanel" type="PanelContainer" parent="MainPanel/MarginContainer" unique_id=1188973910]
 layout_mode = 2
 size_flags_horizontal = 8
-size_flags_vertical = 4
+size_flags_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxTexture_7wt8e")
 
 [node name="MarginContainer" type="MarginContainer" parent="MainPanel/MarginContainer/ResourcesPanel" unique_id=756690072]
 layout_mode = 2
