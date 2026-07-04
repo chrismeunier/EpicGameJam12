@@ -14,13 +14,14 @@ var selected_level_id: int = 0
 # start_wave
 # wave_is_over
 # wave_succeeded, wave_failed
-# go_to_menu, retry_level
+# go_to_menu
 
 func _ready() -> void:
 	game_overlay.hide()
 	menu.menu_play.connect(transit_to_level_select)
 	menu.menu_credits.connect(transit_to_credits)
 	menu.back_to_menu.connect(transit_to_menu)
+	menu.retry_level.connect(reload_level)
 	Events.selected_level.connect(load_new_level)
 	Events.start_level.connect(start_wave)
 	Events.all_waves_ended.connect(transit_to_end_of_waves)
@@ -40,6 +41,14 @@ func transit_to_credits():
 func load_new_level(id:int):
 	selected_level_id = id
 	state_chart.send_event("level_selected")
+
+func reload_level():
+	load_new_level(_current_level.level_id)
+
+func unload_current_level():
+	if not _current_level:
+		push_error("No current level to unload!")
+	_current_level.call_deferred("queue_free")
 
 func start_wave():
 	state_chart.send_event("start_wave")
@@ -111,6 +120,7 @@ func _deferred_load_level():
 
 func _on_playing_state_entered() -> void:
 	game_overlay.show()
+	game_overlay.start_level_button.show()
 	AudioManager.menu_loop.stop()
 	AudioManager.guacano_theme.play()
 
@@ -132,5 +142,23 @@ func _on_enemy_wave_active_state_entered() -> void:
 func _on_playing_state_exited() -> void:
 	block_current_level()
 	game_overlay.hide()
+
+# Game over: success !
+func _on_game_over_success_state_entered() -> void:
+	menu.level_success_panel.show()
+
+func _on_game_over_success_state_exited() -> void:
+	menu.main_menu_panel.show()
+	unload_current_level()
+	menu.level_success_panel.hide()
+
+# Game over: failed...
+func _on_game_over_failed_state_entered() -> void:
+	menu.game_over_panel.show()
+
+func _on_game_over_failed_state_exited() -> void:
+	menu.main_menu_panel.show()
+	unload_current_level()
+	menu.game_over_panel.hide()
 
 #endregion

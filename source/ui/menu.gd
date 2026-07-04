@@ -4,6 +4,7 @@ extends CanvasLayer
 signal menu_play
 signal menu_credits
 signal back_to_menu
+signal retry_level
 
 const LEVEL_SELECT_BUTTON = preload("res://source/ui/level_select_button.tscn")
 # Add the level scenes in here: (from the inspector menu)
@@ -14,11 +15,15 @@ const LEVEL_SELECT_BUTTON = preload("res://source/ui/level_select_button.tscn")
 @onready var level_button_container: HBoxContainer = %LevelButtonContainer
 @onready var credits_panel: PanelContainer = %CreditsPanel
 @onready var main_buttons: HBoxContainer = %MainButtons
+@onready var level_success_panel: PanelContainer = %LevelSuccessPanel
+@onready var game_over_panel: PanelContainer = %GameOverPanel
 
 func _ready() -> void:
 	level_select_panel.hide()
 	credits_panel.hide()
-
+	level_success_panel.hide()
+	game_over_panel.hide()
+	
 	for level_uid in level_uid_list:
 		# load the linked level via uid
 		var level_scene : PackedScene = ResourceLoader.load(level_uid, "PackedScene") as PackedScene
@@ -39,3 +44,9 @@ func _on_credits_button_pressed() -> void:
 func _on_back_button_pressed() -> void:
 	main_buttons.show()
 	back_to_menu.emit()
+
+func _on_level_select_button_pressed() -> void:
+	menu_play.emit()
+
+func _on_retry_button_pressed() -> void:
+	retry_level.emit()

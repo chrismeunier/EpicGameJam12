@@ -32,7 +32,7 @@ func start_level() -> void:
 			spawner.start_spawner(number_of_waves)
 
 
-func _on_enemies_child_exiting_tree(node: Node) -> void:
+func _on_enemies_child_exiting_tree(_node: Node) -> void:
 	#print(node, " exited tree")
 	#print(enemies.get_child_count(), " remaining enemies")
 	# weird bug: it counts down to one even if the node has no child
