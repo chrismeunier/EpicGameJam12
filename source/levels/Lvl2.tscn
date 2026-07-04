@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://di6hmxbtn3c7w"]
 
-[ext_resource type="Script" uid="uid://biwis5r8uwsdv" path="res://source/levels/lvl.gd" id="1_epv04"]
+[ext_resource type="Script" uid="uid://ct6y4ncc6conj" path="res://source/levels/base_level.gd" id="1_6g3kw"]
 [ext_resource type="Texture2D" uid="uid://cdw3275orcyfg" path="res://assets/visuals/background/Map_Layer_1.png" id="2_6g3kw"]
 [ext_resource type="Texture2D" uid="uid://c544inh1vn5n7" path="res://assets/visuals/background/Map_Layer_2.png" id="3_7iwte"]
 [ext_resource type="Texture2D" uid="uid://baddiwipdwcul" path="res://assets/visuals/background/Map_Layer_3.1.png" id="4_wjop4"]
@@ -12,9 +12,10 @@
 [ext_resource type="PackedScene" uid="uid://c24doqkcokf4y" path="res://source/characters/enemies/AlpinisteBase.tscn" id="10_qx6ov"]
 [ext_resource type="PackedScene" uid="uid://c3c7huhvesjeh" path="res://source/levels/Road1.tscn" id="11_6mk8v"]
 [ext_resource type="PackedScene" uid="uid://bv02flu7k67vf" path="res://source/levels/Road2.tscn" id="12_6g3kw"]
+[ext_resource type="PackedScene" uid="uid://bmxc2x231r8il" path="res://source/characters/Mountain.tscn" id="13_7iwte"]
 
 [node name="Lvl2" type="Node2D" unique_id=1327002182 node_paths=PackedStringArray("wave_spawners")]
-script = ExtResource("1_epv04")
+script = ExtResource("1_6g3kw")
 level_id = 1
 level_name = "El guanaco"
 number_of_waves = 4
@@ -91,3 +92,6 @@ road = NodePath("../Road2")
 position = Vector2(640, 360)
 
 [node name="Road2" parent="." unique_id=1371415679 instance=ExtResource("12_6g3kw")]
+
+[node name="Mountain" parent="." unique_id=1464789632 instance=ExtResource("13_7iwte")]
+money = 3

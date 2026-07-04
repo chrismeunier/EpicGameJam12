@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://e8pardncc0v8"]
 
-[ext_resource type="Script" uid="uid://biwis5r8uwsdv" path="res://source/levels/lvl.gd" id="1_pcyjk"]
+[ext_resource type="Script" uid="uid://ct6y4ncc6conj" path="res://source/levels/base_level.gd" id="1_c0a8o"]
 [ext_resource type="Texture2D" uid="uid://cdw3275orcyfg" path="res://assets/visuals/background/Map_Layer_1.png" id="2_c0a8o"]
 [ext_resource type="Texture2D" uid="uid://c544inh1vn5n7" path="res://assets/visuals/background/Map_Layer_2.png" id="3_schql"]
 [ext_resource type="Texture2D" uid="uid://baddiwipdwcul" path="res://assets/visuals/background/Map_Layer_3.1.png" id="4_nlgrb"]
@@ -13,9 +13,10 @@
 [ext_resource type="PackedScene" uid="uid://c3c7huhvesjeh" path="res://source/levels/Road1.tscn" id="11_1deka"]
 [ext_resource type="PackedScene" uid="uid://bv02flu7k67vf" path="res://source/levels/Road2.tscn" id="12_okqy2"]
 [ext_resource type="PackedScene" uid="uid://yy6ex5skfeso" path="res://source/levels/Road3.tscn" id="13_c0a8o"]
+[ext_resource type="PackedScene" uid="uid://bmxc2x231r8il" path="res://source/characters/Mountain.tscn" id="14_schql"]
 
 [node name="Lvl3" type="Node2D" unique_id=1327002182 node_paths=PackedStringArray("wave_spawners")]
-script = ExtResource("1_pcyjk")
+script = ExtResource("1_c0a8o")
 level_id = 2
 level_name = "Apocatequil"
 number_of_waves = 6
@@ -99,3 +100,6 @@ position = Vector2(640, 360)
 [node name="Road2" parent="." unique_id=1371415679 instance=ExtResource("12_okqy2")]
 
 [node name="Road3" parent="." unique_id=1617461053 instance=ExtResource("13_c0a8o")]
+
+[node name="Mountain" parent="." unique_id=1464789632 instance=ExtResource("14_schql")]
+money = 2
