@@ -1,10 +1,12 @@
 extends Node2D
 class_name AlpinisteBase
 
-const lvl: int = 1
+@export var lvl: int = 1
 
-@export var speed: float = 50.0
-@export var health: float = 100.0
+var speed: float = 50.0
+var health: float = 100.0
+var _base_speed: float = 50.0 
+
 @onready var animated_sprite: AnimatedSprite2D = %AnimatedSprite2D
 
 var _path: Path2D
@@ -13,12 +15,32 @@ var _isInStorm: bool
 var _isInAvalanch: bool
 var _is_looping_steps: bool = false
 
-func setup(path: Path2D, start_distance: float = 0.0) -> void:
+var _current_direction_anim: String = "default"
+
+func setup(path: Path2D, enemy_level: int = 1, start_distance: float = 0.0) -> void:
 	_path = path
 	_distance = start_distance
+	lvl = enemy_level
+	
+	match lvl:
+		1:
+			health = 100.0
+			_base_speed = 50.0
+		2:
+			health = 200.0
+			_base_speed = 65.0
+		3:
+			health = 350.0
+			_base_speed = 80.0
+		_:
+			health = 100.0 + (lvl * 100.0)
+			_base_speed = 50.0 + (lvl * 15.0)
+			
+	speed = _base_speed
 	global_position = _path.to_global(_path.curve.sample_baked(_distance))
 	
-	# Start the 1-second delay loop when the alpinist spawns
+	_update_sprite_animation()
+	
 	_is_looping_steps = true
 	_loop_footsteps()
 
@@ -26,27 +48,21 @@ func _process(delta: float) -> void:
 	if health <= 0.0:
 		die()
 		return
+		
 	if _isInStorm:
-		speed = 10.0
+		speed = _base_speed * 0.2
 	elif _isInAvalanch:
 		health -= delta
-		speed = 30.0
+		speed = _base_speed * 0.55
 	else:
-		speed = 50.0
+		speed = _base_speed
 
 func _loop_footsteps() -> void:
-	# Stop the loop immediately if the climber dies or reaches the summit
 	if not _is_looping_steps or health <= 0.0:
 		return
-		
-	# 1. Play a random footstep via your AudioManager
 	AudioManager.play_foot_step()
-	
-	# 2. Wait exactly 1.0 second before continuing the loop
-	# (You can change 1.0 to a smaller number like 0.5 if they walk faster!)
-	await get_tree().create_timer(1.0).timeout
-	
-	# 3. Call this function again to create the loop
+	var footstep_delay: float = clamp(50.0 / speed, 0.4, 1.2)
+	await get_tree().create_timer(footstep_delay).timeout
 	_loop_footsteps()
 	
 func _physics_process(delta: float) -> void:
@@ -60,14 +76,26 @@ func _physics_process(delta: float) -> void:
 	var rot: float = - (ahead - global_position).angle()
 
 	if rot > 0 && rot < 0.75 * PI / 2:
-		animated_sprite.animation = "GoingNorthEast"
+		_current_direction_anim = "GoingNorthEast"
 	elif rot >= 0.75 * PI / 2 && rot <= 1.25 * PI / 2:
-		animated_sprite.animation = "default"
+		_current_direction_anim = "default"
 	else:
-		animated_sprite.animation = "GoingNorthWest"
+		_current_direction_anim = "GoingNorthWest"
+
+	_update_sprite_animation()
 
 	if _distance >= _path.curve.get_baked_length():
 		reach_summit()
+
+func _update_sprite_animation() -> void:
+	# Builds strings like "Lvl1_default", "Lvl2_GoingNorthEast", "Lvl3_GoingNorthWest"
+	var final_animation_name = "Lvl" + str(lvl) + "_" + _current_direction_anim
+	
+	if animated_sprite.sprite_frames.has_animation(final_animation_name):
+		animated_sprite.animation = final_animation_name
+	else:
+		# Fallback to default if you haven't drawn the animations for a level yet
+		animated_sprite.animation = "Lvl1_default"
 
 func reach_summit() -> void:
 	Events.summit_reached.emit(lvl)
@@ -78,7 +106,6 @@ func die() -> void:
 	queue_free()
 
 func _on_area_entered(area: Area2D) -> void:
-	# print(area)
 	if area.is_in_group("Projectile"):
 		health -= 15
 	if area.name == "RollingStone":

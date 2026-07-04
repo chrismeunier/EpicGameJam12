@@ -1,9 +1,9 @@
 extends Node2D
 
 @export var alpiniste_scene: PackedScene
+
 @onready var enemies: Node2D = %Enemies
 @onready var road_1: Path2D = $"../Road1"
-
 @onready var spawn_timer: Timer = $SpawnTimer
 
 # Wave Configuration
@@ -37,13 +37,23 @@ func _on_spawn_timer_timeout() -> void:
 			_end_wave()
 
 func spawn_enemy() -> void:
+	# Safety check to make sure everything is assigned properly
 	if not alpiniste_scene or not enemies or not road_1:
+		print("Spawner Error: Missing alpiniste_scene, %Enemies, or road_1 reference!")
 		return
 	
-	var a := alpiniste_scene.instantiate()
+	var enemy_level: int = 1
+	if current_wave >= 6:
+		enemy_level = 3     # Wave 6 and beyond spawns Level 3 Alpinists
+	elif current_wave >= 3:
+		enemy_level = 2     # Waves 3, 4, and 5 spawn Level 2 Alpinists
+	else:
+		enemy_level = 1     # Waves 1 and 2 spawn Level 1 Alpinists
+		
+	var a := alpiniste_scene.instantiate() as AlpinisteBase
 	enemies.add_child(a)
-	a.setup(road_1)
-
+	
+	a.setup(road_1, enemy_level)
 
 func _end_wave() -> void:
 	wave_running = false
