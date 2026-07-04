@@ -5,7 +5,10 @@
 
 [node name="GameRoot" type="Node" unique_id=1772907135]
 
-[node name="CoreController" parent="." unique_id=265263970 node_paths=PackedStringArray("menu") instance=ExtResource("1_gwn8p")]
+[node name="CoreController" parent="." unique_id=265263970 node_paths=PackedStringArray("menu", "level_root") instance=ExtResource("1_gwn8p")]
 menu = NodePath("../Menu")
+level_root = NodePath("../LevelRoot")
 
 [node name="Menu" parent="." unique_id=675254715 instance=ExtResource("2_82l2d")]
+
+[node name="LevelRoot" type="Node" parent="." unique_id=1999359200]

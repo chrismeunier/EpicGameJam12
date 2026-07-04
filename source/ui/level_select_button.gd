@@ -2,7 +2,13 @@ extends TextureButton
 
 @onready var label: Label = %Label
 
-@export var id:int = 0
+var level: BaseLevel
+var id:int = 0
 
 func _ready() -> void:
-	label.text = "Level " + str(id+1)
+	id = level.level_id
+	label.text = level.level_name
+
+
+func _on_pressed() -> void:
+	Events.selected_level.emit(id)

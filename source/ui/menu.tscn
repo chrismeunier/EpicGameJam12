@@ -2,14 +2,14 @@
 
 [ext_resource type="Texture2D" uid="uid://dnqotrs8qb25k" path="res://icon.svg" id="1_2n3lv"]
 [ext_resource type="Script" uid="uid://duymqcakvxl6e" path="res://source/ui/menu.gd" id="1_yy8f4"]
-[ext_resource type="PackedScene" uid="uid://wl0rd4vhfcxk" path="res://source/ui/level_select_button.tscn" id="2_t7ove"]
 
 [node name="Menu" type="CanvasLayer" unique_id=675254715]
 script = ExtResource("1_yy8f4")
-level_list = Array[PackedScene]([ExtResource("2_t7ove"), ExtResource("2_t7ove")])
+level_uid_list = Array[String](["uid://nv7cetcrgglj"])
 
 [node name="MainMenuPanel" type="PanelContainer" parent="." unique_id=1300155576]
 unique_name_in_owner = true
+texture_filter = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -17,6 +17,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Background" type="TextureRect" parent="MainMenuPanel" unique_id=923419815]
+modulate = Color(1, 1, 1, 0.3137255)
 layout_mode = 2
 texture = ExtResource("1_2n3lv")
 stretch_mode = 5
@@ -80,6 +81,7 @@ text = "CREDITS"
 
 [node name="LevelSelectPanel" type="PanelContainer" parent="." unique_id=196137283]
 unique_name_in_owner = true
+texture_filter = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -106,6 +108,7 @@ theme_override_constants/separation = 128
 alignment = 1
 
 [node name="ExampleButton" type="TextureButton" parent="LevelSelectPanel/MarginContainer/LevelButtonContainer" unique_id=1076385737]
+visible = false
 layout_mode = 2
 size_flags_vertical = 4
 texture_normal = ExtResource("1_2n3lv")
@@ -157,6 +160,8 @@ text = "BACK"
 
 [node name="CreditsPanel" type="PanelContainer" parent="." unique_id=1859113515]
 unique_name_in_owner = true
+visible = false
+texture_filter = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0

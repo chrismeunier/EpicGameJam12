@@ -1,8 +1,10 @@
 class_name CoreController
 extends Node
 
+static var _current_level : BaseLevel
 @export var menu: Menu
-
+@export var level_root: Node
+var selected_level_id: int = 0
 @onready var state_chart: StateChart = %StateChart
 
 # usable state chart events:
@@ -17,6 +19,7 @@ func _ready() -> void:
 	menu.menu_play.connect(transit_to_level_select)
 	menu.menu_credits.connect(transit_to_credits)
 	menu.back_to_menu.connect(transit_to_menu)
+	Events.selected_level.connect(load_and_begin_level)
 
 #region Sending Events
 func transit_to_menu():
@@ -27,6 +30,10 @@ func transit_to_level_select():
 
 func transit_to_credits():
 	state_chart.send_event("go_to_credits")
+	
+func load_and_begin_level(id:int):
+	selected_level_id = id
+	state_chart.send_event("level_selected")
 #endregion
 
 #region LevelSelect
@@ -43,4 +50,31 @@ func _on_credits_state_entered() -> void:
 
 func _on_credits_state_exited() -> void:
 	menu.credits_panel.hide()
+#endregion
+
+#region Load level
+func load_level():
+	_deferred_load_level.call_deferred()
+
+func _deferred_load_level():
+	var new_level_uid = menu.level_uid_list[selected_level_id]
+	var new_level_scene : PackedScene = ResourceLoader.load(new_level_uid, "PackedScene") as PackedScene
+	
+	if _current_level != null:
+		# Remove the previous level and wait if needed
+		_current_level.queue_free()
+		_current_level = null
+		await get_tree().process_frame
+	
+	_current_level = new_level_scene.instantiate() as BaseLevel
+	level_root.add_child(_current_level)
+	await get_tree().process_frame
+
+#endregion
+
+#region Start playing
+# maybe use on BeforeWaveStart entered ?
+func _on_playing_state_entered() -> void:
+	load_level()
+	menu.main_menu_panel.hide()
 #endregion

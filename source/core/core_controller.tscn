@@ -143,3 +143,4 @@ delay_in_seconds = "0.0"
 [connection signal="state_exited" from="StateChart/CompoundState/Credits" to="." method="_on_credits_state_exited"]
 [connection signal="state_entered" from="StateChart/CompoundState/LevelSelect" to="." method="_on_level_select_state_entered"]
 [connection signal="state_exited" from="StateChart/CompoundState/LevelSelect" to="." method="_on_level_select_state_exited"]
+[connection signal="state_entered" from="StateChart/CompoundState/Playing" to="." method="_on_playing_state_entered"]
