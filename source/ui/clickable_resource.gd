@@ -20,7 +20,7 @@ func _ready() -> void:
 	button.size = Vector2(92.0, 168.0)
 	if not available:
 		button.disabled = true
-		modulate.a = 0.5
+		_activate_transparency()
 	# Apply the image to the texture rect
 	usable_resource.resource_icon.texture = icon
 	# Update the cost visually
@@ -36,6 +36,9 @@ func _input(event: InputEvent) -> void:
 		if event.is_action_pressed("left_click"):
 			if preview_resource.has_method("start_audio"):
 				preview_resource.start_audio()
+			# reset transparency just in case
+			preview_resource.modulate.a = 1.0
+			preview_resource.self_modulate.a = 1.0
 			preview_resource.global_position = get_global_mouse_position()
 			preview_resource.process_mode = Node.PROCESS_MODE_INHERIT
 			preview_resource = null
@@ -57,11 +60,16 @@ func refresh_availability(val:bool):
 	available = val
 	if not available:
 		button.disabled = true
-		modulate.a = 0.5
+		_activate_transparency()
 	else:
 		button.disabled = false
-		modulate.a = 1.0
+		_deactivate_transparency()
 
+func _activate_transparency():
+	usable_resource.modulate.a = 0.5
+
+func _deactivate_transparency():
+	usable_resource.modulate.a = 1.0
 
 func update_availability(current_resource: int):
 	if current_resource < cost:
