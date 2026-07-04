@@ -10,7 +10,7 @@ func _on_pressed() -> void:
 
 func setup(level: BaseLevel) -> void:
 	_level = level
-	label.text = _level.level_name + " " + str(_level.level_id)
+	label.text = _level.level_name
 	if _level.level_id > pictures.size():
 		push_error("Add a picture for all levels")
 	texture_normal = pictures[_level.level_id]
