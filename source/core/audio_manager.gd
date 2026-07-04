@@ -24,4 +24,7 @@ func play_rock():
 
 func _on_rock_1_finished() -> void:
 	rock_2.play()
-	
+
+func stop_rock():
+	rock_1.stop()
+	rock_2.stop()

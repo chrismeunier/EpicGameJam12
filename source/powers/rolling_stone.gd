@@ -9,4 +9,5 @@ func _process(delta: float) -> void:
 	global_position += Vector2(0, speed * delta)
 
 func _on_timer_timeout() -> void:
+	AudioManager.stop_rock()
 	queue_free()
