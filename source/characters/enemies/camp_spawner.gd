@@ -2,7 +2,7 @@ extends Node2D
 
 @export var alpiniste_scene: PackedScene
 @onready var enemies: Node2D = %Enemies
-@onready var chemin: Path2D = %Chemin
+@onready var road_1: Path2D = $"../Road1"
 
 @onready var spawn_timer: Timer = $SpawnTimer
 
@@ -38,12 +38,12 @@ func _on_spawn_timer_timeout() -> void:
 			_end_wave()
 
 func spawn_enemy() -> void:
-	if not alpiniste_scene or not enemies or not chemin:
+	if not alpiniste_scene or not enemies or not road_1:
 		return
 	
 	var a := alpiniste_scene.instantiate()
 	enemies.add_child(a)
-	a.setup(chemin)
+	a.setup(road_1)
 
 
 func _end_wave() -> void:
