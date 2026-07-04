@@ -9,6 +9,7 @@ func _ready() -> void:
 	life_bar.max_value = _lifePoints
 	life_bar.value = _lifePoints
 	Events.summit_reached.connect(_on_summit_reached)
+	Events.alpinist_died.connect(on_dead_alpinist)
 
 func _on_timer_timeout() -> void:
 	money += 1
@@ -19,6 +20,9 @@ func _on_summit_reached(climber_lvl: int) -> void:
 	life_bar.value = _lifePoints
 	if _lifePoints <= 0:
 		Events.game_over.emit()
+
+func on_dead_alpinist(climber_lvl: int) -> void:
+	money += climber_lvl * 5
 
 func buy_something(price: int) -> bool:
 	if price > money:

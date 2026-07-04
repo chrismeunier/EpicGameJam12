@@ -11,7 +11,7 @@ ProgressBar/styles/fill = SubResource("StyleBoxFlat_dkd8s")
 [node name="Mountain" type="Node2D" unique_id=1464789632]
 script = ExtResource("1_n2cd8")
 
-[node name="Timer" type="Timer" parent="." unique_id=690057215]
+[node name="MoneyTimer" type="Timer" parent="." unique_id=690057215]
 wait_time = 2.0
 autostart = true
 
@@ -28,4 +28,4 @@ step = 1.0
 value = 100.0
 rounded = true
 
-[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="MoneyTimer" to="." method="_on_timer_timeout"]
