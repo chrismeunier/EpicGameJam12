@@ -1,10 +1,60 @@
 [gd_scene format=3 uid="uid://cxavlkqeumgul"]
 
 [ext_resource type="Script" uid="uid://b8tcqyy5bn0p4" path="res://source/characters/towers/guanaco.gd" id="1_0bjgn"]
-[ext_resource type="Texture2D" uid="uid://8sl1u30pmccr" path="res://assets/visuals/towers/Guanaco.png" id="2_baq5u"]
+[ext_resource type="Texture2D" uid="uid://1shw4k3vrjqt" path="res://assets/visuals/towers/tourelle_lama.png" id="2_0bjgn"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_6ak7w"]
 radius = 100.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g05g3"]
+atlas = ExtResource("2_0bjgn")
+region = Rect2(64, 128, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_baq5u"]
+atlas = ExtResource("2_0bjgn")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vp7vx"]
+atlas = ExtResource("2_0bjgn")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ulhk1"]
+atlas = ExtResource("2_0bjgn")
+region = Rect2(0, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_talci"]
+atlas = ExtResource("2_0bjgn")
+region = Rect2(64, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qhady"]
+atlas = ExtResource("2_0bjgn")
+region = Rect2(0, 128, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_jxkye"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g05g3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_baq5u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vp7vx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ulhk1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_talci")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qhady")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 8.0
+}]
 
 [node name="Guanaco" type="Area2D" unique_id=1367686413]
 collision_layer = 2
@@ -15,12 +65,18 @@ unique_name_in_owner = true
 position = Vector2(1, 0)
 shape = SubResource("CircleShape2D_6ak7w")
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1242167473]
+[node name="Sprite2D" type="AnimatedSprite2D" parent="." unique_id=1189869661]
+unique_name_in_owner = true
 texture_filter = 1
-texture = ExtResource("2_baq5u")
+sprite_frames = SubResource("SpriteFrames_jxkye")
+frame_progress = 0.9435552
 
 [node name="ShootTimer" type="Timer" parent="." unique_id=888739746]
 wait_time = 0.75
+
+[node name="Mouth" type="Marker2D" parent="." unique_id=703215853]
+unique_name_in_owner = true
+position = Vector2(21, -19)
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="area_exited" from="." to="." method="_on_area_exited"]

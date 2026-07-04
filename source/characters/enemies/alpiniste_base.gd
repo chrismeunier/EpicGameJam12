@@ -52,7 +52,7 @@ func _process(delta: float) -> void:
 	if _isInStorm:
 		speed = _base_speed * 0.2
 	elif _isInAvalanch:
-		health -= delta
+		health -= delta * 2
 		speed = _base_speed * 0.55
 	else:
 		speed = _base_speed
@@ -75,12 +75,12 @@ func _physics_process(delta: float) -> void:
 	var ahead := _path.to_global(_path.curve.sample_baked(_distance + 1.0))
 	var rot: float = - (ahead - global_position).angle()
 
-	if rot > 0 && rot < 0.75 * PI / 2:
+	if rot > -PI / 2 && rot < 0.75 * PI / 2:
 		_current_direction_anim = "GoingNorthEast"
-	elif rot >= 0.75 * PI / 2 && rot <= 1.25 * PI / 2:
-		_current_direction_anim = "default"
-	else:
+	elif rot > 1.25 * PI / 2 && rot < 1.5 * PI:
 		_current_direction_anim = "GoingNorthWest"
+	else:
+		_current_direction_anim = "default"
 
 	_update_sprite_animation()
 
@@ -116,9 +116,9 @@ func die() -> void:
 
 func _on_area_entered(area: Area2D) -> void:
 	if area.is_in_group("Projectile"):
-		health -= 15
+		health -= 5
 	if area.name == "RollingStone":
-		health -= 50
+		health -= 100
 	if area.name == "Storm":
 		_isInStorm = true
 	if area.is_in_group("Slowness"):

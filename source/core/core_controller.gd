@@ -76,7 +76,8 @@ func process_current_level():
 #region MainMenu
 func _on_main_menu_state_entered() -> void:
 	AudioManager.guacano_theme.stop()
-	AudioManager.menu_loop.play()
+	if not AudioManager.menu_loop.playing:
+		AudioManager.menu_loop.play(1.0)
 #endregion
 
 #region LevelSelect
@@ -122,7 +123,8 @@ func _on_playing_state_entered() -> void:
 	game_overlay.show()
 	game_overlay.start_level_button.show()
 	AudioManager.menu_loop.stop()
-	AudioManager.guacano_theme.play()
+	if not AudioManager.guacano_theme.playing:
+		AudioManager.guacano_theme.play(2.0)
 
 func _on_before_wave_start_state_entered() -> void:
 	load_level()
