@@ -8,6 +8,12 @@
 [ext_resource type="PackedScene" uid="uid://ffojj7sgkjug" path="res://source/powers/Storm.tscn" id="6_ybsb1"]
 [ext_resource type="PackedScene" uid="uid://ca3561hf63udf" path="res://source/powers/RollingStone.tscn" id="7_hqjin"]
 
+[sub_resource type="Curve2D" id="Curve2D_hqjin"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 2, -11, 0, 0, 0, 0, 46, -116, 0, 0, 0, 0, -25, -142, 0, 0, 0, 0, -27, -246, 0, 0, 0, 0, 66, -278, 0, 0, 0, 0, 66, -378, 0, 0, 0, 0, 5, -472, 0, 0, 0, 0, 118, -654)
+}
+point_count = 8
+
 [node name="Lvl1" type="Node2D" unique_id=1327002182]
 script = ExtResource("1_bvcex")
 alpiniste_scene = ExtResource("3_6ak7w")
@@ -15,6 +21,7 @@ alpiniste_scene = ExtResource("3_6ak7w")
 [node name="Chemin" parent="." unique_id=804101482 instance=ExtResource("2_7e3jk")]
 unique_name_in_owner = true
 position = Vector2(428, 674)
+curve = SubResource("Curve2D_hqjin")
 
 [node name="Enemies" type="Node2D" parent="." unique_id=1015057727]
 unique_name_in_owner = true
@@ -24,7 +31,7 @@ position = Vector2(491, 170)
 collision_layer = 1
 
 [node name="Avalanche" parent="." unique_id=1153631674 instance=ExtResource("5_6ak7w")]
-position = Vector2(356, 507)
+position = Vector2(364, 471)
 scale = Vector2(2, 2)
 
 [node name="Storm" parent="." unique_id=2078225639 instance=ExtResource("6_ybsb1")]
