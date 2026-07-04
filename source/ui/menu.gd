@@ -13,6 +13,7 @@ const LEVEL_SELECT_BUTTON = preload("res://source/ui/level_select_button.tscn")
 @onready var level_select_panel: PanelContainer = %LevelSelectPanel
 @onready var level_button_container: HBoxContainer = %LevelButtonContainer
 @onready var credits_panel: PanelContainer = %CreditsPanel
+@onready var main_buttons: HBoxContainer = %MainButtons
 
 
 func _ready() -> void:
@@ -30,12 +31,12 @@ func _ready() -> void:
 		level_button_container.add_child(new_button)
 
 func _on_play_button_pressed() -> void:
+	main_buttons.hide()
 	menu_play.emit()
-
 
 func _on_credits_button_pressed() -> void:
 	menu_credits.emit()
 
-
 func _on_back_button_pressed() -> void:
+	main_buttons.show()
 	back_to_menu.emit()
