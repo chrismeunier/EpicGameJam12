@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://bmxc2x231r8il"]
 
 [ext_resource type="Script" uid="uid://dxa71ufduqdot" path="res://source/characters/mountain.gd" id="1_n2cd8"]
+[ext_resource type="Texture2D" uid="uid://b158i2iswples" path="res://assets/visuals/menu/menu_background.png" id="2_dkd8s"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dkd8s"]
 bg_color = Color(0.36071643, 0.69760007, 0.1404576, 1)
@@ -8,7 +9,27 @@ bg_color = Color(0.36071643, 0.69760007, 0.1404576, 1)
 [sub_resource type="Theme" id="Theme_n2cd8"]
 ProgressBar/styles/fill = SubResource("StyleBoxFlat_dkd8s")
 
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_dfq8l"]
+texture = ExtResource("2_dkd8s")
+texture_margin_left = 10.0
+texture_margin_top = 10.0
+texture_margin_right = 10.0
+texture_margin_bottom = 10.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h5itu"]
+bg_color = Color(1.8770993e-06, 0.72616464, 0.17428517, 1)
+border_width_left = 8
+border_width_top = 8
+border_width_right = 8
+border_width_bottom = 8
+border_color = Color(0.8, 0.8, 0.8, 0)
+corner_radius_top_left = 24
+corner_radius_top_right = 24
+corner_radius_bottom_right = 24
+corner_radius_bottom_left = 24
+
 [node name="Mountain" type="Node2D" unique_id=1464789632]
+texture_filter = 1
 script = ExtResource("1_n2cd8")
 
 [node name="MoneyTimer" type="Timer" parent="." unique_id=690057215]
@@ -25,6 +46,8 @@ offset_top = 40.0
 offset_right = 940.0
 offset_bottom = 80.0
 theme = SubResource("Theme_n2cd8")
+theme_override_styles/background = SubResource("StyleBoxTexture_dfq8l")
+theme_override_styles/fill = SubResource("StyleBoxFlat_h5itu")
 step = 1.0
 value = 100.0
 rounded = true
