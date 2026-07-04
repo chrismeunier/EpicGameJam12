@@ -22,6 +22,10 @@ config/icon="res://icon.svg"
 
 Events="*uid://bvpax8p84il4c"
 
+[debug]
+
+gdscript/warnings/unused_signal=0
+
 [display]
 
 window/size/viewport_width=1280

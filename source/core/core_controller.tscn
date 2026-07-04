@@ -1,13 +1,16 @@
 [gd_scene format=3 uid="uid://2mjnjvcsgtuh"]
 
+[ext_resource type="Script" uid="uid://cfihim5fggord" path="res://source/core/core_controller.gd" id="1_416iq"]
 [ext_resource type="Script" uid="uid://couw105c3bde4" path="res://addons/godot_state_charts/state_chart.gd" id="1_mwaob"]
 [ext_resource type="Script" uid="uid://jk2jm1g6q853" path="res://addons/godot_state_charts/compound_state.gd" id="2_0wenh"]
 [ext_resource type="Script" uid="uid://cytafq8i1y8qm" path="res://addons/godot_state_charts/atomic_state.gd" id="3_6w3k4"]
 [ext_resource type="Script" uid="uid://cf1nsco3w0mf6" path="res://addons/godot_state_charts/transition.gd" id="4_6w3k4"]
 
 [node name="CoreController" type="Node" unique_id=265263970]
+script = ExtResource("1_416iq")
 
 [node name="StateChart" type="Node" parent="." unique_id=2042996355]
+unique_name_in_owner = true
 script = ExtResource("1_mwaob")
 track_in_editor = true
 metadata/_custom_type_script = "uid://couw105c3bde4"
@@ -24,6 +27,13 @@ metadata/_custom_type_script = "uid://cytafq8i1y8qm"
 [node name="ToLevelSelect" type="Node" parent="StateChart/CompoundState/MainMenu" unique_id=515990221]
 script = ExtResource("4_6w3k4")
 to = NodePath("../../LevelSelect")
+event = &"go_to_level_selection"
+delay_in_seconds = "0.0"
+
+[node name="ToCredits" type="Node" parent="StateChart/CompoundState/MainMenu" unique_id=693632654]
+script = ExtResource("4_6w3k4")
+to = NodePath("../../LevelSelect")
+event = &"go_to_credits"
 delay_in_seconds = "0.0"
 
 [node name="LevelSelect" type="Node" parent="StateChart/CompoundState" unique_id=1643428934]
@@ -33,6 +43,7 @@ metadata/_custom_type_script = "uid://cytafq8i1y8qm"
 [node name="ToPlaying" type="Node" parent="StateChart/CompoundState/LevelSelect" unique_id=1442770865]
 script = ExtResource("4_6w3k4")
 to = NodePath("../../Playing")
+event = &"level_selected"
 delay_in_seconds = "0.0"
 
 [node name="Playing" type="Node" parent="StateChart/CompoundState" unique_id=612085637]
@@ -46,6 +57,7 @@ metadata/_custom_type_script = "uid://cytafq8i1y8qm"
 [node name="ToWaveActive" type="Node" parent="StateChart/CompoundState/Playing/BeforeWaveStart" unique_id=1009223827]
 script = ExtResource("4_6w3k4")
 to = NodePath("../../EnemyWaveActive")
+event = &"start_wave"
 delay_in_seconds = "0.0"
 
 [node name="EnemyWaveActive" type="Node" parent="StateChart/CompoundState/Playing" unique_id=1013912061]
@@ -55,6 +67,7 @@ metadata/_custom_type_script = "uid://cytafq8i1y8qm"
 [node name="ToWaveOver" type="Node" parent="StateChart/CompoundState/Playing/EnemyWaveActive" unique_id=638759045]
 script = ExtResource("4_6w3k4")
 to = NodePath("../../EnemyWaveOver")
+event = &"wave_is_over"
 delay_in_seconds = "0.0"
 
 [node name="EnemyWaveOver" type="Node" parent="StateChart/CompoundState/Playing" unique_id=685856944]
@@ -64,11 +77,13 @@ metadata/_custom_type_script = "uid://cytafq8i1y8qm"
 [node name="ToSuccess" type="Node" parent="StateChart/CompoundState/Playing/EnemyWaveOver" unique_id=708155850]
 script = ExtResource("4_6w3k4")
 to = NodePath("../../../GameOverSuccess")
+event = &"wave_succeeded"
 delay_in_seconds = "0.0"
 
 [node name="ToFailed" type="Node" parent="StateChart/CompoundState/Playing/EnemyWaveOver" unique_id=52069126]
 script = ExtResource("4_6w3k4")
 to = NodePath("../../../GameOverFailed")
+event = &"wave_failed"
 delay_in_seconds = "0.0"
 
 [node name="GameOverSuccess" type="Node" parent="StateChart/CompoundState" unique_id=387254752]
@@ -78,11 +93,13 @@ metadata/_custom_type_script = "uid://cytafq8i1y8qm"
 [node name="ToMenu" type="Node" parent="StateChart/CompoundState/GameOverSuccess" unique_id=74823894]
 script = ExtResource("4_6w3k4")
 to = NodePath("../../MainMenu")
+event = &"go_to_menu"
 delay_in_seconds = "0.0"
 
-[node name="ToSelect" type="Node" parent="StateChart/CompoundState/GameOverSuccess" unique_id=1658058764]
+[node name="ToLevelSelect" type="Node" parent="StateChart/CompoundState/GameOverSuccess" unique_id=1030725052]
 script = ExtResource("4_6w3k4")
 to = NodePath("../../LevelSelect")
+event = &"go_to_level_selection"
 delay_in_seconds = "0.0"
 
 [node name="GameOverFailed" type="Node" parent="StateChart/CompoundState" unique_id=1759679977]
@@ -92,14 +109,17 @@ metadata/_custom_type_script = "uid://cytafq8i1y8qm"
 [node name="ToMenu" type="Node" parent="StateChart/CompoundState/GameOverFailed" unique_id=1844231027]
 script = ExtResource("4_6w3k4")
 to = NodePath("../../MainMenu")
+event = &"go_to_menu"
 delay_in_seconds = "0.0"
 
-[node name="ToSelect" type="Node" parent="StateChart/CompoundState/GameOverFailed" unique_id=136191132]
+[node name="ToLevelSelect" type="Node" parent="StateChart/CompoundState/GameOverFailed" unique_id=1736086117]
 script = ExtResource("4_6w3k4")
 to = NodePath("../../LevelSelect")
+event = &"go_to_level_selection"
 delay_in_seconds = "0.0"
 
-[node name="ToPlaying" type="Node" parent="StateChart/CompoundState/GameOverFailed" unique_id=280092077]
+[node name="RetryLevel" type="Node" parent="StateChart/CompoundState/GameOverFailed" unique_id=280092077]
 script = ExtResource("4_6w3k4")
 to = NodePath("../../Playing")
+event = &"retry_level"
 delay_in_seconds = "0.0"
