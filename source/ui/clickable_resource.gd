@@ -3,8 +3,9 @@ extends Control
 
 @export var icon : Texture2D
 @export var resource_scene : PackedScene
-@export var available := false # to disable it
+@export var cost := 0
 
+var available := false : set = refresh_availability
 var preview_resource : Area2D = null
 var placing_resource = false
 var parent_node_for_placing : BaseLevel = null
@@ -14,6 +15,7 @@ var parent_node_for_placing : BaseLevel = null
 
 
 func _ready() -> void:
+	Events.money_updated.connect(update_availability)
 	# hardcoded because fuck it no dynamic resizing wants to work
 	button.size = Vector2(92.0, 168.0)
 	if not available:
@@ -21,6 +23,8 @@ func _ready() -> void:
 		modulate.a = 0.5
 	# Apply the image to the texture rect
 	usable_resource.resource_icon.texture = icon
+	# Update the cost visually
+	usable_resource.cost_text.text = "X " + str(cost)
 
 
 func _process(_delta: float) -> void:
@@ -36,8 +40,7 @@ func _input(event: InputEvent) -> void:
 			preview_resource = null
 
 func _on_button_pressed() -> void:
-	print("Resource clicked! with cost = " + str(usable_resource.cost))
-	
+	Events.bought_resource.emit(cost)
 	preview_resource = resource_scene.instantiate() as Area2D
 	# add it elsewhere ?
 	if parent_node_for_placing:
@@ -47,3 +50,19 @@ func _on_button_pressed() -> void:
 	preview_resource.process_mode = Node.PROCESS_MODE_DISABLED
 	await get_tree().process_frame
 	placing_resource = true
+
+func refresh_availability(val:bool):
+	available = val
+	if not available:
+		button.disabled = true
+		modulate.a = 0.5
+	else:
+		button.disabled = false
+		modulate.a = 1.0
+
+
+func update_availability(current_resource: int):
+	if current_resource < cost:
+		available = false
+	else:
+		available = true

@@ -1,65 +1,75 @@
 extends Node2D
+class_name WaveSpawner
 
 @export var alpiniste_scene: PackedScene
+@export var road: Path2D 
 
 @onready var enemies: Node2D = %Enemies
-@onready var road_1: Path2D = $"../Road1"
 @onready var spawn_timer: Timer = $SpawnTimer
 
 # Wave Configuration
 var current_wave: int = 1
 var enemies_left_to_spawn: int = 0
 var wave_running: bool = false
+var max_waves: int = 1 # Controlled by BaseLevel
 
 func _ready() -> void:
-	spawn_timer.timeout.connect(_on_spawn_timer_timeout)
-	await get_tree().create_timer(0.5).timeout
+	# Connects the timer signal safely
+	if spawn_timer:
+		spawn_timer.timeout.connect(_on_spawn_timer_timeout)
+
+func start_spawner(total_waves: int) -> void:
+	max_waves = total_waves
+	current_wave = 1
 	start_next_wave()
 
 func start_next_wave() -> void:
 	wave_running = true
-	# Scale wave difficulty: Wave 1 = 5 enemies, Wave 2 = 10, etc.
 	enemies_left_to_spawn = current_wave * 5 
-	print("--- STARTING WAVE ", current_wave, " (Enemies: ", enemies_left_to_spawn, ") ---")
+	print("--- STARTING WAVE ", current_wave, "/", max_waves, " (Enemies: ", enemies_left_to_spawn, ") ---")
 	
-	# Set time gap between individual enemy spawns (e.g., 1.5 seconds)
-	spawn_timer.start(1.5)
+	if spawn_timer:
+		spawn_timer.start(1.5)
 
 func _on_spawn_timer_timeout() -> void:
 	if enemies_left_to_spawn > 0:
 		spawn_enemy()
 		enemies_left_to_spawn -= 1
 		
-		# If more enemies remain, restart the gap timer
-		if enemies_left_to_spawn > 0:
+		if enemies_left_to_spawn > 0 and spawn_timer:
 			spawn_timer.start()
 		else:
 			_end_wave()
 
 func spawn_enemy() -> void:
-	# Safety check to make sure everything is assigned properly
-	if not alpiniste_scene or not enemies or not road_1:
-		print("Spawner Error: Missing alpiniste_scene, %Enemies, or road_1 reference!")
+	if not alpiniste_scene or not enemies or not road:
+		print("Spawner Error: Missing alpiniste_scene, %Enemies, or road reference!")
 		return
 	
 	var enemy_level: int = 1
 	if current_wave >= 6:
-		enemy_level = 3     # Wave 6 and beyond spawns Level 3 Alpinists
+		enemy_level = 3     
 	elif current_wave >= 3:
-		enemy_level = 2     # Waves 3, 4, and 5 spawn Level 2 Alpinists
+		enemy_level = 2     
 	else:
-		enemy_level = 1     # Waves 1 and 2 spawn Level 1 Alpinists
+		enemy_level = 1     
 		
-	var a := alpiniste_scene.instantiate() as AlpinisteBase
+	var a = alpiniste_scene.instantiate()
 	enemies.add_child(a)
 	
-	a.setup(road_1, enemy_level)
+	if a.has_method("setup"):
+		a.setup(road, enemy_level)
+	else:
+		print("Spawner Error: The instanced alpinist is missing its setup() function!")
 
 func _end_wave() -> void:
 	wave_running = false
 	print("Wave spawning complete! Waiting for next wave...")
 	
-	# Wait 10 seconds of peace before starting the next harder wave
+	if current_wave >= max_waves:
+		print("All waves sent successfully!")
+		return
+		
 	await get_tree().create_timer(10.0).timeout
 	current_wave += 1
 	start_next_wave()

@@ -13,7 +13,6 @@ anchors_preset = 0
 script = ExtResource("1_d0hsg")
 icon = ExtResource("2_d2lri")
 resource_scene = ExtResource("3_d2lri")
-available = true
 
 [node name="UsableResource" parent="." unique_id=1902755576 instance=ExtResource("2_hri14")]
 unique_name_in_owner = true

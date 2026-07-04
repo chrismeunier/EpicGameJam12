@@ -88,14 +88,21 @@ func _physics_process(delta: float) -> void:
 		reach_summit()
 
 func _update_sprite_animation() -> void:
-	# Builds strings like "Lvl1_default", "Lvl2_GoingNorthEast", "Lvl3_GoingNorthWest"
+	# 1. Safety check to make sure the resource is loaded
+	if not animated_sprite or not animated_sprite.sprite_frames:
+		return
+		
 	var final_animation_name = "Lvl" + str(lvl) + "_" + _current_direction_anim
 	
 	if animated_sprite.sprite_frames.has_animation(final_animation_name):
 		animated_sprite.animation = final_animation_name
 	else:
-		# Fallback to default if you haven't drawn the animations for a level yet
-		animated_sprite.animation = "Lvl1_default"
+		var level_default = "Lvl" + str(lvl) + "_default"
+		if animated_sprite.sprite_frames.has_animation(level_default):
+			animated_sprite.animation = level_default
+		else:
+			# Ultimate fallback if no level assets are configured yet
+			animated_sprite.animation = "default"
 
 func reach_summit() -> void:
 	Events.summit_reached.emit(lvl)
