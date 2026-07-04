@@ -32,8 +32,17 @@ delay_in_seconds = "0.0"
 
 [node name="ToCredits" type="Node" parent="StateChart/CompoundState/MainMenu" unique_id=693632654]
 script = ExtResource("4_6w3k4")
-to = NodePath("../../LevelSelect")
+to = NodePath("../../Credits")
 event = &"go_to_credits"
+delay_in_seconds = "0.0"
+
+[node name="Credits" type="Node" parent="StateChart/CompoundState" unique_id=1020840447]
+script = ExtResource("3_6w3k4")
+
+[node name="ToMenu" type="Node" parent="StateChart/CompoundState/Credits" unique_id=1913026818]
+script = ExtResource("4_6w3k4")
+to = NodePath("../../MainMenu")
+event = &"go_to_menu"
 delay_in_seconds = "0.0"
 
 [node name="LevelSelect" type="Node" parent="StateChart/CompoundState" unique_id=1643428934]
@@ -44,6 +53,12 @@ metadata/_custom_type_script = "uid://cytafq8i1y8qm"
 script = ExtResource("4_6w3k4")
 to = NodePath("../../Playing")
 event = &"level_selected"
+delay_in_seconds = "0.0"
+
+[node name="ToMenu" type="Node" parent="StateChart/CompoundState/LevelSelect" unique_id=727617242]
+script = ExtResource("4_6w3k4")
+to = NodePath("../../MainMenu")
+event = &"go_to_menu"
 delay_in_seconds = "0.0"
 
 [node name="Playing" type="Node" parent="StateChart/CompoundState" unique_id=612085637]
@@ -123,3 +138,8 @@ script = ExtResource("4_6w3k4")
 to = NodePath("../../Playing")
 event = &"retry_level"
 delay_in_seconds = "0.0"
+
+[connection signal="state_entered" from="StateChart/CompoundState/Credits" to="." method="_on_credits_state_entered"]
+[connection signal="state_exited" from="StateChart/CompoundState/Credits" to="." method="_on_credits_state_exited"]
+[connection signal="state_entered" from="StateChart/CompoundState/LevelSelect" to="." method="_on_level_select_state_entered"]
+[connection signal="state_exited" from="StateChart/CompoundState/LevelSelect" to="." method="_on_level_select_state_exited"]

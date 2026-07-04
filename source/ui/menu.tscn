@@ -2,11 +2,14 @@
 
 [ext_resource type="Texture2D" uid="uid://dnqotrs8qb25k" path="res://icon.svg" id="1_2n3lv"]
 [ext_resource type="Script" uid="uid://duymqcakvxl6e" path="res://source/ui/menu.gd" id="1_yy8f4"]
+[ext_resource type="PackedScene" uid="uid://wl0rd4vhfcxk" path="res://source/ui/level_select_button.tscn" id="2_t7ove"]
 
 [node name="Menu" type="CanvasLayer" unique_id=675254715]
 script = ExtResource("1_yy8f4")
+level_list = Array[PackedScene]([ExtResource("2_t7ove"), ExtResource("2_t7ove")])
 
 [node name="MainMenuPanel" type="PanelContainer" parent="." unique_id=1300155576]
+unique_name_in_owner = true
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -75,5 +78,136 @@ mouse_filter = 1
 layout_mode = 2
 text = "CREDITS"
 
+[node name="LevelSelectPanel" type="PanelContainer" parent="." unique_id=196137283]
+unique_name_in_owner = true
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Background" type="TextureRect" parent="LevelSelectPanel" unique_id=218712704]
+self_modulate = Color(1, 0.39607844, 1, 1)
+layout_mode = 2
+texture = ExtResource("1_2n3lv")
+stretch_mode = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="LevelSelectPanel" unique_id=2063660292]
+layout_mode = 2
+theme_override_constants/margin_left = 64
+theme_override_constants/margin_top = 64
+theme_override_constants/margin_right = 64
+theme_override_constants/margin_bottom = 64
+
+[node name="LevelButtonContainer" type="HBoxContainer" parent="LevelSelectPanel/MarginContainer" unique_id=1410215189]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/separation = 128
+alignment = 1
+
+[node name="ExampleButton" type="TextureButton" parent="LevelSelectPanel/MarginContainer/LevelButtonContainer" unique_id=1076385737]
+layout_mode = 2
+size_flags_vertical = 4
+texture_normal = ExtResource("1_2n3lv")
+
+[node name="ToDelete" type="PanelContainer" parent="LevelSelectPanel/MarginContainer/LevelButtonContainer/ExampleButton" unique_id=1741610939]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -24.0
+offset_top = -20.0
+offset_right = 24.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+
+[node name="Label" type="Label" parent="LevelSelectPanel/MarginContainer/LevelButtonContainer/ExampleButton/ToDelete" unique_id=90672420]
+layout_mode = 2
+text = "LEVEL 0"
+
+[node name="BackButton" type="TextureButton" parent="LevelSelectPanel/MarginContainer" unique_id=1777136711]
+modulate = Color(1, 0.37254903, 0.32156864, 1)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+texture_normal = ExtResource("1_2n3lv")
+
+[node name="ToDelete" type="PanelContainer" parent="LevelSelectPanel/MarginContainer/BackButton" unique_id=755768844]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -24.0
+offset_top = -20.0
+offset_right = 24.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+
+[node name="Label" type="Label" parent="LevelSelectPanel/MarginContainer/BackButton/ToDelete" unique_id=1818662806]
+layout_mode = 2
+text = "BACK"
+
+[node name="CreditsPanel" type="PanelContainer" parent="." unique_id=1859113515]
+unique_name_in_owner = true
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Background" type="TextureRect" parent="CreditsPanel" unique_id=1195944881]
+self_modulate = Color(0.3088635, 0.41746792, 0.16762859, 1)
+layout_mode = 2
+texture = ExtResource("1_2n3lv")
+stretch_mode = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="CreditsPanel" unique_id=1320289212]
+layout_mode = 2
+theme_override_constants/margin_left = 64
+theme_override_constants/margin_top = 64
+theme_override_constants/margin_right = 64
+theme_override_constants/margin_bottom = 64
+
+[node name="BackButton" type="TextureButton" parent="CreditsPanel/MarginContainer" unique_id=2056258468]
+modulate = Color(1, 0.37254903, 0.32156864, 1)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+texture_normal = ExtResource("1_2n3lv")
+
+[node name="ToDelete" type="PanelContainer" parent="CreditsPanel/MarginContainer/BackButton" unique_id=1740514737]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -24.0
+offset_top = -20.0
+offset_right = 24.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+
+[node name="Label" type="Label" parent="CreditsPanel/MarginContainer/BackButton/ToDelete" unique_id=602212733]
+layout_mode = 2
+text = "BACK"
+
+[node name="Label" type="Label" parent="CreditsPanel/MarginContainer" unique_id=1928334827]
+layout_mode = 2
+text = "Here are the credits : blablabla"
+horizontal_alignment = 1
+
 [connection signal="pressed" from="MainMenuPanel/MarginContainer/HBoxContainer/PlayButton" to="." method="_on_play_button_pressed"]
 [connection signal="pressed" from="MainMenuPanel/MarginContainer/HBoxContainer/CreditsButton" to="." method="_on_credits_button_pressed"]
+[connection signal="pressed" from="LevelSelectPanel/MarginContainer/BackButton" to="." method="_on_back_button_pressed"]
+[connection signal="pressed" from="CreditsPanel/MarginContainer/BackButton" to="." method="_on_back_button_pressed"]
