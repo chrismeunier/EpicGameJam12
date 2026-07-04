@@ -6,6 +6,7 @@ extends Node2D
 
 @onready var life_bar: ProgressBar = %LifeBar
 @onready var money_timer: Timer = %MoneyTimer
+@onready var enemies: Node2D = %Enemies
 
 
 func _ready() -> void:

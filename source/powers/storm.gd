@@ -1,7 +1,7 @@
 extends Area2D
 
-func _ready() -> void:
-	AudioManager.storm_1.play()
-
 func _on_timer_timeout() -> void:
 	queue_free()
+
+func start_audio() -> void:
+	AudioManager.storm_1.play()

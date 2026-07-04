@@ -11,6 +11,8 @@ signal start_level
 signal summit_reached(climber_lvl: int)
 
 signal game_over
+signal all_waves_ended
+signal no_more_enemies_on_map
 
 signal alpinist_died(climber_lvl: int)
 

@@ -10,6 +10,9 @@ extends Node
 @onready var menu_loop: AudioStreamPlayer = %MenuLoop
 @onready var mountain: Node = %Mountain
 @onready var death: Node = %Death
+@onready var avalanche_1: AudioStreamPlayer = %Avalanche1
+@onready var avalanche_2: AudioStreamPlayer = %Avalanche2
+@onready var avalanche_3: AudioStreamPlayer = %Avalanche3
 
 func play_guanaco_spit():
 	var soundCount = guanaco_spit.get_child_count()
@@ -17,6 +20,8 @@ func play_guanaco_spit():
 	guanaco_spit.get_child(sound_index).play()
 
 func play_avalanche():
+	if avalanche_1.playing || avalanche_2.playing || avalanche_3.playing:
+		return
 	var soundCount = avalanche.get_child_count()
 	var sound_index = randi() % soundCount
 	avalanche.get_child(sound_index).play()
