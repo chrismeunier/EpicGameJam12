@@ -19,8 +19,9 @@ unique_name_in_owner = true
 position = Vector2(392, 625)
 
 [node name="Guanaco" parent="." unique_id=1367686413 instance=ExtResource("4_7e3jk")]
-position = Vector2(464, 117)
+position = Vector2(457, 112)
+collision_layer = 1
 
 [node name="Avalanche" parent="." unique_id=1153631674 instance=ExtResource("5_6ak7w")]
-position = Vector2(333, 330)
+position = Vector2(322, 449)
 scale = Vector2(2, 2)

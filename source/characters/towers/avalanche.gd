@@ -8,24 +8,22 @@ var targets: Array[Node2D] = []
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 
 func _ready() -> void:
-	body_entered.connect(_on_body_entered)
-	body_exited.connect(_on_body_exited)
 	avalanche_timer.timeout.connect(_on_avalanche_timer_timeout)
 
 func _process(_delta: float) -> void:
 	# Nettoie la liste si des ennemis meurent par autre chose
 	targets = targets.filter(func(target): return is_instance_valid(target))
-
-func _on_body_entered(body: Node2D) -> void:
-	if body.is_in_group("Enemy"):
-		targets.append(body)
+	
+func _on_area_entered(area: Area2D) -> void:
+	if area.is_in_group("Enemy"):
+		targets.append(area)
 		
 		if avalanche_timer.is_stopped():
 			trigger_avalanche()
-			avalanche_timer.start(5.0)
+			avalanche_timer.start(7.0)
 
-func _on_body_exited(body: Node2D) -> void:
-	targets.erase(body)
+func _on_area_exited(area: Area2D) -> void:
+	targets.erase(area)
 
 func _on_avalanche_timer_timeout() -> void:
 	animated_sprite_2d.play("idle")

@@ -68,7 +68,8 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_7wt8e"]
 radius = 40.0
 
-[node name="Avalanche" type="Area2D" unique_id=1153631674]
+[node name="Avalanche" type="Area2D" unique_id=418486887 groups=["Slowness", "Tower"]]
+collision_layer = 4
 script = ExtResource("1_pwx41")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1970245281]
@@ -81,7 +82,7 @@ position = Vector2(0, 11)
 shape = SubResource("CircleShape2D_7wt8e")
 
 [node name="AvalancheTimer" type="Timer" parent="." unique_id=1393927116]
-wait_time = 5.0
+wait_time = 7.0
 
 [node name="SnowParticles" type="CPUParticles2D" parent="." unique_id=1790891512]
 position = Vector2(0, 11)
@@ -95,3 +96,6 @@ gravity = Vector2(0, 0)
 tangential_accel_min = 1.5
 tangential_accel_max = 1.5
 scale_amount_max = 2.0
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="area_exited" from="." to="." method="_on_area_exited"]
