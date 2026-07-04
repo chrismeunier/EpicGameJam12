@@ -1,6 +1,78 @@
 [gd_scene format=3 uid="uid://hbwfbu144x7c"]
 
 [ext_resource type="Script" uid="uid://33jns7tlaju8" path="res://source/core/audio_manager.gd" id="1_a5n35"]
+[ext_resource type="AudioStream" uid="uid://1ev5i42wmfe0" path="res://assets/sound/tir-guanaco1.wav" id="2_tdqpl"]
+[ext_resource type="AudioStream" uid="uid://c6iadn26tjm2h" path="res://assets/sound/tir-guanaco2.wav" id="3_yhtxt"]
+[ext_resource type="AudioStream" uid="uid://d0sr6ncvmxw1o" path="res://assets/sound/tir-guanaco3.wav" id="4_wwf6o"]
+[ext_resource type="AudioStream" uid="uid://b11forr2l51io" path="res://assets/sound/alpiniste-pas1.wav" id="5_err7e"]
+[ext_resource type="AudioStream" uid="uid://by2kk6ai2uc6t" path="res://assets/sound/alpiniste-pas2wav.wav" id="6_c1qml"]
+[ext_resource type="AudioStream" uid="uid://dn1pavbl4si0d" path="res://assets/sound/alpiniste-pas3.wav" id="7_j3ftw"]
+[ext_resource type="AudioStream" uid="uid://ccvxqr3nadpma" path="res://assets/sound/avalanche1.wav" id="8_7ws5b"]
+[ext_resource type="AudioStream" uid="uid://6bpt8sopocf0" path="res://assets/sound/avalanche2.wav" id="9_3h3aq"]
+[ext_resource type="AudioStream" uid="uid://ccptsqk5dosdq" path="res://assets/sound/avalanche3.wav" id="10_2jmt1"]
+[ext_resource type="AudioStream" uid="uid://cqfinqxh16kx6" path="res://assets/sound/tempête.wav" id="11_k6ex4"]
+[ext_resource type="AudioStream" uid="uid://bjtcds3q0sc2v" path="res://assets/sound/rocher1.wav" id="12_7j4x8"]
+[ext_resource type="AudioStream" uid="uid://s101priy022f" path="res://assets/sound/rocher2.wav" id="13_ngd6x"]
+[ext_resource type="AudioStream" uid="uid://bhjubpoholy60" path="res://assets/sound/GuanacoMounTheme-loop.wav" id="14_40g7s"]
 
 [node name="AudioManager" type="Node" unique_id=1410454810]
 script = ExtResource("1_a5n35")
+
+[node name="Bullets" type="Node" parent="." unique_id=391361342]
+
+[node name="GuanacoSpit" type="Node" parent="Bullets" unique_id=397697763]
+
+[node name="guanacoTir1" type="AudioStreamPlayer" parent="Bullets/GuanacoSpit" unique_id=1813392416]
+stream = ExtResource("2_tdqpl")
+
+[node name="guanacoTir2" type="AudioStreamPlayer" parent="Bullets/GuanacoSpit" unique_id=253831860]
+stream = ExtResource("3_yhtxt")
+
+[node name="guanacoTir3" type="AudioStreamPlayer" parent="Bullets/GuanacoSpit" unique_id=429931347]
+stream = ExtResource("4_wwf6o")
+
+[node name="Ennemies" type="Node" parent="." unique_id=1343259847]
+
+[node name="Alpinist" type="Node" parent="Ennemies" unique_id=1054192803]
+
+[node name="Steps" type="Node" parent="Ennemies/Alpinist" unique_id=639780661]
+
+[node name="AlpinistSteps1" type="AudioStreamPlayer" parent="Ennemies/Alpinist/Steps" unique_id=1356320180]
+stream = ExtResource("5_err7e")
+
+[node name="AlpinistSteps2" type="AudioStreamPlayer" parent="Ennemies/Alpinist/Steps" unique_id=1409654794]
+stream = ExtResource("6_c1qml")
+
+[node name="AlpinistSteps3" type="AudioStreamPlayer" parent="Ennemies/Alpinist/Steps" unique_id=1893568195]
+stream = ExtResource("7_j3ftw")
+
+[node name="Powers" type="Node" parent="." unique_id=1563277405]
+
+[node name="Avalanche" type="Node" parent="Powers" unique_id=558372244]
+
+[node name="Avalanche1" type="AudioStreamPlayer" parent="Powers/Avalanche" unique_id=1433833370]
+stream = ExtResource("8_7ws5b")
+
+[node name="Avalanche2" type="AudioStreamPlayer" parent="Powers/Avalanche" unique_id=1059156129]
+stream = ExtResource("9_3h3aq")
+
+[node name="Avalanche3" type="AudioStreamPlayer" parent="Powers/Avalanche" unique_id=808910078]
+stream = ExtResource("10_2jmt1")
+
+[node name="Storm" type="Node" parent="Powers" unique_id=1517278263]
+
+[node name="Storm1" type="AudioStreamPlayer" parent="Powers/Storm" unique_id=163395162]
+stream = ExtResource("11_k6ex4")
+
+[node name="Rock" type="Node" parent="Powers" unique_id=1482086144]
+
+[node name="Rock1" type="AudioStreamPlayer" parent="Powers/Rock" unique_id=558128533]
+stream = ExtResource("12_7j4x8")
+
+[node name="Rock2" type="AudioStreamPlayer" parent="Powers/Rock" unique_id=1575557096]
+stream = ExtResource("13_ngd6x")
+
+[node name="Music" type="Node" parent="." unique_id=1914217787]
+
+[node name="GuacanoTheme" type="AudioStreamPlayer" parent="Music" unique_id=1895221045]
+stream = ExtResource("14_40g7s")

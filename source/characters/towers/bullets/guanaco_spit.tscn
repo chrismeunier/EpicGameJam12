@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://cpbixs5xqi14e"]
+
+[ext_resource type="Script" uid="uid://vb8sqydoyv4s" path="res://source/characters/towers/bullets/guanaco_spit.gd" id="1_ing1x"]
+[ext_resource type="Texture2D" uid="uid://bukflrerbbly7" path="res://assets/visuals/towers/bullets/LamaSpit.png" id="2_esdve"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_7wt8e"]
+radius = 6.0
+
+[node name="GuanacoSpit" type="Area2D" unique_id=1285178697]
+script = ExtResource("1_ing1x")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1595788945]
+texture_filter = 1
+texture = ExtResource("2_esdve")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=27949562]
+shape = SubResource("CircleShape2D_7wt8e")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

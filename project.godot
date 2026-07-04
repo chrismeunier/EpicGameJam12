@@ -21,6 +21,7 @@ config/icon="res://icon.svg"
 
 [autoload]
 
+AudioManager="*uid://hbwfbu144x7c"
 Events="*uid://bvpax8p84il4c"
 
 [debug]
