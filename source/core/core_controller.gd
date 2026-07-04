@@ -67,14 +67,23 @@ func _deferred_load_level():
 		await get_tree().process_frame
 	
 	_current_level = new_level_scene.instantiate() as BaseLevel
+	#! STOP THE LEVEL FROM RUNNING AUTOMATICALLY
+	_current_level.process_mode = Node.PROCESS_MODE_DISABLED
+	
 	level_root.add_child(_current_level)
 	await get_tree().process_frame
 
 #endregion
 
 #region Start playing
-# maybe use on BeforeWaveStart entered ?
-func _on_playing_state_entered() -> void:
+func _on_before_wave_start_state_entered() -> void:
 	load_level()
 	menu.main_menu_panel.hide()
+#endregion
+
+#region Start wave
+func _on_enemy_wave_active_state_entered() -> void:
+	# Reset the standard process mode -> level can run
+	_current_level.process_mode = Node.PROCESS_MODE_INHERIT
+	
 #endregion
