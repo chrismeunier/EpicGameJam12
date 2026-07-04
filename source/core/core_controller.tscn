@@ -85,6 +85,12 @@ to = NodePath("../../EnemyWaveOver")
 event = &"wave_is_over"
 delay_in_seconds = "0.0"
 
+[node name="ToFailed" type="Node" parent="StateChart/CompoundState/Playing/EnemyWaveActive" unique_id=947164003]
+script = ExtResource("4_6w3k4")
+to = NodePath("../../../GameOverFailed")
+event = &"wave_failed"
+delay_in_seconds = "0.0"
+
 [node name="EnemyWaveOver" type="Node" parent="StateChart/CompoundState/Playing" unique_id=685856944]
 script = ExtResource("3_6w3k4")
 metadata/_custom_type_script = "uid://cytafq8i1y8qm"
@@ -101,7 +107,7 @@ to = NodePath("../../../GameOverFailed")
 event = &"wave_failed"
 delay_in_seconds = "0.0"
 
-[node name="ToNextWave" type="Node" parent="StateChart/CompoundState/Playing/EnemyWaveOver" unique_id=2081569181]
+[node name="unusedToNextWave" type="Node" parent="StateChart/CompoundState/Playing/EnemyWaveOver" unique_id=2081569181]
 script = ExtResource("4_6w3k4")
 to = NodePath("../../EnemyWaveActive")
 event = &"start_wave"
@@ -111,7 +117,7 @@ delay_in_seconds = "0.0"
 script = ExtResource("3_6w3k4")
 metadata/_custom_type_script = "uid://cytafq8i1y8qm"
 
-[node name="ToMenu" type="Node" parent="StateChart/CompoundState/GameOverSuccess" unique_id=74823894]
+[node name="unusedToMenu" type="Node" parent="StateChart/CompoundState/GameOverSuccess" unique_id=74823894]
 script = ExtResource("4_6w3k4")
 to = NodePath("../../MainMenu")
 event = &"go_to_menu"
@@ -127,7 +133,7 @@ delay_in_seconds = "0.0"
 script = ExtResource("3_6w3k4")
 metadata/_custom_type_script = "uid://cytafq8i1y8qm"
 
-[node name="ToMenu" type="Node" parent="StateChart/CompoundState/GameOverFailed" unique_id=1844231027]
+[node name="unusedToMenu" type="Node" parent="StateChart/CompoundState/GameOverFailed" unique_id=1844231027]
 script = ExtResource("4_6w3k4")
 to = NodePath("../../MainMenu")
 event = &"go_to_menu"

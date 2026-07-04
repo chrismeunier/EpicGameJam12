@@ -68,6 +68,7 @@ func _end_wave() -> void:
 	
 	if current_wave >= max_waves:
 		print("All waves sent successfully!")
+		Events.all_waves_ended.emit()
 		return
 		
 	await get_tree().create_timer(10.0).timeout

@@ -23,6 +23,9 @@ func _ready() -> void:
 	menu.back_to_menu.connect(transit_to_menu)
 	Events.selected_level.connect(load_new_level)
 	Events.start_level.connect(start_wave)
+	Events.all_waves_ended.connect(transit_to_end_of_waves)
+	Events.no_more_enemies_on_map.connect(transit_to_success)
+	Events.game_over.connect(transit_to_failure)
 
 #region Sending Events
 func transit_to_menu():
@@ -40,6 +43,25 @@ func load_new_level(id:int):
 
 func start_wave():
 	state_chart.send_event("start_wave")
+
+func transit_to_end_of_waves():
+	state_chart.send_event("wave_is_over")
+
+func transit_to_success():
+	state_chart.send_event("wave_succeeded")
+
+func transit_to_failure():
+	state_chart.send_event("wave_failed")
+#endregion
+
+#region Start/stop process
+func block_current_level():
+	#! STOP THE LEVEL FROM RUNNING AUTOMATICALLY
+	_current_level.process_mode = Node.PROCESS_MODE_DISABLED
+
+func process_current_level():
+	_current_level.process_mode = Node.PROCESS_MODE_INHERIT
+
 #endregion
 
 #region MainMenu
@@ -79,9 +101,7 @@ func _deferred_load_level():
 		await get_tree().process_frame
 	
 	_current_level = new_level_scene.instantiate() as BaseLevel
-	#! STOP THE LEVEL FROM RUNNING AUTOMATICALLY
-	_current_level.process_mode = Node.PROCESS_MODE_DISABLED
-	
+	block_current_level()
 	level_root.add_child(_current_level)
 	await get_tree().process_frame
 
@@ -104,12 +124,13 @@ func _on_enemy_wave_active_state_entered() -> void:
 	game_overlay.start_level_button.hide()
 	# Reset the standard process mode -> level can run
 	game_overlay.apply_current_level(_current_level)
-	_current_level.process_mode = Node.PROCESS_MODE_INHERIT
+	process_current_level()
 
 #endregion
 
 #region End of the game/level
 func _on_playing_state_exited() -> void:
+	block_current_level()
 	game_overlay.hide()
 
 #endregion
