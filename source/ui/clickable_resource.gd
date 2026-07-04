@@ -7,6 +7,7 @@ extends Control
 
 var preview_resource : Area2D = null
 var placing_resource = false
+var parent_node_for_placing : BaseLevel = null
 
 @onready var usable_resource: UsableResource = %UsableResource
 @onready var button: Button = %Button
@@ -39,7 +40,10 @@ func _on_button_pressed() -> void:
 	
 	preview_resource = resource_scene.instantiate() as Area2D
 	# add it elsewhere ?
-	add_child(preview_resource)
+	if parent_node_for_placing:
+		parent_node_for_placing.add_child(preview_resource)
+	else:
+		add_child(preview_resource)
 	preview_resource.process_mode = Node.PROCESS_MODE_DISABLED
 	await get_tree().process_frame
 	placing_resource = true

@@ -103,6 +103,7 @@ func _on_before_wave_start_state_entered() -> void:
 func _on_enemy_wave_active_state_entered() -> void:
 	game_overlay.start_level_button.hide()
 	# Reset the standard process mode -> level can run
+	game_overlay.apply_current_level(_current_level)
 	_current_level.process_mode = Node.PROCESS_MODE_INHERIT
 
 #endregion

@@ -97,6 +97,7 @@ text = "X 12"
 layout_mode = 2
 
 [node name="Towers" type="HBoxContainer" parent="MainPanel/MarginContainer/ResourcesPanel/MarginContainer/MountainResources" unique_id=1450293438]
+unique_name_in_owner = true
 layout_mode = 2
 
 [node name="ClickableResource" parent="MainPanel/MarginContainer/ResourcesPanel/MarginContainer/MountainResources/Towers" unique_id=909371157 instance=ExtResource("4_kyklt")]
@@ -111,6 +112,7 @@ resource_scene = ExtResource("6_tjsy6")
 layout_mode = 2
 
 [node name="Powers" type="HBoxContainer" parent="MainPanel/MarginContainer/ResourcesPanel/MarginContainer/MountainResources" unique_id=694875128]
+unique_name_in_owner = true
 layout_mode = 2
 
 [node name="ClickableResource3" parent="MainPanel/MarginContainer/ResourcesPanel/MarginContainer/MountainResources/Powers" unique_id=617719879 instance=ExtResource("4_kyklt")]
