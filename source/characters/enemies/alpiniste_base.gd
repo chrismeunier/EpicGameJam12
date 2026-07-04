@@ -50,10 +50,14 @@ func _on_area_entered(area: Area2D) -> void:
 	print(area)
 	if area.is_in_group("Projectile"):
 		health -= 10
+	if area.name == "Storm":
+		speed = 10
 	if area.is_in_group("Slowness"):
 		health -= 1
 		speed -= 30
 
 func _on_area_exited(area: Area2D) -> void:
+	if area.name == "Storm":
+		speed = 60
 	if area.is_in_group("Slowness"):
 		speed += 30
