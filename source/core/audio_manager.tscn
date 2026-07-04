@@ -51,14 +51,17 @@ stream = ExtResource("7_j3ftw")
 [node name="Storm" type="Node" parent="Powers" unique_id=1517278263]
 
 [node name="Storm1" type="AudioStreamPlayer" parent="Powers/Storm" unique_id=163395162]
+unique_name_in_owner = true
 stream = ExtResource("11_k6ex4")
 
 [node name="Rock" type="Node" parent="Powers" unique_id=1482086144]
 
 [node name="Rock1" type="AudioStreamPlayer" parent="Powers/Rock" unique_id=558128533]
+unique_name_in_owner = true
 stream = ExtResource("12_7j4x8")
 
 [node name="Rock2" type="AudioStreamPlayer" parent="Powers/Rock" unique_id=1575557096]
+unique_name_in_owner = true
 stream = ExtResource("13_ngd6x")
 
 [node name="Music" type="Node" parent="." unique_id=1914217787]
@@ -78,3 +81,5 @@ stream = ExtResource("9_3h3aq")
 
 [node name="Avalanche3" type="AudioStreamPlayer" parent="Towers/Avalanche" unique_id=808910078]
 stream = ExtResource("10_2jmt1")
+
+[connection signal="finished" from="Powers/Rock/Rock1" to="." method="_on_rock_1_finished"]

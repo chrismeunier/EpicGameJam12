@@ -1,6 +1,8 @@
 extends Node2D
 class_name AlpinisteBase
 
+const lvl: int = 1
+
 @export var speed: float = 50.0
 @export var health: float = 100.0
 @onready var animated_sprite: AnimatedSprite2D = %AnimatedSprite2D
@@ -48,7 +50,7 @@ func _physics_process(delta: float) -> void:
 		reach_summit()
 
 func reach_summit() -> void:
-	#Events.climber_reached_summit.emit(self)
+	Events.summit_reached.emit(lvl)
 	queue_free()
 
 func die() -> void:
