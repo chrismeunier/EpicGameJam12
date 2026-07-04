@@ -5,7 +5,7 @@
 
 [node name="Menu" type="CanvasLayer" unique_id=675254715]
 script = ExtResource("1_yy8f4")
-level_uid_list = Array[String](["uid://nv7cetcrgglj"])
+level_uid_list = Array[String](["uid://nv7cetcrgglj", "uid://di6hmxbtn3c7w", "uid://e8pardncc0v8"])
 
 [node name="MainMenuPanel" type="PanelContainer" parent="." unique_id=1300155576]
 unique_name_in_owner = true

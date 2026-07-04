@@ -14,7 +14,6 @@ const LEVEL_SELECT_BUTTON = preload("res://source/ui/level_select_button.tscn")
 @onready var level_button_container: HBoxContainer = %LevelButtonContainer
 @onready var credits_panel: PanelContainer = %CreditsPanel
 
-
 func _ready() -> void:
 	level_select_panel.hide()
 	credits_panel.hide()
