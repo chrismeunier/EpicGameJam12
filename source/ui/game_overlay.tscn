@@ -2,6 +2,14 @@
 
 [ext_resource type="Script" uid="uid://bawigsubev76o" path="res://source/ui/game_overlay.gd" id="1_8u6aj"]
 [ext_resource type="Texture2D" uid="uid://dnqotrs8qb25k" path="res://icon.svg" id="2_c2ti5"]
+[ext_resource type="Texture2D" uid="uid://cxssrb0af4mgg" path="res://assets/visuals/bloodyhikingshoes.png" id="3_pfxqu"]
+[ext_resource type="PackedScene" uid="uid://club6y110m5hq" path="res://source/ui/clickable_resource.tscn" id="4_kyklt"]
+[ext_resource type="Texture2D" uid="uid://duou30jbxnn75" path="res://assets/visuals/Buttons/Button_Mountain.png" id="5_4pves"]
+[ext_resource type="PackedScene" uid="uid://d21pnayqd5j7x" path="res://source/characters/towers/avalanche.tscn" id="6_tjsy6"]
+[ext_resource type="Texture2D" uid="uid://byfvakg38xdih" path="res://assets/visuals/Buttons/Button_Falling_rock.png" id="7_ht8o4"]
+[ext_resource type="PackedScene" uid="uid://ca3561hf63udf" path="res://source/powers/RollingStone.tscn" id="8_3oe6q"]
+[ext_resource type="Texture2D" uid="uid://by8nvjmdn7dad" path="res://assets/visuals/Buttons/Button_Storm.png" id="9_dfq8l"]
+[ext_resource type="PackedScene" uid="uid://ffojj7sgkjug" path="res://source/powers/Storm.tscn" id="10_h5itu"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_uiud0"]
 
@@ -10,6 +18,7 @@ script = ExtResource("1_8u6aj")
 
 [node name="MainPanel" type="PanelContainer" parent="." unique_id=629334464]
 unique_name_in_owner = true
+texture_filter = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -25,9 +34,10 @@ theme_override_constants/margin_right = 64
 theme_override_constants/margin_bottom = 64
 
 [node name="StartLevelButton" type="TextureButton" parent="MainPanel/MarginContainer" unique_id=327561670]
+unique_name_in_owner = true
 self_modulate = Color(0.14509805, 1, 0.14509805, 1)
 layout_mode = 2
-size_flags_horizontal = 8
+size_flags_horizontal = 0
 size_flags_vertical = 0
 texture_normal = ExtResource("2_c2ti5")
 
@@ -50,5 +60,67 @@ mouse_filter = 1
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
 text = "PLAY"
+
+[node name="ResourcesPanel" type="PanelContainer" parent="MainPanel/MarginContainer" unique_id=1188973910]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
+
+[node name="MarginContainer" type="MarginContainer" parent="MainPanel/MarginContainer/ResourcesPanel" unique_id=756690072]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="MountainResources" type="VBoxContainer" parent="MainPanel/MarginContainer/ResourcesPanel/MarginContainer" unique_id=1608686838]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
+theme_override_constants/separation = 12
+
+[node name="Resources" type="HBoxContainer" parent="MainPanel/MarginContainer/ResourcesPanel/MarginContainer/MountainResources" unique_id=151956742]
+layout_mode = 2
+
+[node name="BootIcon" type="TextureRect" parent="MainPanel/MarginContainer/ResourcesPanel/MarginContainer/MountainResources/Resources" unique_id=519949277]
+modulate = Color(0.5598354, 0.3754696, 0.059530064, 1)
+layout_mode = 2
+texture = ExtResource("3_pfxqu")
+
+[node name="ResourcesCount" type="Label" parent="MainPanel/MarginContainer/ResourcesPanel/MarginContainer/MountainResources/Resources" unique_id=931299786]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "X 12"
+
+[node name="Spacer" type="Control" parent="MainPanel/MarginContainer/ResourcesPanel/MarginContainer/MountainResources" unique_id=769009647]
+layout_mode = 2
+
+[node name="Towers" type="HBoxContainer" parent="MainPanel/MarginContainer/ResourcesPanel/MarginContainer/MountainResources" unique_id=1450293438]
+layout_mode = 2
+
+[node name="ClickableResource" parent="MainPanel/MarginContainer/ResourcesPanel/MarginContainer/MountainResources/Towers" unique_id=909371157 instance=ExtResource("4_kyklt")]
+layout_mode = 2
+
+[node name="ClickableResource2" parent="MainPanel/MarginContainer/ResourcesPanel/MarginContainer/MountainResources/Towers" unique_id=1866389719 instance=ExtResource("4_kyklt")]
+layout_mode = 2
+icon = ExtResource("5_4pves")
+resource_scene = ExtResource("6_tjsy6")
+
+[node name="Spacer2" type="Control" parent="MainPanel/MarginContainer/ResourcesPanel/MarginContainer/MountainResources" unique_id=1308595605]
+layout_mode = 2
+
+[node name="Powers" type="HBoxContainer" parent="MainPanel/MarginContainer/ResourcesPanel/MarginContainer/MountainResources" unique_id=694875128]
+layout_mode = 2
+
+[node name="ClickableResource3" parent="MainPanel/MarginContainer/ResourcesPanel/MarginContainer/MountainResources/Powers" unique_id=617719879 instance=ExtResource("4_kyklt")]
+layout_mode = 2
+icon = ExtResource("7_ht8o4")
+resource_scene = ExtResource("8_3oe6q")
+
+[node name="ClickableResource4" parent="MainPanel/MarginContainer/ResourcesPanel/MarginContainer/MountainResources/Powers" unique_id=775875819 instance=ExtResource("4_kyklt")]
+layout_mode = 2
+icon = ExtResource("9_dfq8l")
+resource_scene = ExtResource("10_h5itu")
 
 [connection signal="pressed" from="MainPanel/MarginContainer/StartLevelButton" to="." method="_on_start_level_button_pressed"]

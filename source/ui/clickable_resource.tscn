@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://club6y110m5hq"]
+
+[ext_resource type="Script" uid="uid://wsmehuweaupm" path="res://source/ui/clickable_resource.gd" id="1_d0hsg"]
+[ext_resource type="Texture2D" uid="uid://blqsg512bju7n" path="res://assets/visuals/Buttons/Button_Lama.png" id="2_d2lri"]
+[ext_resource type="PackedScene" uid="uid://d04dlq1y8qapc" path="res://source/ui/usable_resource.tscn" id="2_hri14"]
+[ext_resource type="PackedScene" uid="uid://cxavlkqeumgul" path="res://source/characters/towers/guanaco.tscn" id="3_d2lri"]
+
+[node name="ClickableResource" type="Control" unique_id=909371157]
+texture_filter = 1
+custom_minimum_size = Vector2(92, 168)
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_d0hsg")
+icon = ExtResource("2_d2lri")
+resource_scene = ExtResource("3_d2lri")
+available = true
+
+[node name="UsableResource" parent="." unique_id=1902755576 instance=ExtResource("2_hri14")]
+unique_name_in_owner = true
+layout_mode = 0
+
+[node name="Button" type="Button" parent="." unique_id=1052784902]
+unique_name_in_owner = true
+layout_mode = 0
+offset_right = 8.0
+offset_bottom = 8.0
+flat = true
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
