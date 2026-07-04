@@ -34,10 +34,12 @@ func _process(_delta: float) -> void:
 func _input(event: InputEvent) -> void:
 	if placing_resource and event is InputEventMouseButton:
 		if event.is_action_pressed("left_click"):
+			if preview_resource.has_method("start_audio"):
+				preview_resource.start_audio()
 			preview_resource.global_position = get_global_mouse_position()
-			placing_resource = false
 			preview_resource.process_mode = Node.PROCESS_MODE_INHERIT
 			preview_resource = null
+			placing_resource = false
 
 func _on_button_pressed() -> void:
 	Events.bought_resource.emit(cost)
