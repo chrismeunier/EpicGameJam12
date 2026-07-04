@@ -8,6 +8,7 @@
 [node name="Lvl1" type="Node2D" unique_id=1327002182]
 script = ExtResource("1_bvcex")
 alpiniste_scene = ExtResource("3_6ak7w")
+level_name = "Premier (et seul?) niveau"
 
 [node name="Chemin" parent="." unique_id=804101482 instance=ExtResource("2_7e3jk")]
 unique_name_in_owner = true
