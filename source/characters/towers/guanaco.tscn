@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://cxavlkqeumgul"]
+
+[ext_resource type="Script" uid="uid://b8tcqyy5bn0p4" path="res://source/characters/towers/guanaco.gd" id="1_0bjgn"]
+[ext_resource type="Texture2D" uid="uid://cbnxoww0jlht1" path="res://assets/visuals/towers/Guanaco.png" id="2_baq5u"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7wt8e"]
+size = Vector2(24, 30)
+
+[node name="Guanaco" type="Area2D" unique_id=1367686413]
+script = ExtResource("1_0bjgn")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1128687304]
+position = Vector2(1, 0)
+shape = SubResource("RectangleShape2D_7wt8e")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1242167473]
+texture_filter = 1
+texture = ExtResource("2_baq5u")
+
+[node name="ShootTimer" type="Timer" parent="." unique_id=888739746]
