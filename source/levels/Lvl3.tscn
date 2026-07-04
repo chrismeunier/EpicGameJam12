@@ -1,0 +1,101 @@
+[gd_scene format=3 uid="uid://e8pardncc0v8"]
+
+[ext_resource type="Script" uid="uid://biwis5r8uwsdv" path="res://source/levels/lvl.gd" id="1_pcyjk"]
+[ext_resource type="Texture2D" uid="uid://cdw3275orcyfg" path="res://assets/visuals/background/Map_Layer_1.png" id="2_c0a8o"]
+[ext_resource type="Texture2D" uid="uid://c544inh1vn5n7" path="res://assets/visuals/background/Map_Layer_2.png" id="3_schql"]
+[ext_resource type="Texture2D" uid="uid://baddiwipdwcul" path="res://assets/visuals/background/Map_Layer_3.1.png" id="4_nlgrb"]
+[ext_resource type="Texture2D" uid="uid://d0ty4g58sugtj" path="res://assets/visuals/background/Map_Layer_3.2.png" id="5_60ft6"]
+[ext_resource type="Texture2D" uid="uid://pfo0in8wyiun" path="res://assets/visuals/background/Map_Layer_3.3.png" id="6_pflcr"]
+[ext_resource type="Texture2D" uid="uid://c8onmtl61d3wq" path="res://assets/visuals/background/Map_Layer_4.png" id="7_3udbq"]
+[ext_resource type="Texture2D" uid="uid://bhwxnrko4ae12" path="res://assets/visuals/background/Map_Layer_5.png" id="8_l4qcj"]
+[ext_resource type="PackedScene" uid="uid://c8oeykur3eedm" path="res://source/characters/enemies/CampSpawner.tscn" id="9_l4upo"]
+[ext_resource type="PackedScene" uid="uid://c24doqkcokf4y" path="res://source/characters/enemies/AlpinisteBase.tscn" id="10_513s6"]
+[ext_resource type="PackedScene" uid="uid://c3c7huhvesjeh" path="res://source/levels/Road1.tscn" id="11_1deka"]
+[ext_resource type="PackedScene" uid="uid://bv02flu7k67vf" path="res://source/levels/Road2.tscn" id="12_okqy2"]
+[ext_resource type="PackedScene" uid="uid://yy6ex5skfeso" path="res://source/levels/Road3.tscn" id="13_c0a8o"]
+
+[node name="Lvl3" type="Node2D" unique_id=1327002182 node_paths=PackedStringArray("wave_spawners")]
+script = ExtResource("1_pcyjk")
+level_id = 2
+level_name = "Apocatequil"
+number_of_waves = 6
+wave_spawners = [NodePath("CampSpawner"), NodePath("CampSpawner2"), NodePath("CampSpawner3")]
+
+[node name="Background" type="Node2D" parent="." unique_id=681142071]
+
+[node name="Sky" type="Parallax2D" parent="Background" unique_id=1426514684]
+
+[node name="Sprite2D" type="Sprite2D" parent="Background/Sky" unique_id=452843227]
+texture_filter = 1
+position = Vector2(640, 360)
+texture = ExtResource("2_c0a8o")
+
+[node name="Mountain" type="Parallax2D" parent="Background" unique_id=1116226993]
+
+[node name="Sprite2D" type="Sprite2D" parent="Background/Mountain" unique_id=320205480]
+texture_filter = 1
+position = Vector2(640, 360)
+texture = ExtResource("3_schql")
+
+[node name="Road1" type="Parallax2D" parent="Background" unique_id=112097638]
+
+[node name="Sprite2D" type="Sprite2D" parent="Background/Road1" unique_id=1906134827]
+texture_filter = 1
+position = Vector2(640, 360)
+texture = ExtResource("4_nlgrb")
+
+[node name="Road2" type="Parallax2D" parent="Background" unique_id=1102588069]
+
+[node name="Sprite2D" type="Sprite2D" parent="Background/Road2" unique_id=366577938]
+texture_filter = 1
+position = Vector2(640, 360)
+texture = ExtResource("5_60ft6")
+
+[node name="Road3" type="Parallax2D" parent="Background" unique_id=121878832]
+
+[node name="Sprite2D" type="Sprite2D" parent="Background/Road3" unique_id=7511315]
+texture_filter = 1
+position = Vector2(640, 360)
+texture = ExtResource("6_pflcr")
+
+[node name="Forest1" type="Parallax2D" parent="Background" unique_id=1526091529]
+
+[node name="Sprite2D" type="Sprite2D" parent="Background/Forest1" unique_id=2032202293]
+texture_filter = 1
+position = Vector2(640, 360)
+texture = ExtResource("7_3udbq")
+
+[node name="Forest2" type="Parallax2D" parent="Background" unique_id=214792114]
+
+[node name="Sprite2D" type="Sprite2D" parent="Background/Forest2" unique_id=1518612472]
+texture_filter = 1
+position = Vector2(640, 360)
+texture = ExtResource("8_l4qcj")
+
+[node name="Enemies" type="Node2D" parent="." unique_id=1015057727]
+unique_name_in_owner = true
+
+[node name="CampSpawner" parent="." unique_id=705323101 node_paths=PackedStringArray("road") instance=ExtResource("9_l4upo")]
+position = Vector2(559, 704)
+scale = Vector2(2, 2)
+alpiniste_scene = ExtResource("10_513s6")
+road = NodePath("../Road1")
+
+[node name="CampSpawner2" parent="." unique_id=1416754156 node_paths=PackedStringArray("road") instance=ExtResource("9_l4upo")]
+position = Vector2(123, 703)
+scale = Vector2(2, 2)
+alpiniste_scene = ExtResource("10_513s6")
+road = NodePath("../Road2")
+
+[node name="CampSpawner3" parent="." unique_id=594845003 node_paths=PackedStringArray("road") instance=ExtResource("9_l4upo")]
+position = Vector2(1250, 627)
+scale = Vector2(2, 2)
+alpiniste_scene = ExtResource("10_513s6")
+road = NodePath("../Road3")
+
+[node name="Road1" parent="." unique_id=804101482 instance=ExtResource("11_1deka")]
+position = Vector2(640, 360)
+
+[node name="Road2" parent="." unique_id=1371415679 instance=ExtResource("12_okqy2")]
+
+[node name="Road3" parent="." unique_id=1617461053 instance=ExtResource("13_c0a8o")]
