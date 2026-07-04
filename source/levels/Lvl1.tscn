@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://biwis5r8uwsdv" path="res://source/levels/lvl_1.gd" id="1_bvcex"]
 [ext_resource type="PackedScene" uid="uid://c3c7huhvesjeh" path="res://source/levels/Chemin.tscn" id="2_7e3jk"]
-[ext_resource type="PackedScene" uid="uid://c24doqkcokf4y" path="res://source/characters/AlpinisteBase.tscn" id="3_6ak7w"]
+[ext_resource type="PackedScene" uid="uid://c24doqkcokf4y" path="res://source/characters/enemies/AlpinisteBase.tscn" id="3_6ak7w"]
 [ext_resource type="PackedScene" uid="uid://cxavlkqeumgul" path="res://source/characters/towers/guanaco.tscn" id="4_7e3jk"]
 [ext_resource type="PackedScene" uid="uid://d21pnayqd5j7x" path="res://source/characters/towers/avalanche.tscn" id="5_6ak7w"]
 
