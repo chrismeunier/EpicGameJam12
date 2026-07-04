@@ -11,6 +11,7 @@ collision_layer = 2
 script = ExtResource("1_0bjgn")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1128687304]
+unique_name_in_owner = true
 position = Vector2(1, 0)
 shape = SubResource("CircleShape2D_6ak7w")
 

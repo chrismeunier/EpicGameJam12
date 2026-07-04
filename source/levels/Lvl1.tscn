@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://c8onmtl61d3wq" path="res://assets/visuals/background/Map_Layer_4.png" id="7_p16a1"]
 [ext_resource type="Texture2D" uid="uid://bhwxnrko4ae12" path="res://assets/visuals/background/Map_Layer_5.png" id="8_00ivx"]
 [ext_resource type="PackedScene" uid="uid://c8oeykur3eedm" path="res://source/characters/enemies/CampSpawner.tscn" id="8_yx8tq"]
+[ext_resource type="PackedScene" uid="uid://bmxc2x231r8il" path="res://source/characters/Mountain.tscn" id="16_mapb2"]
 
 [node name="Lvl1" type="Node2D" unique_id=1327002182 node_paths=PackedStringArray("wave_spawners")]
 script = ExtResource("1_bvcex")
@@ -83,3 +84,5 @@ road = NodePath("../Road1")
 
 [node name="Road1" parent="." unique_id=804101482 instance=ExtResource("2_7e3jk")]
 position = Vector2(640, 360)
+
+[node name="Mountain" parent="." unique_id=1464789632 instance=ExtResource("16_mapb2")]

@@ -4,7 +4,7 @@ extends Node
 static var _current_level : BaseLevel
 @export var menu: Menu
 @export var level_root: Node
-@export var game_overlay : CanvasLayer
+@export var game_overlay : Overlay
 var selected_level_id: int = 0
 @onready var state_chart: StateChart = %StateChart
 
@@ -40,6 +40,12 @@ func load_new_level(id:int):
 
 func start_wave():
 	state_chart.send_event("start_wave")
+#endregion
+
+#region MainMenu
+func _on_main_menu_state_entered() -> void:
+	AudioManager.guacano_theme.stop()
+	AudioManager.menu_loop.play()
 #endregion
 
 #region LevelSelect
@@ -85,6 +91,8 @@ func _deferred_load_level():
 
 func _on_playing_state_entered() -> void:
 	game_overlay.show()
+	AudioManager.menu_loop.stop()
+	AudioManager.guacano_theme.play()
 
 func _on_before_wave_start_state_entered() -> void:
 	load_level()
@@ -93,9 +101,11 @@ func _on_before_wave_start_state_entered() -> void:
 
 #region Start wave
 func _on_enemy_wave_active_state_entered() -> void:
+	game_overlay.start_level_button.hide()
 	# Reset the standard process mode -> level can run
+	game_overlay.apply_current_level(_current_level)
 	_current_level.process_mode = Node.PROCESS_MODE_INHERIT
-	
+
 #endregion
 
 #region End of the game/level

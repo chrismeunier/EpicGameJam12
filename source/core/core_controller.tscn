@@ -145,6 +145,7 @@ to = NodePath("../../Playing")
 event = &"retry_level"
 delay_in_seconds = "0.0"
 
+[connection signal="state_entered" from="StateChart/CompoundState/MainMenu" to="." method="_on_main_menu_state_entered"]
 [connection signal="state_entered" from="StateChart/CompoundState/Credits" to="." method="_on_credits_state_entered"]
 [connection signal="state_exited" from="StateChart/CompoundState/Credits" to="." method="_on_credits_state_exited"]
 [connection signal="state_entered" from="StateChart/CompoundState/LevelSelect" to="." method="_on_level_select_state_entered"]

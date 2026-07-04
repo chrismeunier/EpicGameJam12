@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://d04dlq1y8qapc"]
+
+[ext_resource type="Script" uid="uid://uaulemmncj3u" path="res://source/ui/usable_resource.gd" id="1_smekj"]
+[ext_resource type="Texture2D" uid="uid://byfvakg38xdih" path="res://assets/visuals/Buttons/Button_Falling_rock.png" id="2_ont4u"]
+[ext_resource type="Texture2D" uid="uid://cxssrb0af4mgg" path="res://assets/visuals/bloodyhikingshoes.png" id="3_udnjm"]
+
+[node name="UsableResource" type="VBoxContainer" unique_id=1902755576]
+texture_filter = 1
+offset_right = 32.0
+offset_bottom = 32.0
+theme_override_constants/separation = 4
+script = ExtResource("1_smekj")
+
+[node name="ResourceIcon" type="TextureRect" parent="." unique_id=1774725548]
+unique_name_in_owner = true
+layout_mode = 2
+texture = ExtResource("2_ont4u")
+expand_mode = 5
+stretch_mode = 5
+
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=438939923]
+layout_mode = 2
+
+[node name="CostIcon" type="TextureRect" parent="HBoxContainer" unique_id=1853202773]
+layout_mode = 2
+texture = ExtResource("3_udnjm")
+
+[node name="CostText" type="Label" parent="HBoxContainer" unique_id=1242697917]
+unique_name_in_owner = true
+layout_mode = 2
+text = "X 3"

@@ -11,3 +11,5 @@ signal start_level
 signal summit_reached(climber_lvl : int)
 
 signal game_over
+
+signal alpinist_died(climber_lvl : int)
