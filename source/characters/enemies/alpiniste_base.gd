@@ -1,13 +1,15 @@
 extends Node2D
 class_name AlpinisteBase
 
-@export var speed: float = 60.0
+@export var speed: float = 50.0
 @export var health: float = 100.0
 @onready var animated_sprite: AnimatedSprite2D = %AnimatedSprite2D
 @onready var collision_shape: CollisionPolygon2D = $CollisionPolygon2D
 
 var _path: Path2D
 var _distance: float = 0.0
+var _isInStorm: bool
+var _isInAvalanch: bool
 
 func setup(path: Path2D, start_distance: float = 0.0) -> void:
 	_path = path
@@ -15,8 +17,16 @@ func setup(path: Path2D, start_distance: float = 0.0) -> void:
 	global_position = _path.to_global(_path.curve.sample_baked(_distance))
 
 func _process(delta: float) -> void:
-	if health <= 0:
+	if health <= 0.0:
 		die()
+		return
+	if _isInStorm:
+		speed = 10.0
+	elif _isInAvalanch:
+		health -= delta
+		speed = 30.0
+	else:
+		speed = 50.0
 
 func _physics_process(delta: float) -> void:
 	if _path == null:
@@ -49,15 +59,16 @@ func die() -> void:
 func _on_area_entered(area: Area2D) -> void:
 	print(area)
 	if area.is_in_group("Projectile"):
-		health -= 10
+		health -= 15
+	if area.name == "RollingStone":
+		health -= 50
 	if area.name == "Storm":
-		speed = 10
+		_isInStorm = true
 	if area.is_in_group("Slowness"):
-		health -= 1
-		speed -= 30
+		_isInAvalanch = true
 
 func _on_area_exited(area: Area2D) -> void:
 	if area.name == "Storm":
-		speed = 60
+		_isInStorm = false
 	if area.is_in_group("Slowness"):
-		speed += 30
+		_isInAvalanch = false
