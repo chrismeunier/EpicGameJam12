@@ -1,0 +1,130 @@
+[gd_scene format=3 uid="uid://c24doqkcokf4y"]
+
+[ext_resource type="Script" uid="uid://d02tufog1gt4l" path="res://source/characters/alpiniste_base.gd" id="1_fo51i"]
+[ext_resource type="Texture2D" uid="uid://dkp1gihe8i1ov" path="res://assets/visuals/Hiker/n_p1.png" id="2_y3s43"]
+[ext_resource type="Texture2D" uid="uid://cfqotuydeeby8" path="res://assets/visuals/Hiker/n_p2.png" id="3_tr5qg"]
+[ext_resource type="Texture2D" uid="uid://c7ryewdfgxror" path="res://assets/visuals/Hiker/n_p3.png" id="4_s1jya"]
+[ext_resource type="Texture2D" uid="uid://d36en52drui35" path="res://assets/visuals/Hiker/n_p4.png" id="5_skcns"]
+[ext_resource type="Texture2D" uid="uid://cc1po4810uyve" path="res://assets/visuals/Hiker/n_p5.png" id="6_q3h3w"]
+[ext_resource type="Texture2D" uid="uid://lupvfe5xrtxr" path="res://assets/visuals/Hiker/n_p6.png" id="7_2epaq"]
+[ext_resource type="Texture2D" uid="uid://doh1l1hk1jcdd" path="res://assets/visuals/Hiker/n_p7.png" id="8_18fi4"]
+[ext_resource type="Texture2D" uid="uid://cfbvfeunrj0hi" path="res://assets/visuals/Hiker/n_p8.png" id="9_iekk4"]
+[ext_resource type="Texture2D" uid="uid://d07ltlw6ddfj7" path="res://assets/visuals/Hiker/ne_p1.png" id="10_ls45g"]
+[ext_resource type="Texture2D" uid="uid://bg5fo8wx1higk" path="res://assets/visuals/Hiker/ne_p2.png" id="11_fbrd7"]
+[ext_resource type="Texture2D" uid="uid://ckjj8iiwr5f5c" path="res://assets/visuals/Hiker/ne_p3.png" id="12_834jn"]
+[ext_resource type="Texture2D" uid="uid://ddis40j1xw7ru" path="res://assets/visuals/Hiker/ne_p4.png" id="13_qr4va"]
+[ext_resource type="Texture2D" uid="uid://c88q6pd4wp7nl" path="res://assets/visuals/Hiker/ne_p5.png" id="14_qvtb4"]
+[ext_resource type="Texture2D" uid="uid://tuj6615eiub3" path="res://assets/visuals/Hiker/ne_p6.png" id="15_clsk2"]
+[ext_resource type="Texture2D" uid="uid://cxqc5gak2m76r" path="res://assets/visuals/Hiker/ne_p7.png" id="16_tq6k2"]
+[ext_resource type="Texture2D" uid="uid://dlc0idae1gg5l" path="res://assets/visuals/Hiker/ne_p8.png" id="17_cmbo4"]
+[ext_resource type="Texture2D" uid="uid://ctiticaatgtqk" path="res://assets/visuals/Hiker/nw_p1.png" id="18_ur0ed"]
+[ext_resource type="Texture2D" uid="uid://dku4ov8ysqopn" path="res://assets/visuals/Hiker/nw_p2.png" id="19_vwxjf"]
+[ext_resource type="Texture2D" uid="uid://cy6l3ilchy1o7" path="res://assets/visuals/Hiker/nw_p3.png" id="20_nin2y"]
+[ext_resource type="Texture2D" uid="uid://dnljy7v6s5ova" path="res://assets/visuals/Hiker/nw_p4.png" id="21_gvqv0"]
+[ext_resource type="Texture2D" uid="uid://dev2wv5vlykod" path="res://assets/visuals/Hiker/nw_p5.png" id="22_kmqts"]
+[ext_resource type="Texture2D" uid="uid://cnbwi5ygauo5v" path="res://assets/visuals/Hiker/nw_p6.png" id="23_vxl0j"]
+[ext_resource type="Texture2D" uid="uid://c33yxpg2i40x4" path="res://assets/visuals/Hiker/nw_p7.png" id="24_da0uw"]
+[ext_resource type="Texture2D" uid="uid://b5mt4mrnktfhv" path="res://assets/visuals/Hiker/nw_p8.png" id="25_7pcoq"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_jxkye"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("10_ls45g")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_fbrd7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_834jn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_qr4va")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_qvtb4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_clsk2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_tq6k2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_cmbo4")
+}],
+"loop": 1,
+"name": &"GoingNorthEast",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("18_ur0ed")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_vwxjf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_nin2y")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_gvqv0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("22_kmqts")
+}, {
+"duration": 1.0,
+"texture": ExtResource("23_vxl0j")
+}, {
+"duration": 1.0,
+"texture": ExtResource("24_da0uw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("25_7pcoq")
+}],
+"loop": 1,
+"name": &"GoingNorthWest",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_y3s43")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_tr5qg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_s1jya")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_skcns")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_q3h3w")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_2epaq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_18fi4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_iekk4")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="AlpinisteBase" type="StaticBody2D" unique_id=2015955655]
+script = ExtResource("1_fo51i")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1813391761]
+unique_name_in_owner = true
+sprite_frames = SubResource("SpriteFrames_jxkye")
+autoplay = "default"
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=1588866317]
+position = Vector2(-0.50000095, 13.255685)
+scale = Vector2(4.0625, 4.4886365)
+polygon = PackedVector2Array(2.5, 7, 5, -3, 1.5, -8, -1, -8, -5, -3, -1.5, 7)

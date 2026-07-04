@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://c3c7huhvesjeh"]
+
+[sub_resource type="Curve2D" id="Curve2D_v8tby"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 2, -11, 0, 0, 0, 0, 46, -116, 0, 0, 0, 0, -23, -161, 0, 0, 0, 0, -27, -246, 0, 0, 0, 0, 66, -278, 0, 0, 0, 0, 66, -378, 0, 0, 0, 0, 5, -472, 0, 0, 0, 0, 14, -588)
+}
+point_count = 8
+
+[node name="Chemin" type="Path2D" unique_id=804101482]
+curve = SubResource("Curve2D_v8tby")
