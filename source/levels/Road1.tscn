@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://c3c7huhvesjeh"]
+
+[ext_resource type="Texture2D" uid="uid://baddiwipdwcul" path="res://assets/visuals/background/Map_Layer_3.1.png" id="1_gblmp"]
+
+[sub_resource type="Curve2D" id="Curve2D_v8tby"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -81, 353, 0, 0, 0, 0, -79, 321, 0, 0, 0, 0, 3, 288, 0, 0, 0, 0, -4, 256, 0, 0, 0, 0, -109, 215, 0, 0, 0, 0, -243, 191, 0, 0, 0, 0, -242, 165, 0, 0, 0, 0, -175, 147, 0, 0, 0, 0, -36, 152, 0, 0, 0, 0, 69, 131, 0, 0, 0, 0, 93, 83, 0, 0, 0, 0, 51, 19, 0, 0, 0, 0, -88, -52, 0, 0, 0, 0, -182, -67, 0, 0, 0, 0, -177, -97, 0, 0, 0, 0, -81, -123, 0, 0, 0, 0, -86, -149, 0, 0, 0, 0, -112, -165, 0, 0, 0, 0, -152, -177, 0, 0, 0, 0, -147, -210)
+}
+point_count = 20
+
+[node name="Road1" type="Path2D" unique_id=804101482]
+curve = SubResource("Curve2D_v8tby")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1998138736]
+visible = false
+texture = ExtResource("1_gblmp")
