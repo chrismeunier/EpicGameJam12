@@ -48,17 +48,6 @@ stream = ExtResource("7_j3ftw")
 
 [node name="Powers" type="Node" parent="." unique_id=1563277405]
 
-[node name="Avalanche" type="Node" parent="Powers" unique_id=558372244]
-
-[node name="Avalanche1" type="AudioStreamPlayer" parent="Powers/Avalanche" unique_id=1433833370]
-stream = ExtResource("8_7ws5b")
-
-[node name="Avalanche2" type="AudioStreamPlayer" parent="Powers/Avalanche" unique_id=1059156129]
-stream = ExtResource("9_3h3aq")
-
-[node name="Avalanche3" type="AudioStreamPlayer" parent="Powers/Avalanche" unique_id=808910078]
-stream = ExtResource("10_2jmt1")
-
 [node name="Storm" type="Node" parent="Powers" unique_id=1517278263]
 
 [node name="Storm1" type="AudioStreamPlayer" parent="Powers/Storm" unique_id=163395162]
@@ -76,3 +65,16 @@ stream = ExtResource("13_ngd6x")
 
 [node name="GuacanoTheme" type="AudioStreamPlayer" parent="Music" unique_id=1895221045]
 stream = ExtResource("14_40g7s")
+
+[node name="Towers" type="Node" parent="." unique_id=1235615326]
+
+[node name="Avalanche" type="Node" parent="Towers" unique_id=558372244]
+
+[node name="Avalanche1" type="AudioStreamPlayer" parent="Towers/Avalanche" unique_id=1433833370]
+stream = ExtResource("8_7ws5b")
+
+[node name="Avalanche2" type="AudioStreamPlayer" parent="Towers/Avalanche" unique_id=1059156129]
+stream = ExtResource("9_3h3aq")
+
+[node name="Avalanche3" type="AudioStreamPlayer" parent="Towers/Avalanche" unique_id=808910078]
+stream = ExtResource("10_2jmt1")

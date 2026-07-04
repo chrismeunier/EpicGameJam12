@@ -1,0 +1,97 @@
+[gd_scene format=3 uid="uid://d21pnayqd5j7x"]
+
+[ext_resource type="Texture2D" uid="uid://recy8hvku57n" path="res://assets/visuals/towers/Avalanche.png" id="1_k1h8o"]
+[ext_resource type="Script" uid="uid://8pc1vjmxjkxa" path="res://source/characters/towers/avalanche.gd" id="1_pwx41"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pwx41"]
+atlas = ExtResource("1_k1h8o")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y8207"]
+atlas = ExtResource("1_k1h8o")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_omsc3"]
+atlas = ExtResource("1_k1h8o")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qwfwg"]
+atlas = ExtResource("1_k1h8o")
+region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dovc2"]
+atlas = ExtResource("1_k1h8o")
+region = Rect2(0, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jm4gf"]
+atlas = ExtResource("1_k1h8o")
+region = Rect2(32, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kdin2"]
+atlas = ExtResource("1_k1h8o")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_2720y"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pwx41")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y8207")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_omsc3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qwfwg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dovc2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jm4gf")
+}],
+"loop": 0,
+"name": &"avalanche",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kdin2")
+}],
+"loop": 0,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_7wt8e"]
+radius = 40.0
+
+[node name="Avalanche" type="Area2D" unique_id=1153631674]
+script = ExtResource("1_pwx41")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1970245281]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_2720y")
+animation = &"idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=808774131]
+position = Vector2(0, 11)
+shape = SubResource("CircleShape2D_7wt8e")
+
+[node name="AvalancheTimer" type="Timer" parent="." unique_id=1393927116]
+wait_time = 5.0
+
+[node name="SnowParticles" type="CPUParticles2D" parent="." unique_id=1790891512]
+position = Vector2(0, 11)
+emitting = false
+amount = 1000
+lifetime = 5.0
+one_shot = true
+emission_shape = 1
+emission_sphere_radius = 35.0
+gravity = Vector2(0, 0)
+tangential_accel_min = 1.5
+tangential_accel_max = 1.5
+scale_amount_max = 2.0

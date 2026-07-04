@@ -54,5 +54,5 @@ func shoot_projectile() -> void:
 	bullet.damage = damage
 	get_tree().current_scene.add_child(bullet)
 	
-	#if AudioManager:
-		#AudioManager.guanaco_spit.play_guanaco_spit() 
+	if AudioManager:
+		AudioManager.play_guanaco_spit() 
