@@ -5,3 +5,5 @@ extends Node
 
 # Level selection
 signal selected_level(level_id: int)
+# level starting
+signal start_level

@@ -4,6 +4,7 @@ extends Node
 static var _current_level : BaseLevel
 @export var menu: Menu
 @export var level_root: Node
+@export var game_overlay : CanvasLayer
 var selected_level_id: int = 0
 @onready var state_chart: StateChart = %StateChart
 
@@ -16,10 +17,12 @@ var selected_level_id: int = 0
 # go_to_menu, retry_level
 
 func _ready() -> void:
+	game_overlay.hide()
 	menu.menu_play.connect(transit_to_level_select)
 	menu.menu_credits.connect(transit_to_credits)
 	menu.back_to_menu.connect(transit_to_menu)
-	Events.selected_level.connect(load_and_begin_level)
+	Events.selected_level.connect(load_new_level)
+	Events.start_level.connect(start_wave)
 
 #region Sending Events
 func transit_to_menu():
@@ -31,9 +34,12 @@ func transit_to_level_select():
 func transit_to_credits():
 	state_chart.send_event("go_to_credits")
 	
-func load_and_begin_level(id:int):
+func load_new_level(id:int):
 	selected_level_id = id
 	state_chart.send_event("level_selected")
+
+func start_wave():
+	state_chart.send_event("start_wave")
 #endregion
 
 #region LevelSelect
@@ -76,6 +82,10 @@ func _deferred_load_level():
 #endregion
 
 #region Start playing
+
+func _on_playing_state_entered() -> void:
+	game_overlay.show()
+
 func _on_before_wave_start_state_entered() -> void:
 	load_level()
 	menu.main_menu_panel.hide()
@@ -86,4 +96,10 @@ func _on_enemy_wave_active_state_entered() -> void:
 	# Reset the standard process mode -> level can run
 	_current_level.process_mode = Node.PROCESS_MODE_INHERIT
 	
+#endregion
+
+#region End of the game/level
+func _on_playing_state_exited() -> void:
+	game_overlay.hide()
+
 #endregion

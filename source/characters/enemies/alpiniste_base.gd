@@ -4,7 +4,6 @@ class_name AlpinisteBase
 @export var speed: float = 50.0
 @export var health: float = 100.0
 @onready var animated_sprite: AnimatedSprite2D = %AnimatedSprite2D
-@onready var collision_shape: CollisionPolygon2D = $CollisionPolygon2D
 
 var _path: Path2D
 var _distance: float = 0.0
@@ -36,8 +35,8 @@ func _physics_process(delta: float) -> void:
 	global_position = _path.to_global(_path.curve.sample_baked(_distance))
 
 	var ahead := _path.to_global(_path.curve.sample_baked(_distance + 1.0))
-	var rot: float = -(ahead - global_position).angle()
-	
+	var rot: float = - (ahead - global_position).angle()
+
 	if rot > 0 && rot < 0.75 * PI / 2:
 		animated_sprite.animation = "GoingNorthEast"
 	elif rot >= 0.75 * PI / 2 && rot <= 1.25 * PI / 2:
@@ -51,13 +50,13 @@ func _physics_process(delta: float) -> void:
 func reach_summit() -> void:
 	#Events.climber_reached_summit.emit(self)
 	queue_free()
-	
+
 func die() -> void:
 	speed = 0
 	queue_free()
 
 func _on_area_entered(area: Area2D) -> void:
-	print(area)
+	# print(area)
 	if area.is_in_group("Projectile"):
 		health -= 15
 	if area.name == "RollingStone":

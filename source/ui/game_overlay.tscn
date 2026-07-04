@@ -1,0 +1,54 @@
+[gd_scene format=3 uid="uid://cvjwgpxux62ux"]
+
+[ext_resource type="Script" uid="uid://bawigsubev76o" path="res://source/ui/game_overlay.gd" id="1_8u6aj"]
+[ext_resource type="Texture2D" uid="uid://dnqotrs8qb25k" path="res://icon.svg" id="2_c2ti5"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_uiud0"]
+
+[node name="GameOverlay" type="CanvasLayer" unique_id=142451924]
+script = ExtResource("1_8u6aj")
+
+[node name="MainPanel" type="PanelContainer" parent="." unique_id=629334464]
+unique_name_in_owner = true
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_uiud0")
+
+[node name="MarginContainer" type="MarginContainer" parent="MainPanel" unique_id=1631087191]
+layout_mode = 2
+theme_override_constants/margin_left = 64
+theme_override_constants/margin_top = 64
+theme_override_constants/margin_right = 64
+theme_override_constants/margin_bottom = 64
+
+[node name="StartLevelButton" type="TextureButton" parent="MainPanel/MarginContainer" unique_id=327561670]
+self_modulate = Color(0.14509805, 1, 0.14509805, 1)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+texture_normal = ExtResource("2_c2ti5")
+
+[node name="ToDelete" type="PanelContainer" parent="MainPanel/MarginContainer/StartLevelButton" unique_id=1708553267]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -24.0
+offset_top = -20.0
+offset_right = 24.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+
+[node name="Label" type="Label" parent="MainPanel/MarginContainer/StartLevelButton/ToDelete" unique_id=1487750327]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "PLAY"
+
+[connection signal="pressed" from="MainPanel/MarginContainer/StartLevelButton" to="." method="_on_start_level_button_pressed"]
