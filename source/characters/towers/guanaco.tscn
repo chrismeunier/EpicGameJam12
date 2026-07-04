@@ -4,9 +4,10 @@
 [ext_resource type="Texture2D" uid="uid://cbnxoww0jlht1" path="res://assets/visuals/towers/Guanaco.png" id="2_baq5u"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_6ak7w"]
-radius = 107.0
+radius = 100.0
 
 [node name="Guanaco" type="Area2D" unique_id=1367686413]
+collision_layer = 2
 script = ExtResource("1_0bjgn")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1128687304]
@@ -18,3 +19,6 @@ texture_filter = 1
 texture = ExtResource("2_baq5u")
 
 [node name="ShootTimer" type="Timer" parent="." unique_id=888739746]
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="area_exited" from="." to="." method="_on_area_exited"]

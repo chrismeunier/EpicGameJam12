@@ -1,0 +1,84 @@
+[gd_scene format=3 uid="uid://c24doqkcokf4y"]
+
+[ext_resource type="Script" uid="uid://d02tufog1gt4l" path="res://source/characters/enemies/alpiniste_base.gd" id="1_fo51i"]
+[ext_resource type="Texture2D" uid="uid://5fxrqvood7uh" path="res://assets/visuals/Hiker/Hiker_LV1.png" id="2_x5wyr"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_klinn"]
+atlas = ExtResource("2_x5wyr")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hjb14"]
+atlas = ExtResource("2_x5wyr")
+region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k6qdf"]
+atlas = ExtResource("2_x5wyr")
+region = Rect2(0, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ha26y"]
+atlas = ExtResource("2_x5wyr")
+region = Rect2(32, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7pl7q"]
+atlas = ExtResource("2_x5wyr")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4a8sj"]
+atlas = ExtResource("2_x5wyr")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_jxkye"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_klinn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hjb14")
+}],
+"loop": 1,
+"name": &"GoingNorthEast",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k6qdf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ha26y")
+}],
+"loop": 1,
+"name": &"GoingNorthWest",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7pl7q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4a8sj")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7wt8e"]
+radius = 6.0
+height = 20.0
+
+[node name="AlpinisteBase" type="Area2D" unique_id=628476547 groups=["Enemy"]]
+disable_mode = 2
+collision_mask = 12
+script = ExtResource("1_fo51i")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1813391761]
+unique_name_in_owner = true
+sprite_frames = SubResource("SpriteFrames_jxkye")
+autoplay = "default"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=141971111]
+shape = SubResource("CapsuleShape2D_7wt8e")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="area_exited" from="." to="." method="_on_area_exited"]

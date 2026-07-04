@@ -1,0 +1,56 @@
+[gd_scene format=3 uid="uid://ca3561hf63udf"]
+
+[ext_resource type="Script" uid="uid://o5wm1xfephvr" path="res://source/powers/rolling_stone.gd" id="1_oylnw"]
+[ext_resource type="Texture2D" uid="uid://ue3t1akx7rd8" path="res://assets/visuals/Powers/Falling_rock.png" id="2_slv86"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_jxkye"]
+radius = 12.0415945
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rjevg"]
+atlas = ExtResource("2_slv86")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jj1pg"]
+atlas = ExtResource("2_slv86")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mb51l"]
+atlas = ExtResource("2_slv86")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_jxkye"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rjevg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jj1pg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mb51l")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="RollingStone" type="Area2D" unique_id=779388652]
+collision_layer = 8
+collision_mask = 0
+script = ExtResource("1_oylnw")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=295575158]
+shape = SubResource("CircleShape2D_jxkye")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1896040007]
+sprite_frames = SubResource("SpriteFrames_jxkye")
+autoplay = "default"
+frame_progress = 0.8469081
+
+[node name="Timer" type="Timer" parent="." unique_id=685193775]
+wait_time = 10.0
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

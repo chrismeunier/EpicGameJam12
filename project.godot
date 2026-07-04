@@ -48,6 +48,20 @@ folder_colors={
 "res://source/core/": "red"
 }
 
+[global_group]
+
+Enemy=""
+Projectile=""
+Tower=""
+Slowness=""
+
+[layer_names]
+
+2d_render/layer_1="Climbers"
+2d_render/layer_2="Towers"
+2d_render/layer_3="Projectiles"
+2d_render/layer_4="Storm"
+
 [physics]
 
 3d/physics_engine="Jolt Physics"

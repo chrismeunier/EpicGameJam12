@@ -1,0 +1,107 @@
+[gd_scene format=3 uid="uid://ffojj7sgkjug"]
+
+[ext_resource type="Script" uid="uid://dmkluupdd18y2" path="res://source/powers/storm.gd" id="1_4piso"]
+[ext_resource type="Texture2D" uid="uid://dkqik1wu5i0dd" path="res://assets/visuals/Powers/Storm_Clouds-1.png.png" id="2_7eh28"]
+[ext_resource type="Texture2D" uid="uid://bfkwprfrncqvp" path="res://assets/visuals/Powers/Storm_Clouds-2.png.png" id="3_5iabq"]
+[ext_resource type="Texture2D" uid="uid://ceoqdekssqtd7" path="res://assets/visuals/Powers/Storm_Rain-1.png.png" id="4_3cgls"]
+[ext_resource type="Texture2D" uid="uid://b8qip48p8omaw" path="res://assets/visuals/Powers/Storm_Rain-2.png.png" id="5_73k6y"]
+[ext_resource type="Texture2D" uid="uid://b2vfwq82lg7qd" path="res://assets/visuals/Powers/Storm_Rain-3.png.png" id="6_lyl2n"]
+[ext_resource type="Texture2D" uid="uid://drkkdqv3wul05" path="res://assets/visuals/Powers/Storm_Rain-4.png.png" id="7_rwur3"]
+[ext_resource type="Texture2D" uid="uid://bbt73diph85bc" path="res://assets/visuals/Powers/Storm_Wind-1.png.png" id="8_01nb4"]
+[ext_resource type="Texture2D" uid="uid://deobocpgu37la" path="res://assets/visuals/Powers/Storm_Wind-2.png.png" id="9_errc0"]
+[ext_resource type="Texture2D" uid="uid://b2yv27o0ngahr" path="res://assets/visuals/Powers/Storm_Wind-3.png.png" id="10_vao8b"]
+[ext_resource type="Texture2D" uid="uid://bahiuga62coe" path="res://assets/visuals/Powers/Storm_Wind-4.png.png" id="11_xhv0w"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jxkye"]
+size = Vector2(300, 50)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_jxkye"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_7eh28")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_5iabq")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 1.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_yg2tp"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_3cgls")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_73k6y")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_lyl2n")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_rwur3")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 10.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_5ingc"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_01nb4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_errc0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_vao8b")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_xhv0w")
+}],
+"loop": 2,
+"name": &"default",
+"speed": 2.0
+}]
+
+[node name="Storm" type="Area2D" unique_id=2078225639 groups=["Tower"]]
+collision_layer = 8
+collision_mask = 0
+script = ExtResource("1_4piso")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=935107949]
+shape = SubResource("RectangleShape2D_jxkye")
+
+[node name="Clouds" type="AnimatedSprite2D" parent="." unique_id=1927077201]
+modulate = Color(1, 1, 1, 0.6)
+sprite_frames = SubResource("SpriteFrames_jxkye")
+autoplay = "default"
+frame = 1
+frame_progress = 0.23954812
+
+[node name="Rain" type="AnimatedSprite2D" parent="." unique_id=764268962]
+modulate = Color(1, 1, 1, 0.6)
+sprite_frames = SubResource("SpriteFrames_yg2tp")
+autoplay = "default"
+frame = 2
+frame_progress = 0.9227278
+
+[node name="Wind" type="AnimatedSprite2D" parent="." unique_id=616210555]
+modulate = Color(1, 1, 1, 0.6)
+sprite_frames = SubResource("SpriteFrames_5ingc")
+autoplay = "default"
+frame = 1
+frame_progress = 0.9462876
+
+[node name="Timer" type="Timer" parent="." unique_id=466363033]
+unique_name_in_owner = true
+wait_time = 10.0
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
