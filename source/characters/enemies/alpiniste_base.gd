@@ -74,6 +74,7 @@ func reach_summit() -> void:
 	queue_free()
 
 func die() -> void:
+	AudioManager.play_alpinist_death()
 	speed = 0
 	queue_free()
 

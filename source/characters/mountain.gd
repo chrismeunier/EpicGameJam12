@@ -14,6 +14,7 @@ func _on_timer_timeout() -> void:
 	money += 1
 
 func _on_summit_reached(climber_lvl: int) -> void:
+	AudioManager.play_mountain_scream()
 	_lifePoints -= climber_lvl
 	life_bar.value = _lifePoints
 	if _lifePoints <= 0:
