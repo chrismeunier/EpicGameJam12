@@ -15,7 +15,9 @@ script = ExtResource("1_n2cd8")
 wait_time = 2.0
 autostart = true
 
-[node name="LifeBar" type="ProgressBar" parent="." unique_id=533947516]
+[node name="CanvasGroup" type="CanvasGroup" parent="." unique_id=1944198085]
+
+[node name="LifeBar" type="ProgressBar" parent="CanvasGroup" unique_id=533947516]
 unique_name_in_owner = true
 offset_left = 340.0
 offset_top = 40.0
