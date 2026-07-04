@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bof6m0jxk5u86"
-path="res://.godot/imported/se_p8.png-3b1f7faddff00c85de32b74c2570eada.ctex"
+uid="uid://5fxrqvood7uh"
+path="res://.godot/imported/Hiker_LV1.png-f8b36ddb1726fdac7f16aa62c0ad5791.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/visuals/Hiker/Old/se_p8.png"
-dest_files=["res://.godot/imported/se_p8.png-3b1f7faddff00c85de32b74c2570eada.ctex"]
+source_file="res://assets/visuals/Hiker/Hiker_LV1.png"
+dest_files=["res://.godot/imported/Hiker_LV1.png-f8b36ddb1726fdac7f16aa62c0ad5791.ctex"]
 
 [params]
 

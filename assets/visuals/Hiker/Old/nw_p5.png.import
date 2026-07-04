@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dev2wv5vlykod"
-path="res://.godot/imported/nw_p5.png-60cebf2936edb01ea123bc13a1ff4129.ctex"
+path="res://.godot/imported/nw_p5.png-7706d584a8bfe53b5ba468fff430e6b3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/visuals/Hiker/nw_p5.png"
-dest_files=["res://.godot/imported/nw_p5.png-60cebf2936edb01ea123bc13a1ff4129.ctex"]
+source_file="res://assets/visuals/Hiker/Old/nw_p5.png"
+dest_files=["res://.godot/imported/nw_p5.png-7706d584a8bfe53b5ba468fff430e6b3.ctex"]
 
 [params]
 

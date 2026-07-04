@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://x6ruvtoikw80"
-path="res://.godot/imported/sw_p6.png-e00366b4125bbd42a5ce61f2e5460487.ctex"
+path="res://.godot/imported/sw_p6.png-216e4ae517e57276bef6d203e482d1b8.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/visuals/Hiker/sw_p6.png"
-dest_files=["res://.godot/imported/sw_p6.png-e00366b4125bbd42a5ce61f2e5460487.ctex"]
+source_file="res://assets/visuals/Hiker/Old/sw_p6.png"
+dest_files=["res://.godot/imported/sw_p6.png-216e4ae517e57276bef6d203e482d1b8.ctex"]
 
 [params]
 
