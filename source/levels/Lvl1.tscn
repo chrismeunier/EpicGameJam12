@@ -24,42 +24,49 @@ script = ExtResource("1_bvcex")
 [node name="Sky" type="Parallax2D" parent="Background" unique_id=1426514684]
 
 [node name="Sprite2D" type="Sprite2D" parent="Background/Sky" unique_id=452843227]
+texture_filter = 1
 position = Vector2(640, 360)
 texture = ExtResource("2_jo00v")
 
 [node name="Mountain" type="Parallax2D" parent="Background" unique_id=1116226993]
 
 [node name="Sprite2D" type="Sprite2D" parent="Background/Mountain" unique_id=320205480]
+texture_filter = 1
 position = Vector2(640, 360)
 texture = ExtResource("3_p5ntp")
 
 [node name="Road1" type="Parallax2D" parent="Background" unique_id=112097638]
 
 [node name="Sprite2D" type="Sprite2D" parent="Background/Road1" unique_id=1906134827]
+texture_filter = 1
 position = Vector2(640, 360)
 texture = ExtResource("4_mapb2")
 
 [node name="Road2" type="Parallax2D" parent="Background" unique_id=1102588069]
 
 [node name="Sprite2D" type="Sprite2D" parent="Background/Road2" unique_id=366577938]
+texture_filter = 1
 position = Vector2(640, 360)
 texture = ExtResource("5_pxcyk")
 
 [node name="Road3" type="Parallax2D" parent="Background" unique_id=121878832]
 
 [node name="Sprite2D" type="Sprite2D" parent="Background/Road3" unique_id=7511315]
+texture_filter = 1
 position = Vector2(640, 360)
 texture = ExtResource("6_3gyc1")
 
 [node name="Forest1" type="Parallax2D" parent="Background" unique_id=1526091529]
 
 [node name="Sprite2D" type="Sprite2D" parent="Background/Forest1" unique_id=2032202293]
+texture_filter = 1
 position = Vector2(640, 360)
 texture = ExtResource("7_p16a1")
 
 [node name="Forest2" type="Parallax2D" parent="Background" unique_id=214792114]
 
 [node name="Sprite2D" type="Sprite2D" parent="Background/Forest2" unique_id=1518612472]
+texture_filter = 1
 position = Vector2(640, 360)
 texture = ExtResource("8_00ivx")
 

@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://yy6ex5skfeso"]
+
+[ext_resource type="Texture2D" uid="uid://pfo0in8wyiun" path="res://assets/visuals/background/Map_Layer_3.3.png" id="1_pb714"]
+
+[sub_resource type="Curve2D" id="Curve2D_su2eq"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 1280, 637, 0, 0, 0, 0, 1236, 632, 0, 0, 0, 0, 1192, 575, 0, 0, 0, 0, 1158, 573, 0, 0, 0, 0, 1122, 638, 0, 0, 0, 0, 1059, 679, 0, 0, 0, 0, 992, 692, 0, 0, 0, 0, 953, 666, 0, 0, 0, 0, 923, 611, 0, 0, 0, 0, 932, 550, 0, 0, 0, 0, 966, 522, 0, 0, 0, 0, 1050, 514, 0, 0, 0, 0, 985, 461, 0, 0, 0, 0, 932, 462, 0, 0, 0, 0, 898, 448, 0, 0, 0, 0, 892, 408, 0, 0, 0, 0, 932, 351, 0, 0, 0, 0, 915, 272, 0, 0, 0, 0, 865, 225, 0, 0, 0, 0, 809, 218, 0, 0, 0, 0, 735, 230, 0, 0, 0, 0, 677, 226, 0, 0, 0, 0, 640, 175, 0, 0, 0, 0, 652, 126)
+}
+point_count = 24
+
+[node name="Road3" type="Path2D" unique_id=1617461053]
+curve = SubResource("Curve2D_su2eq")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1151027730]
+visible = false
+position = Vector2(640, 360)
+texture = ExtResource("1_pb714")

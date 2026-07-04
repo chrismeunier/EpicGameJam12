@@ -13,8 +13,7 @@ var wave_running: bool = false
 
 func _ready() -> void:
 	spawn_timer.timeout.connect(_on_spawn_timer_timeout)
-	# Start the very first wave automatically after 2 seconds
-	await get_tree().create_timer(2.0).timeout
+	await get_tree().create_timer(0.5).timeout
 	start_next_wave()
 
 func start_next_wave() -> void:
