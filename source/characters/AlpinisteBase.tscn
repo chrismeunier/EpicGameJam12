@@ -116,7 +116,9 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="AlpinisteBase" type="CharacterBody2D" unique_id=1627769248 groups=["Enemy"]]
+[node name="AlpinisteBase" type="Area2D" unique_id=628476547 groups=["Enemy"]]
+disable_mode = 2
+collision_mask = 4
 script = ExtResource("1_fo51i")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1813391761]
@@ -128,3 +130,6 @@ autoplay = "default"
 position = Vector2(-0.50000095, 13.255685)
 scale = Vector2(4.0625, 4.4886365)
 polygon = PackedVector2Array(2.5, 7, 5, -3, 1.5, -8, -1, -8, -5, -3, -1.5, 7)
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

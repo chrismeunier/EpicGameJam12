@@ -14,9 +14,6 @@ func _process(delta: float) -> void:
 	var direction = (target.global_position - global_position).normalized()
 	global_position += direction * speed * delta
 
-func _on_body_entered(body: Node2D) -> void:
-	if body == target:
-		# Check if enemy has a take_damage function, then destroy bullet
-		if body.has_method("take_damage"):
-			body.take_damage(damage)
+func _on_area_entered(area: Node2D) -> void:
+	if area.is_in_group("Enemy"):
 		queue_free()
