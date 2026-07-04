@@ -42,6 +42,12 @@ func start_wave():
 	state_chart.send_event("start_wave")
 #endregion
 
+#region MainMenu
+func _on_main_menu_state_entered() -> void:
+	AudioManager.guacano_theme.stop()
+	AudioManager.menu_loop.play()
+#endregion
+
 #region LevelSelect
 func _on_level_select_state_entered() -> void:
 	menu.level_select_panel.show()
@@ -85,6 +91,8 @@ func _deferred_load_level():
 
 func _on_playing_state_entered() -> void:
 	game_overlay.show()
+	AudioManager.menu_loop.stop()
+	AudioManager.guacano_theme.play()
 
 func _on_before_wave_start_state_entered() -> void:
 	load_level()

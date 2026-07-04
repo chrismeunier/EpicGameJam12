@@ -49,8 +49,7 @@ autoplay = "default"
 frame_progress = 0.8469081
 
 [node name="Timer" type="Timer" parent="." unique_id=685193775]
-wait_time = 15.0
-one_shot = true
+wait_time = 8.0
 autostart = true
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

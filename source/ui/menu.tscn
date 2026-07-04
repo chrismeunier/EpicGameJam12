@@ -2,6 +2,8 @@
 
 [ext_resource type="Texture2D" uid="uid://dnqotrs8qb25k" path="res://icon.svg" id="1_2n3lv"]
 [ext_resource type="Script" uid="uid://duymqcakvxl6e" path="res://source/ui/menu.gd" id="1_yy8f4"]
+[ext_resource type="Texture2D" uid="uid://lmy3itbihkc7" path="res://assets/visuals/background/TitleScreen.png" id="2_t7ove"]
+[ext_resource type="Texture2D" uid="uid://4ew5jbav4iwl" path="res://assets/visuals/background/CreditBackground.png" id="4_857g8"]
 
 [node name="Menu" type="CanvasLayer" unique_id=675254715]
 script = ExtResource("1_yy8f4")
@@ -17,10 +19,8 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Background" type="TextureRect" parent="MainMenuPanel" unique_id=923419815]
-modulate = Color(1, 1, 1, 0.3137255)
 layout_mode = 2
-texture = ExtResource("1_2n3lv")
-stretch_mode = 5
+texture = ExtResource("2_t7ove")
 
 [node name="MarginContainer" type="MarginContainer" parent="MainMenuPanel" unique_id=354000506]
 layout_mode = 2
@@ -89,9 +89,8 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Background" type="TextureRect" parent="LevelSelectPanel" unique_id=218712704]
-self_modulate = Color(1, 0.39607844, 1, 1)
+visible = false
 layout_mode = 2
-texture = ExtResource("1_2n3lv")
 stretch_mode = 1
 
 [node name="MarginContainer" type="MarginContainer" parent="LevelSelectPanel" unique_id=2063660292]
@@ -169,9 +168,8 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Background" type="TextureRect" parent="CreditsPanel" unique_id=1195944881]
-self_modulate = Color(0.3088635, 0.41746792, 0.16762859, 1)
 layout_mode = 2
-texture = ExtResource("1_2n3lv")
+texture = ExtResource("4_857g8")
 stretch_mode = 1
 
 [node name="MarginContainer" type="MarginContainer" parent="CreditsPanel" unique_id=1320289212]
@@ -206,11 +204,6 @@ mouse_filter = 1
 [node name="Label" type="Label" parent="CreditsPanel/MarginContainer/BackButton/ToDelete" unique_id=602212733]
 layout_mode = 2
 text = "BACK"
-
-[node name="Label" type="Label" parent="CreditsPanel/MarginContainer" unique_id=1928334827]
-layout_mode = 2
-text = "Here are the credits : blablabla"
-horizontal_alignment = 1
 
 [connection signal="pressed" from="MainMenuPanel/MarginContainer/HBoxContainer/PlayButton" to="." method="_on_play_button_pressed"]
 [connection signal="pressed" from="MainMenuPanel/MarginContainer/HBoxContainer/CreditsButton" to="." method="_on_credits_button_pressed"]

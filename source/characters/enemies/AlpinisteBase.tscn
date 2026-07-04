@@ -2,6 +2,8 @@
 
 [ext_resource type="Script" uid="uid://d02tufog1gt4l" path="res://source/characters/enemies/alpiniste_base.gd" id="1_fo51i"]
 [ext_resource type="Texture2D" uid="uid://5fxrqvood7uh" path="res://assets/visuals/Hiker/Hiker_LV1.png" id="2_x5wyr"]
+[ext_resource type="Texture2D" uid="uid://cr8pvx57klcdy" path="res://assets/visuals/Hiker/Hiker_LV2.png" id="3_87s77"]
+[ext_resource type="Texture2D" uid="uid://rdfn2ca3jq3x" path="res://assets/visuals/Hiker/Hiker_LV3.png" id="4_rlxh6"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_klinn"]
 atlas = ExtResource("2_x5wyr")
@@ -27,6 +29,54 @@ region = Rect2(0, 0, 32, 32)
 atlas = ExtResource("2_x5wyr")
 region = Rect2(32, 0, 32, 32)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_ughrt"]
+atlas = ExtResource("3_87s77")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_manv2"]
+atlas = ExtResource("3_87s77")
+region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fram8"]
+atlas = ExtResource("3_87s77")
+region = Rect2(0, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_21xi5"]
+atlas = ExtResource("3_87s77")
+region = Rect2(32, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qykhv"]
+atlas = ExtResource("3_87s77")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iyqeg"]
+atlas = ExtResource("3_87s77")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_35ew6"]
+atlas = ExtResource("4_rlxh6")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_byshh"]
+atlas = ExtResource("4_rlxh6")
+region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x12u8"]
+atlas = ExtResource("4_rlxh6")
+region = Rect2(0, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4j6bh"]
+atlas = ExtResource("4_rlxh6")
+region = Rect2(32, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_at1bm"]
+atlas = ExtResource("4_rlxh6")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_524fb"]
+atlas = ExtResource("4_rlxh6")
+region = Rect2(32, 0, 32, 32)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_jxkye"]
 animations = [{
 "frames": [{
@@ -37,7 +87,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_hjb14")
 }],
 "loop": 1,
-"name": &"GoingNorthEast",
+"name": &"Lvl1_GoingNorthEast",
 "speed": 5.0
 }, {
 "frames": [{
@@ -48,7 +98,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_ha26y")
 }],
 "loop": 1,
-"name": &"GoingNorthWest",
+"name": &"Lvl1_GoingNorthWest",
 "speed": 5.0
 }, {
 "frames": [{
@@ -59,7 +109,73 @@ animations = [{
 "texture": SubResource("AtlasTexture_4a8sj")
 }],
 "loop": 1,
-"name": &"default",
+"name": &"Lvl1_default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ughrt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_manv2")
+}],
+"loop": 1,
+"name": &"Lvl2_GoingNorthEast",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fram8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_21xi5")
+}],
+"loop": 1,
+"name": &"Lvl2_GoingNorthWest",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qykhv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iyqeg")
+}],
+"loop": 1,
+"name": &"Lvl2_default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_35ew6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_byshh")
+}],
+"loop": 1,
+"name": &"Lvl3_GoingNorthEast",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x12u8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4j6bh")
+}],
+"loop": 1,
+"name": &"Lvl3_GoingNorthWest",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_at1bm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_524fb")
+}],
+"loop": 1,
+"name": &"Lvl3_default",
 "speed": 5.0
 }]
 
@@ -75,7 +191,8 @@ script = ExtResource("1_fo51i")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1813391761]
 unique_name_in_owner = true
 sprite_frames = SubResource("SpriteFrames_jxkye")
-autoplay = "default"
+animation = &"Lvl3_GoingNorthWest"
+autoplay = "Lvl1_default"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=141971111]
 shape = SubResource("CapsuleShape2D_7wt8e")

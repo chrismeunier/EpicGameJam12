@@ -20,6 +20,7 @@ texture_filter = 1
 texture = ExtResource("2_baq5u")
 
 [node name="ShootTimer" type="Timer" parent="." unique_id=888739746]
+wait_time = 0.75
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="area_exited" from="." to="." method="_on_area_exited"]
