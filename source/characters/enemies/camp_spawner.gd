@@ -39,9 +39,6 @@ func _on_spawn_timer_timeout() -> void:
 
 func spawn_enemy() -> void:
 	if not alpiniste_scene or not enemies or not chemin:
-		if not alpiniste_scene: print("-> ERREUR: alpiniste_scene n'est pas assigné dans l'Inspecteur !")
-		if not enemies: print("-> ERREUR: Le nœud %Enemies est introuvable ou n'a pas le % activé !")
-		if not chemin: print("-> ERREUR: Le nœud %Chemin est introuvable ou n'a pas le % activé !")
 		return
 	
 	var a := alpiniste_scene.instantiate()
