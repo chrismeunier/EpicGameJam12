@@ -31,7 +31,6 @@ func _update_target() -> void:
 		current_target = targets[0]
 
 func _on_body_entered(body: Node2D) -> void:
-	# Change "Enemy" to match your enemy node's group name
 	if body.is_in_group("Enemy"):
 		targets.append(body)
 
@@ -55,5 +54,5 @@ func shoot_projectile() -> void:
 	bullet.damage = damage
 	get_tree().current_scene.add_child(bullet)
 	
-	if AudioManager:
-		AudioManager.play_guanaco_spit() 
+	#if AudioManager:
+		#AudioManager.guanaco_spit.play_guanaco_spit() 
