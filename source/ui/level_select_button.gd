@@ -1,14 +1,16 @@
 extends TextureButton
 
 @onready var label: Label = %Label
+@export var pictures: Array[Texture2D] = []
 
-var level: BaseLevel
-var id:int = 0
-
-func _ready() -> void:
-	id = level.level_id
-	label.text = level.level_name
-
+var _level: BaseLevel
 
 func _on_pressed() -> void:
-	Events.selected_level.emit(id)
+	Events.selected_level.emit(_level.level_id)
+
+func setup(level: BaseLevel) -> void:
+	_level = level
+	label.text = _level.level_name + " " + str(_level.level_id)
+	if _level.level_id > pictures.size():
+		push_error("Add a picture for all levels")
+	texture_normal = pictures[_level.level_id]

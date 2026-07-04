@@ -27,8 +27,8 @@ func _ready() -> void:
 		# create the button
 		var new_button = LEVEL_SELECT_BUTTON.instantiate()
 		# assign the level to the button -> writes name and more
-		new_button.level = level
 		level_button_container.add_child(new_button)
+		new_button.setup(level)
 
 func _on_play_button_pressed() -> void:
 	main_buttons.hide()
