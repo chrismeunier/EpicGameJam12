@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://8sl1u30pmccr"
-path="res://.godot/imported/Guanaco.png-4291c26d6f4e6bd5404cef570fc2677a.ctex"
+uid="uid://146jsirqadds"
+path="res://.godot/imported/camp.png-bc3eb5d1fd7d7bdd4620f0c5330b4731.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/visuals/towers/Guanaco.png"
-dest_files=["res://.godot/imported/Guanaco.png-4291c26d6f4e6bd5404cef570fc2677a.ctex"]
+source_file="res://assets/visuals/Hiker/camp.png"
+dest_files=["res://.godot/imported/camp.png-bc3eb5d1fd7d7bdd4620f0c5330b4731.ctex"]
 
 [params]
 

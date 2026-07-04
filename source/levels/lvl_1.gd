@@ -9,4 +9,4 @@ func _spawn_alpiniste() -> void:
 	a.setup(climb_path)
 
 func _ready() -> void:
-	_spawn_alpiniste()
+	pass

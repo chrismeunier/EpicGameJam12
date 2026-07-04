@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://c24doqkcokf4y" path="res://source/characters/enemies/AlpinisteBase.tscn" id="3_6ak7w"]
 [ext_resource type="PackedScene" uid="uid://cxavlkqeumgul" path="res://source/characters/towers/guanaco.tscn" id="4_7e3jk"]
 [ext_resource type="PackedScene" uid="uid://d21pnayqd5j7x" path="res://source/characters/towers/avalanche.tscn" id="5_6ak7w"]
+[ext_resource type="PackedScene" uid="uid://c8oeykur3eedm" path="res://source/characters/enemies/CampSpawner.tscn" id="6_ybsb1"]
 
 [node name="Lvl1" type="Node2D" unique_id=1327002182]
 script = ExtResource("1_bvcex")
@@ -25,3 +26,8 @@ collision_layer = 1
 [node name="Avalanche" parent="." unique_id=1153631674 instance=ExtResource("5_6ak7w")]
 position = Vector2(322, 449)
 scale = Vector2(2, 2)
+
+[node name="CampSpawner" parent="." unique_id=705323101 instance=ExtResource("6_ybsb1")]
+position = Vector2(388, 617)
+scale = Vector2(2, 2)
+alpiniste_scene = ExtResource("3_6ak7w")
