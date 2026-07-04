@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://cbnxoww0jlht1" path="res://assets/visuals/towers/Guanaco.png" id="2_baq5u"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_6ak7w"]
-radius = 107.0
+radius = 100.0
 
 [node name="Guanaco" type="Area2D" unique_id=1367686413]
 collision_layer = 2

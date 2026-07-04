@@ -21,8 +21,8 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-Events="*uid://bvpax8p84il4c"
 AudioManager="*uid://hbwfbu144x7c"
+Events="*uid://bvpax8p84il4c"
 
 [display]
 
@@ -49,6 +49,7 @@ folder_colors={
 Enemy=""
 Projectile=""
 Tower=""
+Slowness=""
 
 [layer_names]
 

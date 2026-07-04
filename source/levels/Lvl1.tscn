@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://c3c7huhvesjeh" path="res://source/levels/Chemin.tscn" id="2_7e3jk"]
 [ext_resource type="PackedScene" uid="uid://c24doqkcokf4y" path="res://source/characters/AlpinisteBase.tscn" id="3_6ak7w"]
 [ext_resource type="PackedScene" uid="uid://cxavlkqeumgul" path="res://source/characters/towers/guanaco.tscn" id="4_7e3jk"]
+[ext_resource type="PackedScene" uid="uid://d21pnayqd5j7x" path="res://source/characters/towers/avalanche.tscn" id="5_6ak7w"]
 
 [node name="Lvl1" type="Node2D" unique_id=1327002182]
 script = ExtResource("1_bvcex")
@@ -18,4 +19,9 @@ unique_name_in_owner = true
 position = Vector2(392, 625)
 
 [node name="Guanaco" parent="." unique_id=1367686413 instance=ExtResource("4_7e3jk")]
-position = Vector2(419, 411)
+position = Vector2(457, 112)
+collision_layer = 1
+
+[node name="Avalanche" parent="." unique_id=1153631674 instance=ExtResource("5_6ak7w")]
+position = Vector2(322, 449)
+scale = Vector2(2, 2)
