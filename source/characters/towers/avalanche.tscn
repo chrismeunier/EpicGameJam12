@@ -69,6 +69,7 @@ animations = [{
 radius = 40.0
 
 [node name="Avalanche" type="Area2D" unique_id=418486887 groups=["Slowness", "Tower"]]
+scale = Vector2(2, 2)
 collision_layer = 4
 script = ExtResource("1_pwx41")
 

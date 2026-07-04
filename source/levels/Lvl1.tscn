@@ -80,7 +80,6 @@ collision_layer = 1
 
 [node name="Avalanche" parent="." unique_id=1153631674 instance=ExtResource("5_6ak7w")]
 position = Vector2(678, 430)
-scale = Vector2(2, 2)
 
 [node name="Storm" parent="." unique_id=2078225639 instance=ExtResource("6_ybsb1")]
 position = Vector2(598, 577)
@@ -97,3 +96,4 @@ alpiniste_scene = ExtResource("3_6ak7w")
 position = Vector2(640, 360)
 
 [node name="Mountain" parent="." unique_id=1464789632 instance=ExtResource("16_mapb2")]
+money = 3

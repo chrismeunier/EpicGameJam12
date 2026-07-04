@@ -12,6 +12,7 @@ ProgressBar/styles/fill = SubResource("StyleBoxFlat_dkd8s")
 script = ExtResource("1_n2cd8")
 
 [node name="MoneyTimer" type="Timer" parent="." unique_id=690057215]
+unique_name_in_owner = true
 wait_time = 2.0
 autostart = true
 

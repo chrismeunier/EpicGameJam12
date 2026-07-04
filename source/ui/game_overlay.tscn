@@ -91,7 +91,7 @@ texture = ExtResource("3_pfxqu")
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
-text = "X 12"
+text = "X ..."
 
 [node name="Spacer" type="Control" parent="MainPanel/MarginContainer/ResourcesPanel/MarginContainer/MountainResources" unique_id=769009647]
 layout_mode = 2
@@ -102,11 +102,13 @@ layout_mode = 2
 
 [node name="ClickableResource" parent="MainPanel/MarginContainer/ResourcesPanel/MarginContainer/MountainResources/Towers" unique_id=909371157 instance=ExtResource("4_kyklt")]
 layout_mode = 2
+cost = 3
 
 [node name="ClickableResource2" parent="MainPanel/MarginContainer/ResourcesPanel/MarginContainer/MountainResources/Towers" unique_id=1866389719 instance=ExtResource("4_kyklt")]
 layout_mode = 2
 icon = ExtResource("5_4pves")
 resource_scene = ExtResource("6_tjsy6")
+cost = 5
 
 [node name="Spacer2" type="Control" parent="MainPanel/MarginContainer/ResourcesPanel/MarginContainer/MountainResources" unique_id=1308595605]
 layout_mode = 2
@@ -119,10 +121,12 @@ layout_mode = 2
 layout_mode = 2
 icon = ExtResource("7_ht8o4")
 resource_scene = ExtResource("8_3oe6q")
+cost = 2
 
 [node name="ClickableResource4" parent="MainPanel/MarginContainer/ResourcesPanel/MarginContainer/MountainResources/Powers" unique_id=775875819 instance=ExtResource("4_kyklt")]
 layout_mode = 2
 icon = ExtResource("9_dfq8l")
 resource_scene = ExtResource("10_h5itu")
+cost = 5
 
 [connection signal="pressed" from="MainPanel/MarginContainer/StartLevelButton" to="." method="_on_start_level_button_pressed"]
