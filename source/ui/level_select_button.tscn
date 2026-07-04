@@ -1,13 +1,24 @@
 [gd_scene format=3 uid="uid://wl0rd4vhfcxk"]
 
-[ext_resource type="Texture2D" uid="uid://dnqotrs8qb25k" path="res://icon.svg" id="1_1pkgq"]
+[ext_resource type="Texture2D" uid="uid://o1o3a1qmwebc" path="res://assets/visuals/Buttons/Button_Level1.png" id="1_1pkgq"]
 [ext_resource type="Script" uid="uid://c02ftfigps5ph" path="res://source/ui/level_select_button.gd" id="1_2r55e"]
+[ext_resource type="Texture2D" uid="uid://cpy53equkej0h" path="res://assets/visuals/Buttons/Button_Level2.png" id="3_ina0a"]
+[ext_resource type="Texture2D" uid="uid://dby5y4iprxqn3" path="res://assets/visuals/Buttons/Button_Level3.png" id="4_tobh7"]
+[ext_resource type="Texture2D" uid="uid://b158i2iswples" path="res://assets/visuals/menu/menu_background.png" id="5_tobh7"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_dkd8s"]
+texture = ExtResource("5_tobh7")
+texture_margin_left = 10.0
+texture_margin_top = 10.0
+texture_margin_right = 10.0
+texture_margin_bottom = 10.0
 
 [node name="LevelSelectButton" type="TextureButton" unique_id=792482327]
-self_modulate = Color(0.61867017, 0.5994276, 0.09666858, 1)
+custom_minimum_size = Vector2(128, 128)
 size_flags_vertical = 4
-texture_normal = ExtResource("1_1pkgq")
+stretch_mode = 5
 script = ExtResource("1_2r55e")
+pictures = Array[Texture2D]([ExtResource("1_1pkgq"), ExtResource("3_ina0a"), ExtResource("4_tobh7")])
 
 [node name="PanelContainer" type="PanelContainer" parent="." unique_id=1489976998]
 layout_mode = 1
@@ -16,15 +27,18 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -20.5
-offset_top = -40.0
-offset_right = 20.5
+offset_left = -20.0
+offset_right = 21.0
+offset_bottom = 40.0
 grow_horizontal = 2
 grow_vertical = 0
+offset_transform_enabled = true
+offset_transform_position = Vector2(0, 8)
 
 [node name="Label" type="Label" parent="PanelContainer" unique_id=510109268]
 unique_name_in_owner = true
+texture_filter = 1
 layout_mode = 2
-text = "Level"
+theme_override_styles/normal = SubResource("StyleBoxTexture_dkd8s")
 
 [connection signal="pressed" from="." to="." method="_on_pressed"]
