@@ -9,9 +9,6 @@ var current_target: Node2D = null
 @onready var shoot_timer: Timer = $ShootTimer
 
 func _ready() -> void:
-	# Connect the Area2D signals to detect enemies entering/leaving range
-	body_entered.connect(_on_body_entered)
-	body_exited.connect(_on_body_exited)
 	shoot_timer.timeout.connect(_on_shoot_timer_timeout)
 
 func _process(_delta: float) -> void:
@@ -30,12 +27,12 @@ func _update_target() -> void:
 		# Target the first enemy that entered the range
 		current_target = targets[0]
 
-func _on_body_entered(body: Node2D) -> void:
-	if body.is_in_group("Enemy"):
-		targets.append(body)
+func _on_area_entered(area: Area2D) -> void:
+	if area.is_in_group("Enemy"):
+		targets.append(area)
 
-func _on_body_exited(body: Node2D) -> void:
-	targets.erase(body)
+func _on_area_exited(area: Area2D) -> void:
+	targets.erase(area)
 
 func _on_shoot_timer_timeout() -> void:
 	if is_instance_valid(current_target):

@@ -21,8 +21,8 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-AudioManager="*uid://hbwfbu144x7c"
 Events="*uid://bvpax8p84il4c"
+AudioManager="*uid://hbwfbu144x7c"
 
 [display]
 
@@ -43,6 +43,18 @@ folder_colors={
 "res://source/": "orange",
 "res://source/core/": "red"
 }
+
+[global_group]
+
+Enemy=""
+Projectile=""
+Tower=""
+
+[layer_names]
+
+2d_render/layer_1="Climbers"
+2d_render/layer_2="Towers"
+2d_render/layer_3="Projectiles"
 
 [physics]
 
