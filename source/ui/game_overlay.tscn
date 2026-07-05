@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bawigsubev76o" path="res://source/ui/game_overlay.gd" id="1_8u6aj"]
 [ext_resource type="Texture2D" uid="uid://dbc1q8bqreire" path="res://assets/visuals/Buttons/Button_Start_Game.png" id="2_ht8o4"]
-[ext_resource type="Texture2D" uid="uid://b158i2iswples" path="res://assets/visuals/menu/menu_background.png" id="3_3oe6q"]
+[ext_resource type="Texture2D" uid="uid://543qr1xffve2" path="res://assets/visuals/menu/BarreMenu.png" id="3_3oe6q"]
 [ext_resource type="Texture2D" uid="uid://cxssrb0af4mgg" path="res://assets/visuals/bloodyhikingshoes.png" id="3_pfxqu"]
 [ext_resource type="PackedScene" uid="uid://club6y110m5hq" path="res://source/ui/clickable_resource.tscn" id="4_kyklt"]
 [ext_resource type="Texture2D" uid="uid://duou30jbxnn75" path="res://assets/visuals/Buttons/Button_Mountain.png" id="5_4pves"]
@@ -21,10 +21,6 @@ bg_color = Color(0.004019165, 0.004019165, 0.004019165, 1)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_7wt8e"]
 texture = ExtResource("3_3oe6q")
-texture_margin_left = 10.0
-texture_margin_top = 10.0
-texture_margin_right = 10.0
-texture_margin_bottom = 10.0
 
 [node name="GameOverlay" type="CanvasLayer" unique_id=142451924]
 script = ExtResource("1_8u6aj")
@@ -69,15 +65,15 @@ theme_override_styles/panel = SubResource("StyleBoxTexture_7wt8e")
 
 [node name="MarginContainer" type="MarginContainer" parent="MainPanel/PanelContainer/MarginContainer/ResourcesPanel" unique_id=756690072]
 layout_mode = 2
-theme_override_constants/margin_left = 22
-theme_override_constants/margin_top = 22
-theme_override_constants/margin_right = 22
-theme_override_constants/margin_bottom = 22
+theme_override_constants/margin_left = 200
+theme_override_constants/margin_top = 48
+theme_override_constants/margin_right = 0
+theme_override_constants/margin_bottom = 16
 
 [node name="MountainResources" type="HBoxContainer" parent="MainPanel/PanelContainer/MarginContainer/ResourcesPanel/MarginContainer" unique_id=1821782290]
 layout_mode = 2
-size_flags_horizontal = 4
-theme_override_constants/separation = 12
+size_flags_horizontal = 0
+theme_override_constants/separation = 30
 
 [node name="Resources" type="HBoxContainer" parent="MainPanel/PanelContainer/MarginContainer/ResourcesPanel/MarginContainer/MountainResources" unique_id=151956742]
 layout_mode = 2
@@ -89,6 +85,7 @@ texture = ExtResource("3_pfxqu")
 [node name="ResourcesCount" type="Label" parent="MainPanel/PanelContainer/MarginContainer/ResourcesPanel/MarginContainer/MountainResources/Resources" unique_id=931299786]
 unique_name_in_owner = true
 layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 32
 text = "x ..."
 
