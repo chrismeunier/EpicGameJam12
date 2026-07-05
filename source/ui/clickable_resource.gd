@@ -125,6 +125,8 @@ func _cancel_placement() -> void:
 		preview_resource.queue_free()
 	preview_resource = null
 	placing_resource = false
+	print(cost)
+	Events.money_added.emit(cost)
 	print("[PLACEMENT] Canceled.")
 
 func refresh_availability(val: bool):

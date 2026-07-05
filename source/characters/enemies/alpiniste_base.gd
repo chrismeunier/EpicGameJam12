@@ -66,7 +66,7 @@ func setup(path: Path2D, enemy_level: int = 1, start_distance: float = 0.0) -> v
 	if _has_cold_coffee:
 		_wait_and_offer_coffee()
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if health <= 0.0:
 		die()
 		return

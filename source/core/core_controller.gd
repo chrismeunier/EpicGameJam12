@@ -1,11 +1,15 @@
 class_name CoreController
 extends Node
 
+const CONFIG_PATH = "user://progress.cfg"
 static var _current_level : BaseLevel
 @export var menu: Menu
 @export var level_root: Node
 @export var game_overlay : Overlay
-var selected_level_id: int = 0
+
+var selected_level_id := 0
+var config := ConfigFile.new()
+
 @onready var state_chart: StateChart = %StateChart
 
 # usable state chart events:
@@ -27,6 +31,12 @@ func _ready() -> void:
 	Events.all_waves_ended.connect(transit_to_end_of_waves)
 	Events.no_more_enemies_on_map.connect(transit_to_success)
 	Events.game_over.connect(transit_to_failure)
+	
+	if config.load(CONFIG_PATH) != OK:
+		config.set_value("levels", "succeeded", [false, false, false])
+		config.set_value("levels", "score", [0, 0, 0])
+		config.save(CONFIG_PATH)
+	menu.config = config
 
 #region Sending Events
 func transit_to_menu():
@@ -155,6 +165,14 @@ func _on_playing_state_exited() -> void:
 # Game over: success !
 func _on_game_over_success_state_entered() -> void:
 	menu.level_success_panel.show()
+	var progression : Array = config.get_value("levels", "succeeded")
+	progression[_current_level.level_id] = true
+	config.set_value("levels", "succeeded", progression)
+	var scores : Array = config.get_value("levels", "score")
+	scores[_current_level.level_id] = _current_level.score
+	config.set_value("levels", "score", scores)
+	config.save(CONFIG_PATH)
+	
 
 func _on_game_over_success_state_exited() -> void:
 	menu.main_menu_panel.show()
