@@ -201,6 +201,7 @@ autoplay = "Lvl1_default"
 shape = SubResource("CapsuleShape2D_7wt8e")
 
 [node name="HealthBar" type="TextureProgressBar" parent="." unique_id=2126981095]
+unique_name_in_owner = true
 offset_left = -16.0
 offset_top = -16.0
 offset_right = 16.0
@@ -210,6 +211,7 @@ texture_under = ExtResource("5_ughrt")
 texture_progress = ExtResource("6_manv2")
 
 [node name="Cold_coffee" type="Sprite2D" parent="." unique_id=840438592]
+unique_name_in_owner = true
 position = Vector2(3, -29.000002)
 scale = Vector2(0.76562494, 0.75000006)
 texture = ExtResource("7_manv2")

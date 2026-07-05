@@ -4,6 +4,7 @@ class_name AlpinisteBase
 @export var lvl: int = 1
 @export_range(0.0, 1.0, 0.01) var cold_coffee_chance: float = 0.2
 @export var cold_coffee_speed: float = 100.0
+@export var cold_coffee_duration: float = 5.0
 
 var speed: float = 50.0
 var health: float = 100.0
@@ -11,8 +12,8 @@ var _base_speed: float = 50.0
 var _max_health: float = 100.0
 
 @onready var animated_sprite: AnimatedSprite2D = %AnimatedSprite2D
-@onready var health_bar: TextureProgressBar = $HealthBar
-@onready var cold_coffee: Sprite2D = $Cold_coffee
+@onready var health_bar: TextureProgressBar = %HealthBar
+@onready var cold_coffee: Sprite2D = %Cold_coffee
 
 var _path: Path2D
 var _distance: float = 0.0
@@ -170,7 +171,7 @@ func _use_cold_coffee() -> void:
 	if cold_coffee:
 		cold_coffee.visible = true
 
-	await get_tree().create_timer(5.0).timeout
+	await get_tree().create_timer(cold_coffee_duration).timeout
 	if not is_instance_valid(self):
 		return
 	_coffee_boost_active = false

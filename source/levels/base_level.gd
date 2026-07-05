@@ -9,7 +9,7 @@ extends Node2D
 
 var enemies: Node2D = null
 var mountain: Mountain
-var score := 0
+var score := 100
 # Track how many spawners have finished all their waves
 var completed_spawners: int = 0
 
@@ -35,6 +35,7 @@ func start_level() -> void:
 		if is_instance_valid(spawner):
 			print("[DEBUG] Calling start_spawner on: ", spawner.name)
 			spawner.start_spawner(number_of_waves)
+	
 
 
 func _on_enemies_child_exiting_tree(_node: Node) -> void:
@@ -44,9 +45,9 @@ func _on_enemies_child_exiting_tree(_node: Node) -> void:
 	if enemies.get_child_count() <= 1:
 		Events.no_more_enemies_on_map.emit()
 
-func _update_score(_val):
+func _update_score(_val=null):
 	if not has_node("%Mountain"):
 		print("No mountain found in level! -> cannot update score")
 		return
 	score = mountain.get_life_percentage()
-	#print("updated level score to ", score)
+	print("updated level score to ", score)
