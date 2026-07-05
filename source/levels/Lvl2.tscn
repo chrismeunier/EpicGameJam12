@@ -18,7 +18,7 @@
 script = ExtResource("1_6g3kw")
 level_id = 1
 level_name = "El guanaco"
-number_of_waves = 4
+number_of_waves = 5
 wave_spawners = [NodePath("CampSpawner"), NodePath("CampSpawner2")]
 
 [node name="Background" type="Node2D" parent="." unique_id=681142071]
@@ -94,7 +94,8 @@ position = Vector2(640, 360)
 [node name="Road2" parent="." unique_id=1371415679 instance=ExtResource("12_6g3kw")]
 
 [node name="Mountain" parent="." unique_id=1464789632 instance=ExtResource("13_7iwte")]
-money = 3
+money = 350
+dead_enemy_money_multiplier = 15
 
 [node name="PlacementZone" type="Area2D" parent="." unique_id=466834998]
 collision_mask = 128

@@ -6,8 +6,10 @@ class_name AlpinisteBase
 var speed: float = 50.0
 var health: float = 100.0
 var _base_speed: float = 50.0 
+var _max_health: float = 100.0
 
 @onready var animated_sprite: AnimatedSprite2D = %AnimatedSprite2D
+@onready var health_bar: TextureProgressBar = $HealthBar
 
 var _path: Path2D
 var _distance: float = 0.0
@@ -35,10 +37,16 @@ func setup(path: Path2D, enemy_level: int = 1, start_distance: float = 0.0) -> v
 		_:
 			health = 100.0 + (lvl * 100.0)
 			_base_speed = 50.0 + (lvl * 15.0)
-			
+	
+	_max_health = health
 	speed = _base_speed
 	global_position = _path.to_global(_path.curve.sample_baked(_distance))
 	
+	if health_bar:
+		health_bar.max_value = _max_health
+		health_bar.value = health
+		_update_health_bar()
+		
 	_update_sprite_animation()
 	
 	_is_looping_steps = true
@@ -55,6 +63,26 @@ func _process(delta: float) -> void:
 		speed = _base_speed * 0.55
 	else:
 		speed = _base_speed
+
+func _update_health_bar() -> void:
+	if not health_bar:
+		return
+		
+	health_bar.value = health
+	
+	var health_ratio = clamp(health / _max_health, 0.0, 1.0)
+	
+	# 3. Dynamic Color Interpolation (Lerp)
+	# (Your progress image must be WHITE or light gray for Godot's modulate to tint it accurately!)
+	if health_ratio > 0.5:
+		# Health is high: Blend from Yellow to Green
+		var weight = (health_ratio - 0.5) * 2.0
+		health_bar.modulate = Color(1.0, 1.0, 0.0).lerp(Color(0.0, 1.0, 0.0), weight)
+	else:
+		# Health is low: Blend from Red to Yellow
+		var weight = health_ratio * 2.0
+		health_bar.modulate = Color(1.0, 0.0, 0.0).lerp(Color(1.0, 1.0, 0.0), weight)
+
 
 func _loop_footsteps() -> void:
 	if not _is_looping_steps or health <= 0.0:
@@ -115,13 +143,16 @@ func die() -> void:
 
 func _on_area_entered(area: Area2D) -> void:
 	if area.is_in_group("Projectile"):
-		health -= 15
+		health -= 25
+		_update_health_bar()
 	if area.name == "RollingStone":
-		health -= 50
+		health -= 150
+		_update_health_bar()
 	if area.name == "Storm":
 		_isInStorm = true
 	if area.is_in_group("Slowness"):
-		health -= 25
+		health -= 50
+		_update_health_bar()
 		_isInAvalanch = true
 
 func _on_area_exited(area: Area2D) -> void:
