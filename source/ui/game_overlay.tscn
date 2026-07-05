@@ -112,11 +112,13 @@ layout_mode = 2
 icon = ExtResource("7_ht8o4")
 resource_scene = ExtResource("8_3oe6q")
 cost = 2
+restrict_to_placement_zones = false
 
 [node name="ClickableResource4" parent="MainPanel/MarginContainer/ResourcesPanel/MarginContainer/MountainResources/Powers" unique_id=775875819 instance=ExtResource("4_kyklt")]
 layout_mode = 2
 icon = ExtResource("9_dfq8l")
 resource_scene = ExtResource("10_h5itu")
 cost = 5
+restrict_to_placement_zones = false
 
 [connection signal="pressed" from="MainPanel/MarginContainer/StartLevelButton" to="." method="_on_start_level_button_pressed"]

@@ -89,6 +89,7 @@ position = Vector2(640, 360)
 money = 3
 
 [node name="PlacementZone" type="Area2D" parent="." unique_id=822357754]
+collision_mask = 128
 
 [node name="PlacementZone_Left" type="CollisionPolygon2D" parent="PlacementZone" unique_id=823064084]
 position = Vector2(327, 228)
