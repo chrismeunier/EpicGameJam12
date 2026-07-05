@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dxa71ufduqdot" path="res://source/characters/mountain.gd" id="1_n2cd8"]
 [ext_resource type="Texture2D" uid="uid://b158i2iswples" path="res://assets/visuals/menu/menu_background.png" id="2_dkd8s"]
+[ext_resource type="Texture2D" uid="uid://br0jtdavywwon" path="res://assets/visuals/Hiker/igloo.png" id="3_xo1bs"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dkd8s"]
 bg_color = Color(0.36071643, 0.69760007, 0.1404576, 1)
@@ -46,10 +47,54 @@ offset_top = 40.0
 offset_right = 940.0
 offset_bottom = 80.0
 theme = SubResource("Theme_n2cd8")
+theme_override_constants/outline_size = 5
 theme_override_styles/background = SubResource("StyleBoxTexture_dfq8l")
 theme_override_styles/fill = SubResource("StyleBoxFlat_h5itu")
 step = 1.0
 value = 100.0
 rounded = true
+
+[node name="Igloos" type="Node2D" parent="CanvasGroup" unique_id=1209028750]
+unique_name_in_owner = true
+
+[node name="Sprite2D" type="Sprite2D" parent="CanvasGroup/Igloos" unique_id=583520608]
+position = Vector2(574, 117)
+texture = ExtResource("3_xo1bs")
+
+[node name="Sprite2D2" type="Sprite2D" parent="CanvasGroup/Igloos" unique_id=1019835443]
+position = Vector2(533, 114)
+texture = ExtResource("3_xo1bs")
+
+[node name="Sprite2D3" type="Sprite2D" parent="CanvasGroup/Igloos" unique_id=505705747]
+position = Vector2(496, 129)
+texture = ExtResource("3_xo1bs")
+
+[node name="Sprite2D4" type="Sprite2D" parent="CanvasGroup/Igloos" unique_id=1122281142]
+position = Vector2(464, 114)
+texture = ExtResource("3_xo1bs")
+
+[node name="Sprite2D5" type="Sprite2D" parent="CanvasGroup/Igloos" unique_id=1641171105]
+position = Vector2(486, 89)
+texture = ExtResource("3_xo1bs")
+
+[node name="Sprite2D6" type="Sprite2D" parent="CanvasGroup/Igloos" unique_id=969524018]
+position = Vector2(619, 115)
+texture = ExtResource("3_xo1bs")
+
+[node name="Sprite2D7" type="Sprite2D" parent="CanvasGroup/Igloos" unique_id=421849047]
+position = Vector2(670, 121)
+texture = ExtResource("3_xo1bs")
+
+[node name="Sprite2D8" type="Sprite2D" parent="CanvasGroup/Igloos" unique_id=1078550675]
+position = Vector2(606, 94)
+texture = ExtResource("3_xo1bs")
+
+[node name="Sprite2D9" type="Sprite2D" parent="CanvasGroup/Igloos" unique_id=337421744]
+position = Vector2(671, 99)
+texture = ExtResource("3_xo1bs")
+
+[node name="Sprite2D10" type="Sprite2D" parent="CanvasGroup/Igloos" unique_id=286886219]
+position = Vector2(745, 122)
+texture = ExtResource("3_xo1bs")
 
 [connection signal="timeout" from="MoneyTimer" to="." method="_on_timer_timeout"]
