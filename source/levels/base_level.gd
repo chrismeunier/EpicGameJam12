@@ -1,7 +1,7 @@
 class_name BaseLevel
 extends Node2D
 
-@export var level_id : int
+@export var level_id: int
 @export var level_name := "Level"
 @export var number_of_waves := 1
 
@@ -26,16 +26,15 @@ func _ready() -> void:
 
 func start_level() -> void:
 	print("[DEBUG] Starting Level: ", level_name)
-	
+
 	if wave_spawners.is_empty():
 		print("[DEBUG] ERROR: Cannot start level because wave_spawners array is empty!")
 		return
-		
+
 	for spawner in wave_spawners:
 		if is_instance_valid(spawner):
 			print("[DEBUG] Calling start_spawner on: ", spawner.name)
 			spawner.start_spawner(number_of_waves)
-	
 
 
 func _on_enemies_child_exiting_tree(_node: Node) -> void:
@@ -45,9 +44,9 @@ func _on_enemies_child_exiting_tree(_node: Node) -> void:
 	if enemies.get_child_count() <= 1:
 		Events.no_more_enemies_on_map.emit()
 
-func _update_score(_val=null):
+func _update_score(_val = null):
 	if not has_node("%Mountain"):
 		print("No mountain found in level! -> cannot update score")
 		return
 	score = mountain.get_life_percentage()
-	print("updated level score to ", score)
+	# print("updated level score to ", score)
