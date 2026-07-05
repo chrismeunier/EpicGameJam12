@@ -96,7 +96,7 @@ position = Vector2(640, 360)
 [node name="Mountain" parent="." unique_id=1464789632 instance=ExtResource("13_7iwte")]
 unique_name_in_owner = true
 money = 350
-dead_enemy_money_multiplier = 15
+dead_enemy_money_multiplier = 10
 
 [node name="PlacementZone" type="Area2D" parent="." unique_id=466834998]
 collision_mask = 128

@@ -71,7 +71,7 @@ func _end_wave() -> void:
 		Events.all_waves_ended.emit()
 		return
 	
-	Events.money_added.emit(25 + (5 * current_wave))
+	Events.money_added.emit(20 + (2 * current_wave))
 	await get_tree().create_timer(10.0).timeout
 	current_wave += 1
 	start_next_wave()
