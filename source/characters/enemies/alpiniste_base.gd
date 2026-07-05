@@ -2,6 +2,8 @@ extends Node2D
 class_name AlpinisteBase
 
 @export var lvl: int = 1
+@export_range(0.0, 1.0, 0.01) var cold_coffee_chance: float = 0.2
+@export var cold_coffee_speed: float = 100.0
 
 var speed: float = 50.0
 var health: float = 100.0
@@ -10,6 +12,7 @@ var _max_health: float = 100.0
 
 @onready var animated_sprite: AnimatedSprite2D = %AnimatedSprite2D
 @onready var health_bar: TextureProgressBar = $HealthBar
+@onready var cold_coffee: Sprite2D = $Cold_coffee
 
 var _path: Path2D
 var _distance: float = 0.0
@@ -18,6 +21,10 @@ var _isInAvalanch: bool
 var _is_looping_steps: bool = false
 
 var _current_direction_anim: String = "default"
+
+var _has_cold_coffee: bool = false
+var _has_used_coffee: bool = false
+var _coffee_boost_active: bool = false
 
 func setup(path: Path2D, enemy_level: int = 1, start_distance: float = 0.0) -> void:
 	_path = path
@@ -51,11 +58,23 @@ func setup(path: Path2D, enemy_level: int = 1, start_distance: float = 0.0) -> v
 	
 	_is_looping_steps = true
 	_loop_footsteps()
+	
+	_has_cold_coffee = randf() < cold_coffee_chance
+	if cold_coffee:
+		cold_coffee.visible = _has_cold_coffee
+
+	if _has_cold_coffee:
+		_wait_and_offer_coffee()
 
 func _process(delta: float) -> void:
 	if health <= 0.0:
 		die()
 		return
+	
+	if _coffee_boost_active:
+		speed = cold_coffee_speed
+		return
+		
 		
 	if _isInStorm:
 		speed = _base_speed * 0.2
@@ -132,6 +151,32 @@ func _update_sprite_animation() -> void:
 func reach_summit() -> void:
 	Events.summit_reached.emit(lvl)
 	queue_free()
+	
+func _wait_and_offer_coffee() -> void:
+	await get_tree().create_timer(0.2).timeout
+	if not is_instance_valid(self) or health <= 0.0:
+		return
+	_use_cold_coffee()
+
+func _use_cold_coffee() -> void:
+	if _has_used_coffee or not _has_cold_coffee:
+		return
+	_has_used_coffee = true
+	_coffee_boost_active = true
+	
+	if cold_coffee:
+		cold_coffee.visible = false
+		
+	if cold_coffee:
+		cold_coffee.visible = true
+
+	await get_tree().create_timer(5.0).timeout
+	if not is_instance_valid(self):
+		return
+	_coffee_boost_active = false
+	
+	if cold_coffee:
+		cold_coffee.visible = false
 
 func die() -> void:
 	Events.alpinist_died.emit(lvl)

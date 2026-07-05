@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://rdfn2ca3jq3x" path="res://assets/visuals/Hiker/Hiker_LV3.png" id="4_rlxh6"]
 [ext_resource type="Texture2D" uid="uid://btqgge3eub4n1" path="res://assets/visuals/menu/Health_bar_back.png" id="5_ughrt"]
 [ext_resource type="Texture2D" uid="uid://bj1hus80lary3" path="res://assets/visuals/menu/Health_bar.png" id="6_manv2"]
+[ext_resource type="Texture2D" uid="uid://ocnoci6od5mf" path="res://assets/visuals/Powers/Cold_coffee.png" id="7_manv2"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_klinn"]
 atlas = ExtResource("2_x5wyr")
@@ -207,6 +208,11 @@ offset_bottom = -12.0
 value = 100.0
 texture_under = ExtResource("5_ughrt")
 texture_progress = ExtResource("6_manv2")
+
+[node name="Cold_coffee" type="Sprite2D" parent="." unique_id=840438592]
+position = Vector2(3, -29.000002)
+scale = Vector2(0.76562494, 0.75000006)
+texture = ExtResource("7_manv2")
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="area_exited" from="." to="." method="_on_area_exited"]
