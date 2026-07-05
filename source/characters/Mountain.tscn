@@ -42,9 +42,9 @@ autostart = true
 
 [node name="LifeBar" type="ProgressBar" parent="CanvasGroup" unique_id=533947516]
 unique_name_in_owner = true
-offset_left = 340.0
+offset_left = 742.0
 offset_top = 16.0
-offset_right = 940.0
+offset_right = 1264.0
 offset_bottom = 59.0
 theme = SubResource("Theme_n2cd8")
 theme_override_constants/outline_size = 5
@@ -58,7 +58,7 @@ rounded = true
 unique_name_in_owner = true
 
 [node name="Sprite2D" type="Sprite2D" parent="CanvasGroup/Igloos" unique_id=583520608]
-position = Vector2(574, 117)
+position = Vector2(651, 71)
 texture = ExtResource("3_xo1bs")
 
 [node name="Sprite2D2" type="Sprite2D" parent="CanvasGroup/Igloos" unique_id=1019835443]
@@ -86,7 +86,7 @@ position = Vector2(670, 121)
 texture = ExtResource("3_xo1bs")
 
 [node name="Sprite2D8" type="Sprite2D" parent="CanvasGroup/Igloos" unique_id=1078550675]
-position = Vector2(606, 94)
+position = Vector2(637, 97)
 texture = ExtResource("3_xo1bs")
 
 [node name="Sprite2D9" type="Sprite2D" parent="CanvasGroup/Igloos" unique_id=337421744]
