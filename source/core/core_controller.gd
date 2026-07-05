@@ -121,10 +121,8 @@ func _deferred_load_level():
 
 func _on_playing_state_entered() -> void:
 	game_overlay.show()
-	game_overlay.start_level_button.show()
-	AudioManager.menu_loop.stop()
-	if not AudioManager.guacano_theme.playing:
-		AudioManager.guacano_theme.play(2.0)
+	game_overlay.start_level_button.disabled = false
+	game_overlay.start_level_button.modulate = Color(1, 1, 1, 1)
 
 func _on_before_wave_start_state_entered() -> void:
 	load_level()
@@ -133,7 +131,11 @@ func _on_before_wave_start_state_entered() -> void:
 
 #region Start wave
 func _on_enemy_wave_active_state_entered() -> void:
-	game_overlay.start_level_button.hide()
+	AudioManager.menu_loop.stop()
+	if not AudioManager.guacano_theme.playing:
+		AudioManager.guacano_theme.play(2.0)
+	game_overlay.start_level_button.disabled = true
+	game_overlay.start_level_button.modulate = Color(0.5, 0.5, 0.5, 0.5)
 	# Reset the standard process mode -> level can run
 	game_overlay.apply_current_level(_current_level)
 	process_current_level()
@@ -142,6 +144,11 @@ func _on_enemy_wave_active_state_entered() -> void:
 
 #region End of the game/level
 func _on_playing_state_exited() -> void:
+	AudioManager.guacano_theme.stop()
+	AudioManager.stop_rock()
+	AudioManager.storm_1.stop()
+	if not AudioManager.menu_loop.playing:
+		AudioManager.menu_loop.play(1.0)
 	block_current_level()
 	game_overlay.hide()
 

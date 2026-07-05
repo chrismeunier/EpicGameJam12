@@ -72,8 +72,6 @@ func _update_health_bar() -> void:
 	
 	var health_ratio = clamp(health / _max_health, 0.0, 1.0)
 	
-	# 3. Dynamic Color Interpolation (Lerp)
-	# (Your progress image must be WHITE or light gray for Godot's modulate to tint it accurately!)
 	if health_ratio > 0.5:
 		# Health is high: Blend from Yellow to Green
 		var weight = (health_ratio - 0.5) * 2.0
@@ -145,18 +143,19 @@ func _on_area_entered(area: Area2D) -> void:
 	if area.is_in_group("Projectile"):
 		health -= 25
 		_update_health_bar()
-	if area.name == "RollingStone":
+	if area.is_in_group("RollingStone"):
+		print("Hit by rock")
 		health -= 150
 		_update_health_bar()
-	if area.name == "Storm":
+	if area.is_in_group("Storm"):
 		_isInStorm = true
-	if area.is_in_group("Slowness"):
+	if area.is_in_group("Avalanche"):
 		health -= 50
 		_update_health_bar()
 		_isInAvalanch = true
 
 func _on_area_exited(area: Area2D) -> void:
-	if area.name == "Storm":
+	if area.is_in_group("Storm"):
 		_isInStorm = false
-	if area.is_in_group("Slowness"):
+	if area.is_in_group("Avalanche"):
 		_isInAvalanch = false

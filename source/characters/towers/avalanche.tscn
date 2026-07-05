@@ -68,7 +68,7 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_7wt8e"]
 radius = 40.0
 
-[node name="Avalanche" type="Area2D" unique_id=418486887 groups=["Slowness", "Tower"]]
+[node name="Avalanche" type="Area2D" unique_id=418486887 groups=["Avalanche", "Tower"]]
 scale = Vector2(2, 2)
 collision_layer = 4
 script = ExtResource("1_pwx41")

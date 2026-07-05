@@ -56,7 +56,9 @@ folder_colors={
 Enemy=""
 Projectile=""
 Tower=""
-Slowness=""
+RollingStone=""
+Storm=""
+Avalanche=""
 
 [input]
 

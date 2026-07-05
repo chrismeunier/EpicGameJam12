@@ -43,9 +43,9 @@ autostart = true
 [node name="LifeBar" type="ProgressBar" parent="CanvasGroup" unique_id=533947516]
 unique_name_in_owner = true
 offset_left = 340.0
-offset_top = 40.0
+offset_top = 16.0
 offset_right = 940.0
-offset_bottom = 80.0
+offset_bottom = 59.0
 theme = SubResource("Theme_n2cd8")
 theme_override_constants/outline_size = 5
 theme_override_styles/background = SubResource("StyleBoxTexture_dfq8l")

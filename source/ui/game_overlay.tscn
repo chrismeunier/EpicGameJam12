@@ -58,6 +58,7 @@ size_flags_vertical = 4
 theme = SubResource("Theme_dfq8l")
 action_mode = 0
 texture_normal = ExtResource("2_ht8o4")
+texture_disabled = ExtResource("2_ht8o4")
 stretch_mode = 5
 
 [node name="ResourcesPanel" type="PanelContainer" parent="MainPanel/PanelContainer/MarginContainer" unique_id=1188973910]
