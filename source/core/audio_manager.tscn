@@ -7,12 +7,12 @@
 [ext_resource type="AudioStream" uid="uid://b11forr2l51io" path="res://assets/sound/alpiniste-pas1.wav" id="5_err7e"]
 [ext_resource type="AudioStream" uid="uid://by2kk6ai2uc6t" path="res://assets/sound/alpiniste-pas2wav.wav" id="6_c1qml"]
 [ext_resource type="AudioStream" uid="uid://dn1pavbl4si0d" path="res://assets/sound/alpiniste-pas3.wav" id="7_j3ftw"]
+[ext_resource type="AudioStream" uid="uid://1f35ueq0xmnt" path="res://assets/sound/dead1.wav" id="8_3h3aq"]
 [ext_resource type="AudioStream" uid="uid://ccvxqr3nadpma" path="res://assets/sound/avalanche1.wav" id="8_7ws5b"]
-[ext_resource type="AudioStream" uid="uid://5ts5o7losg87" path="res://assets/sound/DeadAlpinist1.wav" id="8_c1qml"]
+[ext_resource type="AudioStream" uid="uid://d3cqafprvk252" path="res://assets/sound/dead2.wav" id="9_2jmt1"]
 [ext_resource type="AudioStream" uid="uid://6bpt8sopocf0" path="res://assets/sound/avalanche2.wav" id="9_3h3aq"]
-[ext_resource type="AudioStream" uid="uid://pidl5fswyr0i" path="res://assets/sound/DeadAlpinist2.wav" id="9_j3ftw"]
 [ext_resource type="AudioStream" uid="uid://ccptsqk5dosdq" path="res://assets/sound/avalanche3.wav" id="10_2jmt1"]
-[ext_resource type="AudioStream" uid="uid://cuh6jssoylwb6" path="res://assets/sound/DeadAlpinist3.wav" id="10_7ws5b"]
+[ext_resource type="AudioStream" uid="uid://dms21s8pdhi77" path="res://assets/sound/dead3.wav" id="10_k6ex4"]
 [ext_resource type="AudioStream" uid="uid://cqfinqxh16kx6" path="res://assets/sound/tempête.wav" id="11_k6ex4"]
 [ext_resource type="AudioStream" uid="uid://bjtcds3q0sc2v" path="res://assets/sound/rocher1.wav" id="12_7j4x8"]
 [ext_resource type="AudioStream" uid="uid://s101priy022f" path="res://assets/sound/rocher2.wav" id="13_ngd6x"]
@@ -30,12 +30,15 @@ script = ExtResource("1_a5n35")
 
 [node name="guanacoTir1" type="AudioStreamPlayer" parent="Bullets/GuanacoSpit" unique_id=1813392416]
 stream = ExtResource("2_tdqpl")
+volume_db = -14.0
 
 [node name="guanacoTir2" type="AudioStreamPlayer" parent="Bullets/GuanacoSpit" unique_id=253831860]
 stream = ExtResource("3_yhtxt")
+volume_db = -14.0
 
 [node name="guanacoTir3" type="AudioStreamPlayer" parent="Bullets/GuanacoSpit" unique_id=429931347]
 stream = ExtResource("4_wwf6o")
+volume_db = -14.0
 
 [node name="Ennemies" type="Node" parent="." unique_id=1343259847]
 
@@ -45,27 +48,27 @@ stream = ExtResource("4_wwf6o")
 
 [node name="AlpinistSteps1" type="AudioStreamPlayer" parent="Ennemies/Alpinist/Steps" unique_id=1356320180]
 stream = ExtResource("5_err7e")
-volume_db = -10.0
+volume_db = -16.0
 
 [node name="AlpinistSteps2" type="AudioStreamPlayer" parent="Ennemies/Alpinist/Steps" unique_id=1409654794]
 stream = ExtResource("6_c1qml")
-volume_db = -10.0
+volume_db = -16.0
 
 [node name="AlpinistSteps3" type="AudioStreamPlayer" parent="Ennemies/Alpinist/Steps" unique_id=1893568195]
 stream = ExtResource("7_j3ftw")
-volume_db = -10.0
+volume_db = -16.0
 
 [node name="Death" type="Node" parent="Ennemies/Alpinist" unique_id=173432081]
 unique_name_in_owner = true
 
 [node name="AlpinistDeath1" type="AudioStreamPlayer" parent="Ennemies/Alpinist/Death" unique_id=115443457]
-stream = ExtResource("8_c1qml")
+stream = ExtResource("8_3h3aq")
 
 [node name="AlpinistDeath2" type="AudioStreamPlayer" parent="Ennemies/Alpinist/Death" unique_id=702889301]
-stream = ExtResource("9_j3ftw")
+stream = ExtResource("9_2jmt1")
 
 [node name="AlpinistDeath3" type="AudioStreamPlayer" parent="Ennemies/Alpinist/Death" unique_id=1207490160]
-stream = ExtResource("10_7ws5b")
+stream = ExtResource("10_k6ex4")
 
 [node name="Powers" type="Node" parent="." unique_id=1563277405]
 
@@ -74,16 +77,19 @@ stream = ExtResource("10_7ws5b")
 [node name="Storm1" type="AudioStreamPlayer" parent="Powers/Storm" unique_id=163395162]
 unique_name_in_owner = true
 stream = ExtResource("11_k6ex4")
+volume_db = -8.0
 
 [node name="Rock" type="Node" parent="Powers" unique_id=1482086144]
 
 [node name="Rock1" type="AudioStreamPlayer" parent="Powers/Rock" unique_id=558128533]
 unique_name_in_owner = true
 stream = ExtResource("12_7j4x8")
+volume_db = -2.0
 
 [node name="Rock2" type="AudioStreamPlayer" parent="Powers/Rock" unique_id=1575557096]
 unique_name_in_owner = true
 stream = ExtResource("13_ngd6x")
+volume_db = -2.0
 
 [node name="Music" type="Node" parent="." unique_id=1914217787]
 
@@ -95,7 +101,7 @@ volume_db = -5.0
 [node name="MenuLoop" type="AudioStreamPlayer" parent="Music" unique_id=1142856165]
 unique_name_in_owner = true
 stream = ExtResource("15_j3ftw")
-volume_db = -5.0
+volume_db = -3.0
 
 [node name="Towers" type="Node" parent="." unique_id=1235615326]
 
@@ -104,22 +110,27 @@ volume_db = -5.0
 [node name="Avalanche1" type="AudioStreamPlayer" parent="Towers/Avalanche" unique_id=1433833370]
 unique_name_in_owner = true
 stream = ExtResource("8_7ws5b")
+volume_db = -10.0
 
 [node name="Avalanche2" type="AudioStreamPlayer" parent="Towers/Avalanche" unique_id=1059156129]
 unique_name_in_owner = true
 stream = ExtResource("9_3h3aq")
+volume_db = -10.0
 
 [node name="Avalanche3" type="AudioStreamPlayer" parent="Towers/Avalanche" unique_id=808910078]
 unique_name_in_owner = true
 stream = ExtResource("10_2jmt1")
+volume_db = -10.0
 
 [node name="Mountain" type="Node" parent="." unique_id=1310843084]
 unique_name_in_owner = true
 
 [node name="Scream1" type="AudioStreamPlayer" parent="Mountain" unique_id=1361667281]
 stream = ExtResource("19_3h3aq")
+volume_db = -7.5
 
 [node name="Scream2" type="AudioStreamPlayer" parent="Mountain" unique_id=1768283894]
 stream = ExtResource("20_2jmt1")
+volume_db = -7.5
 
 [connection signal="finished" from="Powers/Rock/Rock1" to="." method="_on_rock_1_finished"]
