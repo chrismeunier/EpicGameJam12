@@ -7,7 +7,7 @@
 
 [node name="ClickableResource" type="Control" unique_id=909371157]
 texture_filter = 1
-custom_minimum_size = Vector2(92, 168)
+custom_minimum_size = Vector2(128, 64)
 layout_mode = 3
 anchors_preset = 0
 script = ExtResource("1_d0hsg")
