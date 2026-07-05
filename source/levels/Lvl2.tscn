@@ -14,12 +14,11 @@
 [ext_resource type="PackedScene" uid="uid://bv02flu7k67vf" path="res://source/levels/Road2.tscn" id="12_6g3kw"]
 [ext_resource type="PackedScene" uid="uid://bmxc2x231r8il" path="res://source/characters/Mountain.tscn" id="13_7iwte"]
 
-[node name="Lvl2" type="Node2D" unique_id=1327002182 node_paths=PackedStringArray("wave_spawners")]
+[node name="Lvl2" type="Node2D" unique_id=1327002182]
 script = ExtResource("1_6g3kw")
 level_id = 1
 level_name = "El guanaco"
 number_of_waves = 4
-wave_spawners = [NodePath("CampSpawner"), NodePath("CampSpawner2")]
 
 [node name="Background" type="Node2D" parent="." unique_id=681142071]
 
@@ -94,6 +93,7 @@ position = Vector2(640, 360)
 [node name="Road2" parent="." unique_id=1371415679 instance=ExtResource("12_6g3kw")]
 
 [node name="Mountain" parent="." unique_id=1464789632 instance=ExtResource("13_7iwte")]
+unique_name_in_owner = true
 money = 3
 
 [node name="PlacementZone" type="Area2D" parent="." unique_id=466834998]

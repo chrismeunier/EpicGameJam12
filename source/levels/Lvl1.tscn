@@ -15,6 +15,7 @@
 
 [node name="Lvl1" type="Node2D" unique_id=1327002182 node_paths=PackedStringArray("wave_spawners")]
 script = ExtResource("1_nke3x")
+level_id = null
 level_name = "Les Premières Neiges"
 number_of_waves = 3
 wave_spawners = [NodePath("CampSpawner")]
@@ -86,6 +87,7 @@ road = NodePath("../Road1")
 position = Vector2(640, 360)
 
 [node name="Mountain" parent="." unique_id=1464789632 instance=ExtResource("16_mapb2")]
+unique_name_in_owner = true
 money = 3
 
 [node name="PlacementZone" type="Area2D" parent="." unique_id=822357754]

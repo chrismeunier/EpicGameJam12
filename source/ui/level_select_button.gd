@@ -1,7 +1,11 @@
+class_name LevelSelectButton
 extends TextureButton
 
-@onready var label: Label = %Label
 @export var pictures: Array[Texture2D] = []
+
+@onready var label: Label = %Label
+@onready var succeeded: TextureRect = %Succeeded
+@onready var completion_label: Label = %CompletionLabel
 
 var _level: BaseLevel
 
@@ -14,3 +18,11 @@ func setup(level: BaseLevel) -> void:
 	if _level.level_id > pictures.size():
 		push_error("Add a picture for all levels")
 	texture_normal = pictures[_level.level_id]
+	update_success()
+
+func update_success(success: bool = false, percentage: int = 0):
+	if success:
+		succeeded.show()
+	else:
+		succeeded.hide()
+	completion_label.text = str(percentage) + "%"

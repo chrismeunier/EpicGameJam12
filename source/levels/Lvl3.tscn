@@ -15,12 +15,11 @@
 [ext_resource type="PackedScene" uid="uid://yy6ex5skfeso" path="res://source/levels/Road3.tscn" id="13_c0a8o"]
 [ext_resource type="PackedScene" uid="uid://bmxc2x231r8il" path="res://source/characters/Mountain.tscn" id="14_schql"]
 
-[node name="Lvl3" type="Node2D" unique_id=1327002182 node_paths=PackedStringArray("wave_spawners")]
+[node name="Lvl3" type="Node2D" unique_id=1327002182]
 script = ExtResource("1_c0a8o")
 level_id = 2
 level_name = "Apocatequil"
 number_of_waves = 6
-wave_spawners = [NodePath("CampSpawner"), NodePath("CampSpawner2"), NodePath("CampSpawner3")]
 
 [node name="Background" type="Node2D" parent="." unique_id=681142071]
 
@@ -102,6 +101,7 @@ position = Vector2(640, 360)
 [node name="Road3" parent="." unique_id=1617461053 instance=ExtResource("13_c0a8o")]
 
 [node name="Mountain" parent="." unique_id=1464789632 instance=ExtResource("14_schql")]
+unique_name_in_owner = true
 money = 2
 
 [node name="PlacementZone" type="Area2D" parent="." unique_id=1248366206]

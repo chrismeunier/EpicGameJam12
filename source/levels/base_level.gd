@@ -8,7 +8,8 @@ extends Node2D
 @export var wave_spawners: Array[WaveSpawner] = []
 
 var enemies: Node2D = null
-
+var mountain: Mountain
+var score := 0
 # Track how many spawners have finished all their waves
 var completed_spawners: int = 0
 
@@ -18,6 +19,10 @@ func _ready() -> void:
 	enemies.child_exiting_tree.connect(_on_enemies_child_exiting_tree)
 	if not enemies:
 		push_error("Level must have a Node2D named Enemies")
+	mountain = get_node("%Mountain")
+	if not mountain:
+		push_error("Level must have a node named Mountain")
+	Events.summit_reached.connect(_update_score)
 
 func start_level() -> void:
 	print("[DEBUG] Starting Level: ", level_name)
@@ -38,3 +43,10 @@ func _on_enemies_child_exiting_tree(_node: Node) -> void:
 	# weird bug: it counts down to one even if the node has no child
 	if enemies.get_child_count() <= 1:
 		Events.no_more_enemies_on_map.emit()
+
+func _update_score(_val):
+	if not has_node("%Mountain"):
+		print("No mountain found in level! -> cannot update score")
+		return
+	score = mountain.get_life_percentage()
+	#print("updated level score to ", score)
