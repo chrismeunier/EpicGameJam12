@@ -4,7 +4,9 @@ extends Control
 @export var icon : Texture2D
 @export var resource_scene : PackedScene
 @export var cost := 0
-@export var clearance_radius := 64.0
+@export var clearance_radius := 32.0
+
+@export var restrict_to_placement_zones: bool = true
 
 var available := false : set = refresh_availability
 var preview_resource : Area2D = null
@@ -21,9 +23,7 @@ func _ready() -> void:
 		button.disabled = true
 		_activate_transparency()
 		
-	# Apply the image to the texture rect
 	usable_resource.resource_icon.texture = icon
-	# Update the cost visually
 	usable_resource.cost_text.text = "X " + str(cost)
 
 func _process(_delta: float) -> void:
@@ -34,39 +34,34 @@ func _process(_delta: float) -> void:
 		else:
 			preview_resource.global_position = get_global_mouse_position()
 		
-		# Validate the spot using our clean coordinate tracking
+		# Visual preview feedback
 		if _is_spot_valid(preview_resource.global_position):
 			preview_resource.modulate = Color(0.3, 1.0, 0.3, 0.7) # Green
 		else:
 			preview_resource.modulate = Color(1.0, 0.3, 0.3, 0.7) # Red
 
 func _input(event: InputEvent) -> void:
-	# Right-click cancels placement cleanly
 	if placing_resource and event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_RIGHT and event.pressed:
 		_cancel_placement()
 		return
 
-	# Left-click to deploy
 	if placing_resource and event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
 		var target_pos = preview_resource.global_position
 		
 		if _is_spot_valid(target_pos):
-			# Lock position down exactly inside your big polygon track spaces
 			preview_resource.global_position = target_pos
 			preview_resource.add_to_group("BuiltTowers")
 			
-			# Audio initialization hook integration
 			if preview_resource.has_method("start_audio"):
 				preview_resource.start_audio()
 				
-			# Reset visual transparencies upon placement
 			preview_resource.process_mode = Node.PROCESS_MODE_INHERIT
 			preview_resource.modulate = Color(1.0, 1.0, 1.0, 1.0)
 			preview_resource.self_modulate.a = 1.0
 			
 			placing_resource = false
 			preview_resource = null
-			print("[PLACEMENT] Success! Tower deployed inside the massive polygon zone.")
+			print("[PLACEMENT] Success! Tower deployed.")
 		else:
 			print("[PLACEMENT] Denied: Invalid ground or blocking another tower.")
 
@@ -84,7 +79,6 @@ func _on_button_pressed() -> void:
 
 	if target_parent_node:
 		target_parent_node.add_child(preview_resource)
-		print("[PLACEMENT SYSTEM] Ghost preview attached directly inside level node: ", target_parent_node.name)
 	else:
 		if current_scene:
 			current_scene.add_child(preview_resource)
@@ -100,31 +94,24 @@ func _on_button_pressed() -> void:
 func _is_spot_valid(pos: Vector2) -> bool:
 	var inside_valid_zone := false
 	
-	if not preview_resource or not preview_resource.get_parent():
-		return false
-		
-	var lvl1_node = preview_resource.get_parent()
-	
-	# 1. Locate your main container node named "PlacementZone" from your hierarchy tree
-	var folder_node = lvl1_node.find_child("PlacementZone", true, false)
-	
-	if folder_node:
-		# 2. Loop through the actual polygon children inside that folder
-		for child in folder_node.get_children():
-			if child is CollisionPolygon2D:
-				# Convert position check accurately into the local shape boundaries space room
-				var local_pos = child.to_local(pos)
-				
-				if Geometry2D.is_point_in_polygon(local_pos, child.polygon):
-					inside_valid_zone = true
-					break # Found a match, stop checking!
+	if not restrict_to_placement_zones:
+		return true
 	else:
-		print("[POLY-MATH ERROR] Cannot find the 'PlacementZone' folder node inside Lvl1!")
+		if preview_resource and preview_resource.get_parent():
+			var lvl1_node = preview_resource.get_parent()
+			var folder_node = lvl1_node.find_child("PlacementZone", true, false)
+			
+			if folder_node:
+				for child in folder_node.get_children():
+					if child is CollisionPolygon2D:
+						var local_pos = child.to_local(pos)
+						if Geometry2D.is_point_in_polygon(local_pos, child.polygon):
+							inside_valid_zone = true
+							break 
 
 	if not inside_valid_zone:
 		return false
 		
-	# 3. CLEARANCE CHECK: Prevent towers from stacking directly on top of each other
 	var built_towers = get_tree().get_nodes_in_group("BuiltTowers")
 	for tower in built_towers:
 		if is_instance_valid(tower) and tower != preview_resource:
