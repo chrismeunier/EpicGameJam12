@@ -19,18 +19,19 @@ func _ready() -> void:
 	Events.summit_reached.connect(_on_summit_reached)
 	Events.alpinist_died.connect(on_dead_alpinist)
 	Events.bought_resource.connect(buy_something)
+	Events.money_added.connect(on_add_money)
 	Events.money_updated.emit(money)
 	
 	for igloo in igloos.get_children():
 		igloo.hide()
 
 func _on_timer_timeout() -> void:
-	money += 1
+	money += 0 #To check if needed
 	Events.money_updated.emit(money)
 
 func _on_summit_reached(climber_lvl: int) -> void:
 	AudioManager.play_mountain_scream()
-	_lifePoints -= climber_lvl
+	_lifePoints -= (climber_lvl*2)
 	life_bar.value = _lifePoints
 	_update_lifebar_color()
 	_update_igloo_visibility()
@@ -63,6 +64,9 @@ func _update_igloo_visibility():
 func on_dead_alpinist(climber_lvl: int) -> void:
 	money += climber_lvl * dead_enemy_money_multiplier
 	Events.money_updated.emit(money)
+
+func on_add_money(moneyToAdd: int) -> void:
+	money += moneyToAdd
 
 func buy_something(price: int) -> bool:
 	if price > money:

@@ -7,9 +7,15 @@
 [ext_resource type="Texture2D" uid="uid://my0paofljpcm" path="res://assets/visuals/Buttons/Button_credit.png" id="4_yxeyj"]
 [ext_resource type="Texture2D" uid="uid://dh2c27ydu0chd" path="res://assets/visuals/Buttons/Button_Back.png" id="6_i7l54"]
 [ext_resource type="Texture2D" uid="uid://douvfajujxdrd" path="res://assets/visuals/Buttons/Button_stage_finished.png" id="7_a16jp"]
+[ext_resource type="FontFile" uid="uid://dve7mgsjik4dg" path="res://addons/phantom_camera/fonts/Nunito-Regular.ttf" id="7_fj6ig"]
 [ext_resource type="Texture2D" uid="uid://cyyqy6xhuaq8u" path="res://assets/visuals/Buttons/Button_stage_game_over.png" id="8_yxeyj"]
 [ext_resource type="Texture2D" uid="uid://b7em2jkevv2j6" path="res://assets/visuals/Buttons/Button_level_selection.png" id="9_0f1tw"]
 [ext_resource type="Texture2D" uid="uid://cg61qgbvmg8hl" path="res://assets/visuals/Buttons/Button_restart.png" id="10_fj6ig"]
+
+[sub_resource type="Theme" id="Theme_0f1tw"]
+RichTextLabel/colors/default_color = Color(0.012617188, 0.012617188, 0.012617188, 1)
+RichTextLabel/font_sizes/normal_font_size = 24
+RichTextLabel/fonts/normal_font = ExtResource("7_fj6ig")
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_v0gtr"]
 bg_color = Color(0.4862745, 0.6509804, 0.49411765, 0.33333334)
@@ -110,7 +116,6 @@ grow_vertical = 2
 [node name="Background" type="TextureRect" parent="CreditsPanel" unique_id=1195944881]
 layout_mode = 2
 texture = ExtResource("4_857g8")
-stretch_mode = 1
 
 [node name="MarginContainer" type="MarginContainer" parent="CreditsPanel" unique_id=1320289212]
 layout_mode = 2
@@ -118,6 +123,19 @@ theme_override_constants/margin_left = 64
 theme_override_constants/margin_top = 64
 theme_override_constants/margin_right = 64
 theme_override_constants/margin_bottom = 64
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CreditsPanel/MarginContainer" unique_id=318834471]
+layout_mode = 2
+theme = SubResource("Theme_0f1tw")
+text = "Un jeu cree pour la Epic Game Jam 2026.
+
+Developpeurs:
+Christophe Muller, Aurele Jomini, Hugo Serdoura
+
+Graphisme: Valentin Kolly, Nicolas Fontaine
+
+Son et musique: Stefano Christen"
+horizontal_alignment = 1
 
 [node name="BackButton" type="TextureButton" parent="CreditsPanel/MarginContainer" unique_id=2056258468]
 custom_minimum_size = Vector2(64, 64)
@@ -156,7 +174,7 @@ theme_override_constants/margin_bottom = 64
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-theme_override_constants/separation = 640
+theme_override_constants/separation = 760
 alignment = 1
 
 [node name="RetryButton" type="TextureButton" parent="LevelSuccessPanel/MarginContainer/MainButtons" unique_id=1648506887]

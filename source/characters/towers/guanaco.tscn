@@ -56,7 +56,7 @@ animations = [{
 "speed": 8.0
 }]
 
-[node name="Guanaco" type="Area2D" unique_id=1367686413]
+[node name="Guanaco" type="Area2D" unique_id=1367686413 groups=["Tower"]]
 collision_layer = 2
 script = ExtResource("1_0bjgn")
 
@@ -72,7 +72,7 @@ sprite_frames = SubResource("SpriteFrames_jxkye")
 frame_progress = 0.9435552
 
 [node name="ShootTimer" type="Timer" parent="." unique_id=888739746]
-wait_time = 0.75
+wait_time = 0.8
 
 [node name="Mouth" type="Marker2D" parent="." unique_id=703215853]
 unique_name_in_owner = true

@@ -101,8 +101,8 @@ position = Vector2(640, 360)
 [node name="Road3" parent="." unique_id=1617461053 instance=ExtResource("13_c0a8o")]
 
 [node name="Mountain" parent="." unique_id=1464789632 instance=ExtResource("14_schql")]
-unique_name_in_owner = true
-money = 2
+money = 500
+dead_enemy_money_multiplier = 15
 
 [node name="PlacementZone" type="Area2D" parent="." unique_id=1248366206]
 collision_mask = 128

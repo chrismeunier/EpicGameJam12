@@ -14,6 +14,11 @@
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_uiud0"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jxkye"]
+bg_color = Color(0.004019165, 0.004019165, 0.004019165, 1)
+
+[sub_resource type="Theme" id="Theme_dfq8l"]
+
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_7wt8e"]
 texture = ExtResource("3_3oe6q")
 texture_margin_left = 10.0
@@ -34,91 +39,97 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxEmpty_uiud0")
 
-[node name="MarginContainer" type="MarginContainer" parent="MainPanel" unique_id=1631087191]
+[node name="PanelContainer" type="PanelContainer" parent="MainPanel" unique_id=424149544]
 layout_mode = 2
-theme_override_constants/margin_left = 8
-theme_override_constants/margin_top = 8
-theme_override_constants/margin_right = 8
-theme_override_constants/margin_bottom = 64
+size_flags_vertical = 8
+theme_override_styles/panel = SubResource("StyleBoxFlat_jxkye")
 
-[node name="StartLevelButton" type="TextureButton" parent="MainPanel/MarginContainer" unique_id=327561670]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(100, 100)
+[node name="MarginContainer" type="HBoxContainer" parent="MainPanel/PanelContainer" unique_id=1561495676]
 layout_mode = 2
-size_flags_horizontal = 4
+size_flags_vertical = 8
+theme_override_constants/separation = 0
+
+[node name="StartLevelButton" type="TextureButton" parent="MainPanel/PanelContainer/MarginContainer" unique_id=327561670]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+size_flags_horizontal = 0
 size_flags_vertical = 4
+theme = SubResource("Theme_dfq8l")
 action_mode = 0
 texture_normal = ExtResource("2_ht8o4")
+texture_disabled = ExtResource("2_ht8o4")
 stretch_mode = 5
 
-[node name="ResourcesPanel" type="PanelContainer" parent="MainPanel/MarginContainer" unique_id=1188973910]
+[node name="ResourcesPanel" type="PanelContainer" parent="MainPanel/PanelContainer/MarginContainer" unique_id=1188973910]
 layout_mode = 2
-size_flags_horizontal = 8
-size_flags_vertical = 0
+size_flags_horizontal = 3
+size_flags_vertical = 4
 theme_override_styles/panel = SubResource("StyleBoxTexture_7wt8e")
 
-[node name="MarginContainer" type="MarginContainer" parent="MainPanel/MarginContainer/ResourcesPanel" unique_id=756690072]
+[node name="MarginContainer" type="MarginContainer" parent="MainPanel/PanelContainer/MarginContainer/ResourcesPanel" unique_id=756690072]
 layout_mode = 2
-theme_override_constants/margin_left = 8
-theme_override_constants/margin_top = 8
-theme_override_constants/margin_right = 8
-theme_override_constants/margin_bottom = 8
+theme_override_constants/margin_left = 22
+theme_override_constants/margin_top = 22
+theme_override_constants/margin_right = 22
+theme_override_constants/margin_bottom = 22
 
-[node name="MountainResources" type="VBoxContainer" parent="MainPanel/MarginContainer/ResourcesPanel/MarginContainer" unique_id=1608686838]
+[node name="MountainResources" type="HBoxContainer" parent="MainPanel/PanelContainer/MarginContainer/ResourcesPanel/MarginContainer" unique_id=1821782290]
 layout_mode = 2
-size_flags_horizontal = 8
-size_flags_vertical = 4
+size_flags_horizontal = 4
 theme_override_constants/separation = 12
 
-[node name="Resources" type="HBoxContainer" parent="MainPanel/MarginContainer/ResourcesPanel/MarginContainer/MountainResources" unique_id=151956742]
+[node name="Resources" type="HBoxContainer" parent="MainPanel/PanelContainer/MarginContainer/ResourcesPanel/MarginContainer/MountainResources" unique_id=151956742]
 layout_mode = 2
 
-[node name="BootIcon" type="TextureRect" parent="MainPanel/MarginContainer/ResourcesPanel/MarginContainer/MountainResources/Resources" unique_id=519949277]
+[node name="BootIcon" type="TextureRect" parent="MainPanel/PanelContainer/MarginContainer/ResourcesPanel/MarginContainer/MountainResources/Resources" unique_id=519949277]
 layout_mode = 2
 texture = ExtResource("3_pfxqu")
 
-[node name="ResourcesCount" type="Label" parent="MainPanel/MarginContainer/ResourcesPanel/MarginContainer/MountainResources/Resources" unique_id=931299786]
+[node name="ResourcesCount" type="Label" parent="MainPanel/PanelContainer/MarginContainer/ResourcesPanel/MarginContainer/MountainResources/Resources" unique_id=931299786]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
-text = "X ..."
+text = "x ..."
 
-[node name="Spacer" type="Control" parent="MainPanel/MarginContainer/ResourcesPanel/MarginContainer/MountainResources" unique_id=769009647]
+[node name="Spacer" type="Control" parent="MainPanel/PanelContainer/MarginContainer/ResourcesPanel/MarginContainer/MountainResources" unique_id=769009647]
+custom_minimum_size = Vector2(64, 0)
 layout_mode = 2
 
-[node name="Towers" type="HBoxContainer" parent="MainPanel/MarginContainer/ResourcesPanel/MarginContainer/MountainResources" unique_id=1450293438]
+[node name="Towers" type="HBoxContainer" parent="MainPanel/PanelContainer/MarginContainer/ResourcesPanel/MarginContainer/MountainResources" unique_id=1450293438]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="ClickableResource" parent="MainPanel/MarginContainer/ResourcesPanel/MarginContainer/MountainResources/Towers" unique_id=909371157 instance=ExtResource("4_kyklt")]
+[node name="ClickableResource" parent="MainPanel/PanelContainer/MarginContainer/ResourcesPanel/MarginContainer/MountainResources/Towers" unique_id=909371157 instance=ExtResource("4_kyklt")]
 layout_mode = 2
-cost = 3
+cost = 100
 
-[node name="ClickableResource2" parent="MainPanel/MarginContainer/ResourcesPanel/MarginContainer/MountainResources/Towers" unique_id=1866389719 instance=ExtResource("4_kyklt")]
+[node name="ClickableResource2" parent="MainPanel/PanelContainer/MarginContainer/ResourcesPanel/MarginContainer/MountainResources/Towers" unique_id=1866389719 instance=ExtResource("4_kyklt")]
 layout_mode = 2
 icon = ExtResource("5_4pves")
 resource_scene = ExtResource("6_tjsy6")
-cost = 5
+cost = 180
 
-[node name="Spacer2" type="Control" parent="MainPanel/MarginContainer/ResourcesPanel/MarginContainer/MountainResources" unique_id=1308595605]
+[node name="Spacer2" type="Control" parent="MainPanel/PanelContainer/MarginContainer/ResourcesPanel/MarginContainer/MountainResources" unique_id=1308595605]
+custom_minimum_size = Vector2(32, 0)
 layout_mode = 2
 
-[node name="Powers" type="HBoxContainer" parent="MainPanel/MarginContainer/ResourcesPanel/MarginContainer/MountainResources" unique_id=694875128]
+[node name="Powers" type="HBoxContainer" parent="MainPanel/PanelContainer/MarginContainer/ResourcesPanel/MarginContainer/MountainResources" unique_id=694875128]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="ClickableResource3" parent="MainPanel/MarginContainer/ResourcesPanel/MarginContainer/MountainResources/Powers" unique_id=617719879 instance=ExtResource("4_kyklt")]
+[node name="ClickableResource3" parent="MainPanel/PanelContainer/MarginContainer/ResourcesPanel/MarginContainer/MountainResources/Powers" unique_id=617719879 instance=ExtResource("4_kyklt")]
 layout_mode = 2
 icon = ExtResource("7_ht8o4")
 resource_scene = ExtResource("8_3oe6q")
-cost = 2
+cost = 50
 restrict_to_placement_zones = false
 
-[node name="ClickableResource4" parent="MainPanel/MarginContainer/ResourcesPanel/MarginContainer/MountainResources/Powers" unique_id=775875819 instance=ExtResource("4_kyklt")]
+[node name="ClickableResource4" parent="MainPanel/PanelContainer/MarginContainer/ResourcesPanel/MarginContainer/MountainResources/Powers" unique_id=775875819 instance=ExtResource("4_kyklt")]
 layout_mode = 2
 icon = ExtResource("9_dfq8l")
 resource_scene = ExtResource("10_h5itu")
-cost = 5
+cost = 40
 restrict_to_placement_zones = false
 
-[connection signal="pressed" from="MainPanel/MarginContainer/StartLevelButton" to="." method="_on_start_level_button_pressed"]
+[connection signal="pressed" from="MainPanel/PanelContainer/MarginContainer/StartLevelButton" to="." method="_on_start_level_button_pressed"]

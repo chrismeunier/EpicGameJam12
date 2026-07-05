@@ -17,6 +17,9 @@ compatibility/default_parent_skeleton_in_mesh_instance_3d=true
 config/name="EpicGameJam12"
 run/main_scene="uid://bm06ccdjpichw"
 config/features=PackedStringArray("4.7", "GL Compatibility")
+boot_splash/stretch_mode=0
+boot_splash/use_filter=false
+boot_splash/image="uid://8sl1u30pmccr"
 config/icon="res://icon.svg"
 
 [autoload]
@@ -31,7 +34,7 @@ gdscript/warnings/unused_signal=0
 [display]
 
 window/size/viewport_width=1280
-window/size/viewport_height=720
+window/size/viewport_height=848
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
 
@@ -53,7 +56,9 @@ folder_colors={
 Enemy=""
 Projectile=""
 Tower=""
-Slowness=""
+RollingStone=""
+Storm=""
+Avalanche=""
 
 [input]
 

@@ -17,4 +17,5 @@ signal no_more_enemies_on_map
 signal alpinist_died(climber_lvl: int)
 
 signal money_updated(new_value: int)
+signal money_added(new_value: int)
 signal bought_resource(price: int)
