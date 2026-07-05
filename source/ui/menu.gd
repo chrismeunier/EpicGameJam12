@@ -52,6 +52,9 @@ func _update_level_availability():
 		if not succeeded_levels[i-1]:
 			lvl_button.disabled = true
 			lvl_button.modulate.a = 0.5
+		else:
+			lvl_button.disabled = false
+			lvl_button.modulate.a = 1.0
 
 
 func _on_play_button_pressed() -> void:

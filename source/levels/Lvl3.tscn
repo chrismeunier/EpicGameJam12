@@ -15,11 +15,12 @@
 [ext_resource type="PackedScene" uid="uid://yy6ex5skfeso" path="res://source/levels/Road3.tscn" id="13_c0a8o"]
 [ext_resource type="PackedScene" uid="uid://bmxc2x231r8il" path="res://source/characters/Mountain.tscn" id="14_schql"]
 
-[node name="Lvl3" type="Node2D" unique_id=1327002182]
+[node name="Lvl3" type="Node2D" unique_id=1327002182 node_paths=PackedStringArray("wave_spawners")]
 script = ExtResource("1_c0a8o")
 level_id = 2
 level_name = "Apocatequil"
 number_of_waves = 6
+wave_spawners = [NodePath("CampSpawner"), NodePath("CampSpawner2"), NodePath("CampSpawner3")]
 
 [node name="Background" type="Node2D" parent="." unique_id=681142071]
 
