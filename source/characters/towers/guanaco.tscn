@@ -56,7 +56,7 @@ animations = [{
 "speed": 8.0
 }]
 
-[node name="Guanaco" type="Area2D" unique_id=1367686413]
+[node name="Guanaco" type="Area2D" unique_id=1367686413 groups=["Tower"]]
 collision_layer = 2
 script = ExtResource("1_0bjgn")
 

@@ -117,15 +117,16 @@ func die() -> void:
 func _on_area_entered(area: Area2D) -> void:
 	if area.is_in_group("Projectile"):
 		health -= 5
-	if area.name == "RollingStone":
+	if area.is_in_group("RollingStone"):
+		print("Hit by rock")
 		health -= 100
-	if area.name == "Storm":
+	if area.is_in_group("Storm"):
 		_isInStorm = true
-	if area.is_in_group("Slowness"):
+	if area.is_in_group("Avalanche"):
 		_isInAvalanch = true
 
 func _on_area_exited(area: Area2D) -> void:
-	if area.name == "Storm":
+	if area.is_in_group("Storm"):
 		_isInStorm = false
-	if area.is_in_group("Slowness"):
+	if area.is_in_group("Avalanche"):
 		_isInAvalanch = false
