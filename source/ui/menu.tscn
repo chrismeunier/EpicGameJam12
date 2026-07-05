@@ -111,10 +111,12 @@ theme_override_styles/panel = SubResource("StyleBoxTexture_fj6ig")
 layout_mode = 2
 theme = SubResource("Theme_0f1tw")
 theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
-text = "Bienvenue à Guanaco Mountain !
-
-Une lointaine prophétie prédisait la venue de randonneurs menaçant de venir bâtir des igloos sur le glacier de cette montagne sacrée.
-Aujourd'hui c'est donc à vous d'aider la montagne à se défendre en levant une armée de guanacos et en déchaînant les éléments !"
+text = "A travers les crêtes et les vallées de la Cordillère des Andes,
+Résonnent encore les échos d'une ancienne prophétie.
+Elle raconte la lutte héroïque que livra le Mont Guanaco,
+Fier symbole de la résistance à l'homme.
+Aidé d'une fière armée de guanacos, et de la force des éléments,
+Il sut préserver ses terres intactes des envahisseurs à crampons."
 scroll_active = false
 horizontal_alignment = 1
 
