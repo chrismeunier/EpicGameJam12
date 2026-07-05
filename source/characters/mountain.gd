@@ -66,6 +66,7 @@ func on_dead_alpinist(climber_lvl: int) -> void:
 
 func on_add_money(moneyToAdd: int) -> void:
 	money += moneyToAdd
+	Events.money_updated.emit(money)
 
 func buy_something(price: int) -> bool:
 	if price > money:

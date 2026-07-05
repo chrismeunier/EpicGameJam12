@@ -15,7 +15,7 @@
 
 [node name="Lvl1" type="Node2D" unique_id=1327002182 node_paths=PackedStringArray("wave_spawners")]
 script = ExtResource("1_nke3x")
-level_name = "Les Premières Neiges"
+level_name = "Les premières neiges"
 number_of_waves = 4
 wave_spawners = [NodePath("CampSpawner")]
 
