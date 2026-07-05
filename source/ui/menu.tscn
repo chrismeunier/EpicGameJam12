@@ -70,6 +70,7 @@ stretch_mode = 5
 
 [node name="LevelSelectPanel" type="PanelContainer" parent="." unique_id=196137283]
 unique_name_in_owner = true
+visible = false
 texture_filter = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -240,6 +241,7 @@ stretch_mode = 5
 
 [connection signal="pressed" from="MainMenuPanel/MarginContainer/MainButtons/PlayButton" to="." method="_on_play_button_pressed"]
 [connection signal="pressed" from="MainMenuPanel/MarginContainer/MainButtons/CreditsButton" to="." method="_on_credits_button_pressed"]
+[connection signal="visibility_changed" from="LevelSelectPanel" to="." method="_on_level_select_panel_visibility_changed"]
 [connection signal="pressed" from="LevelSelectPanel/MarginContainer/BackButton" to="." method="_on_back_button_pressed"]
 [connection signal="pressed" from="CreditsPanel/MarginContainer/BackButton" to="." method="_on_back_button_pressed"]
 [connection signal="pressed" from="LevelSuccessPanel/MarginContainer/MainButtons/RetryButton" to="." method="_on_retry_button_pressed"]

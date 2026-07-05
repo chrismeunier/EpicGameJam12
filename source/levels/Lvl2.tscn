@@ -94,6 +94,7 @@ position = Vector2(640, 360)
 [node name="Road2" parent="." unique_id=1371415679 instance=ExtResource("12_6g3kw")]
 
 [node name="Mountain" parent="." unique_id=1464789632 instance=ExtResource("13_7iwte")]
+unique_name_in_owner = true
 money = 350
 dead_enemy_money_multiplier = 15
 

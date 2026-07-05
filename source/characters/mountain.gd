@@ -1,3 +1,4 @@
+class_name Mountain
 extends Node2D
 
 @export var money: int = 5
@@ -75,3 +76,6 @@ func buy_something(price: int) -> bool:
 	money -= price
 	Events.money_updated.emit(money)
 	return true
+
+func get_life_percentage() -> int:
+	return int(life_bar.value / life_bar.max_value * 100)

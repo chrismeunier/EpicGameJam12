@@ -86,6 +86,7 @@ road = NodePath("../Road1")
 position = Vector2(640, 360)
 
 [node name="Mountain" parent="." unique_id=1464789632 instance=ExtResource("16_mapb2")]
+unique_name_in_owner = true
 money = 250
 dead_enemy_money_multiplier = 15
 
