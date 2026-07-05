@@ -24,7 +24,7 @@ func _ready() -> void:
 		igloo.hide()
 
 func _on_timer_timeout() -> void:
-	money += 1
+	money += 0 #To check if needed
 	Events.money_updated.emit(money)
 
 func _on_summit_reached(climber_lvl: int) -> void:

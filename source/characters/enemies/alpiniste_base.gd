@@ -27,10 +27,10 @@ func setup(path: Path2D, enemy_level: int = 1, start_distance: float = 0.0) -> v
 			health = 100.0
 			_base_speed = 50.0
 		2:
-			health = 200.0
+			health = 220.0
 			_base_speed = 65.0
 		3:
-			health = 350.0
+			health = 380.0
 			_base_speed = 80.0
 		_:
 			health = 100.0 + (lvl * 100.0)
@@ -52,7 +52,6 @@ func _process(delta: float) -> void:
 	if _isInStorm:
 		speed = _base_speed * 0.2
 	elif _isInAvalanch:
-		health -= delta * 2
 		speed = _base_speed * 0.55
 	else:
 		speed = _base_speed
@@ -116,12 +115,13 @@ func die() -> void:
 
 func _on_area_entered(area: Area2D) -> void:
 	if area.is_in_group("Projectile"):
-		health -= 5
+		health -= 15
 	if area.name == "RollingStone":
-		health -= 100
+		health -= 50
 	if area.name == "Storm":
 		_isInStorm = true
 	if area.is_in_group("Slowness"):
+		health -= 25
 		_isInAvalanch = true
 
 func _on_area_exited(area: Area2D) -> void:

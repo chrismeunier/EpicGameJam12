@@ -86,7 +86,8 @@ road = NodePath("../Road1")
 position = Vector2(640, 360)
 
 [node name="Mountain" parent="." unique_id=1464789632 instance=ExtResource("16_mapb2")]
-money = 3
+money = 250
+dead_enemy_money_multiplier = 15
 
 [node name="PlacementZone" type="Area2D" parent="." unique_id=822357754]
 collision_mask = 128

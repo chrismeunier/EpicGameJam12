@@ -1,7 +1,6 @@
 extends Area2D
 
 var projectile_scene = preload("res://source/characters/towers/bullets/guanaco_spit.tscn")
-@export var damage: int = 10
 
 var targets: Array[Node2D] = [] # Tracks enemies inside the range
 var current_target: Node2D = null
@@ -52,7 +51,6 @@ func shoot_projectile() -> void:
 	var bullet = projectile_scene.instantiate()
 	bullet.global_position = mouth.global_position
 	bullet.target = current_target
-	bullet.damage = damage
 	get_tree().current_scene.add_child(bullet)
 	
 	if (current_target.global_position.x - global_position.x) < 0:
