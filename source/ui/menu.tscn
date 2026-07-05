@@ -189,8 +189,8 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_v0gtr")
 
 [node name="PopupContainer" type="MarginContainer" parent="LevelSuccessPanel" unique_id=1259226386]
 layout_mode = 2
-theme_override_constants/margin_top = 64
-theme_override_constants/margin_bottom = 156
+theme_override_constants/margin_top = 150
+theme_override_constants/margin_bottom = 200
 
 [node name="Background" type="TextureRect" parent="LevelSuccessPanel/PopupContainer" unique_id=775300172]
 layout_mode = 2
@@ -236,8 +236,8 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_yxeyj")
 
 [node name="PopupContainer" type="MarginContainer" parent="GameOverPanel" unique_id=206518320]
 layout_mode = 2
-theme_override_constants/margin_top = 64
-theme_override_constants/margin_bottom = 156
+theme_override_constants/margin_top = 150
+theme_override_constants/margin_bottom = 200
 
 [node name="Background" type="TextureRect" parent="GameOverPanel/PopupContainer" unique_id=2112749069]
 layout_mode = 2
@@ -252,7 +252,7 @@ theme_override_constants/margin_bottom = 64
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-theme_override_constants/separation = 640
+theme_override_constants/separation = 760
 alignment = 1
 
 [node name="RetryButton" type="TextureButton" parent="GameOverPanel/MarginContainer/MainButtons" unique_id=827563882]
