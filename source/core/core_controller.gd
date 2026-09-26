@@ -169,7 +169,9 @@ func _on_game_over_success_state_entered() -> void:
 	progression[_current_level.level_id] = true
 	config.set_value("levels", "succeeded", progression)
 	var scores : Array = config.get_value("levels", "score")
-	scores[_current_level.level_id] = _current_level.score
+	var old_score = scores[_current_level.level_id]
+	var new_score = max(old_score, _current_level.score)
+	scores[_current_level.level_id] = new_score
 	config.set_value("levels", "score", scores)
 	config.save(CONFIG_PATH)
 	
