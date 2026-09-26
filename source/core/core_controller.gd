@@ -2,10 +2,10 @@ class_name CoreController
 extends Node
 
 const CONFIG_PATH = "user://progress.cfg"
-static var _current_level : BaseLevel
+static var _current_level: BaseLevel
 @export var menu: Menu
 @export var level_root: Node
-@export var game_overlay : Overlay
+@export var game_overlay: Overlay
 
 var selected_level_id := 0
 var config := ConfigFile.new()
@@ -26,12 +26,13 @@ func _ready() -> void:
 	menu.menu_credits.connect(transit_to_credits)
 	menu.back_to_menu.connect(transit_to_menu)
 	menu.retry_level.connect(reload_level)
+	game_overlay.reset_level.connect(reload_level)
 	Events.selected_level.connect(load_new_level)
 	Events.start_level.connect(start_wave)
 	Events.all_waves_ended.connect(transit_to_end_of_waves)
 	Events.no_more_enemies_on_map.connect(transit_to_success)
 	Events.game_over.connect(transit_to_failure)
-	
+
 	if config.load(CONFIG_PATH) != OK:
 		config.set_value("levels", "succeeded", [false, false, false])
 		config.set_value("levels", "score", [0, 0, 0])
@@ -47,8 +48,8 @@ func transit_to_level_select():
 
 func transit_to_credits():
 	state_chart.send_event("go_to_credits")
-	
-func load_new_level(id:int):
+
+func load_new_level(id: int):
 	selected_level_id = id
 	state_chart.send_event("level_selected")
 
@@ -112,14 +113,14 @@ func load_level():
 
 func _deferred_load_level():
 	var new_level_uid = menu.level_uid_list[selected_level_id]
-	var new_level_scene : PackedScene = ResourceLoader.load(new_level_uid, "PackedScene") as PackedScene
-	
+	var new_level_scene: PackedScene = ResourceLoader.load(new_level_uid, "PackedScene") as PackedScene
+
 	if _current_level != null:
 		# Remove the previous level and wait if needed
 		_current_level.queue_free()
 		_current_level = null
 		await get_tree().process_frame
-	
+
 	_current_level = new_level_scene.instantiate() as BaseLevel
 	block_current_level()
 	level_root.add_child(_current_level)
@@ -133,6 +134,8 @@ func _on_playing_state_entered() -> void:
 	game_overlay.show()
 	game_overlay.start_level_button.disabled = false
 	game_overlay.start_level_button.modulate = Color(1, 1, 1, 1)
+	game_overlay.start_level_button.show()
+	game_overlay.restart_button.hide()
 
 func _on_before_wave_start_state_entered() -> void:
 	load_level()
@@ -144,8 +147,10 @@ func _on_enemy_wave_active_state_entered() -> void:
 	AudioManager.menu_loop.stop()
 	if not AudioManager.guacano_theme.playing:
 		AudioManager.guacano_theme.play(2.0)
-	game_overlay.start_level_button.disabled = true
-	game_overlay.start_level_button.modulate = Color(0.5, 0.5, 0.5, 0.5)
+	#game_overlay.start_level_button.disabled = true
+	#game_overlay.start_level_button.modulate = Color(0.5, 0.5, 0.5, 0.5)
+	game_overlay.restart_button.show()
+	game_overlay.start_level_button.hide()
 	# Reset the standard process mode -> level can run
 	game_overlay.apply_current_level(_current_level)
 	process_current_level()
@@ -165,16 +170,16 @@ func _on_playing_state_exited() -> void:
 # Game over: success !
 func _on_game_over_success_state_entered() -> void:
 	menu.level_success_panel.show()
-	var progression : Array = config.get_value("levels", "succeeded")
+	var progression: Array = config.get_value("levels", "succeeded")
 	progression[_current_level.level_id] = true
 	config.set_value("levels", "succeeded", progression)
-	var scores : Array = config.get_value("levels", "score")
+	var scores: Array = config.get_value("levels", "score")
 	var old_score = scores[_current_level.level_id]
 	var new_score = max(old_score, _current_level.score)
 	scores[_current_level.level_id] = new_score
 	config.set_value("levels", "score", scores)
 	config.save(CONFIG_PATH)
-	
+
 
 func _on_game_over_success_state_exited() -> void:
 	menu.main_menu_panel.show()

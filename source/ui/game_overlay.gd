@@ -1,17 +1,21 @@
 class_name Overlay
 extends CanvasLayer
 
+signal reset_level
+
 @onready var main_panel: PanelContainer = %MainPanel
 @onready var start_level_button: TextureButton = %StartLevelButton
+@onready var restart_button: TextureButton = %ResetButton
 @onready var resources_count: Label = %ResourcesCount
 @onready var towers: HBoxContainer = %Towers
 @onready var powers: HBoxContainer = %Powers
 
 func _ready() -> void:
+	restart_button.hide()
 	Events.money_updated.connect(update_resources_count)
 
 # Allows to have new towers and power added in the level scene
-func apply_current_level(level:BaseLevel):
+func apply_current_level(level: BaseLevel):
 	for tower in towers.get_children():
 		tower.parent_node_for_placing = level
 	for power in powers.get_children():
@@ -24,5 +28,8 @@ func disable_powers():
 func _on_start_level_button_pressed() -> void:
 	Events.start_level.emit()
 
-func update_resources_count(new_value:int):
+func update_resources_count(new_value: int):
 	resources_count.text = "X " + str(new_value)
+
+func _on_restart_button_pressed() -> void:
+	reset_level.emit()
