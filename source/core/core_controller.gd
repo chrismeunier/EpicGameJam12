@@ -189,10 +189,15 @@ func _on_game_over_success_state_exited() -> void:
 # Game over: failed...
 func _on_game_over_failed_state_entered() -> void:
 	menu.game_over_panel.show()
+	AudioManager.game_over.play()
+	AudioManager.guacano_theme.stop()
+	AudioManager.menu_loop.stop()
 
 func _on_game_over_failed_state_exited() -> void:
 	menu.main_menu_panel.show()
 	unload_current_level()
 	menu.game_over_panel.hide()
+	AudioManager.game_over.stop()
+	AudioManager.menu_loop.play()
 
 #endregion

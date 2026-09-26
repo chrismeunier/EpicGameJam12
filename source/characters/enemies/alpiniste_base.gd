@@ -27,6 +27,12 @@ var _has_cold_coffee: bool = false
 var _has_used_coffee: bool = false
 var _coffee_boost_active: bool = false
 
+func _ready() -> void:
+		Events.game_over.connect(_stop_loop_footsteps)
+
+func _stop_loop_footsteps() -> void:
+	_is_looping_steps = false
+	
 func setup(path: Path2D, enemy_level: int = 1, start_distance: float = 0.0) -> void:
 	_path = path
 	_distance = start_distance

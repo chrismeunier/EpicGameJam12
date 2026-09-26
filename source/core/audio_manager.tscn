@@ -98,8 +98,9 @@ volume_db = -2.0
 [node name="Music" type="Node" parent="." unique_id=1914217787]
 
 [node name="GameOver" type="AudioStreamPlayer" parent="Music" unique_id=544520007]
+unique_name_in_owner = true
 stream = ExtResource("14_2jmt1")
-volume_db = -5.0
+volume_db = -10.0
 
 [node name="GuacanoTheme" type="AudioStreamPlayer" parent="Music" unique_id=1895221045]
 unique_name_in_owner = true
