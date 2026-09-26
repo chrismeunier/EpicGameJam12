@@ -1,0 +1,55 @@
+@startuml core-controller-state-diagram
+hide empty description
+
+' State definitions
+state MainMenu #GreenYellow
+state Credits
+state LevelSelect
+state Playing #Yellow {
+    state BeforeWaveStart
+    state EnemyWaveActive
+    state EnemyWaveOver
+    [*] --> BeforeWaveStart
+}
+state "GameOverSuccess/Failed" as gameover #Orange
+
+' Transitions
+MainMenu -> LevelSelect : go_to_level_selection
+MainMenu -> Credits : go_to_credits
+Credits -> MainMenu : go_to_menu
+LevelSelect --> MainMenu : go_to_menu
+LevelSelect --> Playing : level_selected
+
+BeforeWaveStart --> EnemyWaveActive : start_wave
+EnemyWaveActive --> EnemyWaveOver : wave_is_over
+EnemyWaveActive --> BeforeWaveStart : level_selected (retry)
+EnemyWaveActive --> gameover : wave_failed
+EnemyWaveOver --> gameover : wave_succeeded\nwave_failed
+gameover --> Playing : level_selected (retry)
+gameover --> LevelSelect : go_to_level_selection
+
+' Descriptions
+MainMenu : Play menu music
+LevelSelect : Show level_select_panel
+Credits : Show credits_panel
+
+Playing : (enter) Show game overlay with play button
+BeforeWaveStart : Hide main menu panel
+BeforeWaveStart : Load current level scene
+EnemyWaveActive : Stop main menu music
+EnemyWaveActive : Play level music
+EnemyWaveActive : Replace play button with retry button
+EnemyWaveActive : Start current level process
+Playing : (exit) Stop level music
+Playing : (exit) Start menu music
+Playing : (exit) Stop current level process
+Playing : (exit) Hide game overlay
+
+gameover : (enter) Update highscore
+gameover : (enter) Show game over panel
+gameover : (enter) Play game over music if failed
+gameover : (exit) Show main menu panel
+gameover : (exit) Hide game over panel
+gameover : (exit) Stop game over music
+
+@enduml
