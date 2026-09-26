@@ -64,6 +64,8 @@ func _input(event: InputEvent) -> void:
 			print("[PLACEMENT] Success! Tower deployed.")
 		else:
 			print("[PLACEMENT] Denied: Invalid ground or blocking another tower.")
+			if placing_resource and target_pos.y > 720:
+				_cancel_placement()
 
 func _on_button_pressed() -> void:
 	Events.bought_resource.emit(cost)
@@ -95,7 +97,11 @@ func _is_spot_valid(pos: Vector2) -> bool:
 	var inside_valid_zone := false
 	
 	if not restrict_to_placement_zones:
-		return true
+		# For powers allow placement only upper the menu
+		if pos.y > 720:
+			return false
+		else:
+			return true
 	else:
 		if preview_resource and preview_resource.get_parent():
 			var lvl1_node = preview_resource.get_parent()
