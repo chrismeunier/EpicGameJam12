@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://g5orhtbundxj"]
+
+[ext_resource type="Script" uid="uid://g41ho0eai6b3" path="res://source/ui/fireable_resource.gd" id="1_5qhm4"]
+[ext_resource type="PackedScene" uid="uid://d04dlq1y8qapc" path="res://source/ui/usable_resource.tscn" id="2_qsd7r"]
+
+[node name="FireableResource" type="Control" unique_id=332417982]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_5qhm4")
+
+[node name="UsableResource" parent="." unique_id=1247662254 instance=ExtResource("2_qsd7r")]
+layout_mode = 0
+
+[node name="Button" type="Button" parent="." unique_id=1210709290]
+layout_mode = 0
+offset_right = 8.0
+offset_bottom = 8.0
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1275987392]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
