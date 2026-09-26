@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://c8onmtl61d3wq" path="res://assets/visuals/background/Map_Layer_4.png" id="7_p16a1"]
 [ext_resource type="Texture2D" uid="uid://bhwxnrko4ae12" path="res://assets/visuals/background/Map_Layer_5.png" id="8_00ivx"]
 [ext_resource type="PackedScene" uid="uid://c8oeykur3eedm" path="res://source/characters/enemies/CampSpawner.tscn" id="8_yx8tq"]
+[ext_resource type="PackedScene" uid="uid://d6on83eabdpl" path="res://source/characters/towers/condor/CondorPath.tscn" id="13_ut4hv"]
 [ext_resource type="PackedScene" uid="uid://bmxc2x231r8il" path="res://source/characters/Mountain.tscn" id="16_mapb2"]
 
 [node name="Lvl1" type="Node2D" unique_id=1327002182 node_paths=PackedStringArray("wave_spawners")]
@@ -100,3 +101,6 @@ polygon = PackedVector2Array(148, 15, 124, 30, 120, 63, 139, 82, 166, 82, 196, 8
 [node name="PlacementZone_Rigth" type="CollisionPolygon2D" parent="PlacementZone" unique_id=2138520700]
 position = Vector2(643, 181)
 polygon = PackedVector2Array(157, -21, 199, -3, 224, 15, 261, 40, 308, 62, 339, 69, 353, 98, 401, 140, 436, 154, 524, 201, 539, 219, 576, 250, 616, 269, 637, 296, 637, 539, -77, 538, -76, 512, -56, 499, -9, 485, 16, 465, 13, 437, -22, 406, -81, 392, -224, 359, -235, 350, -216, 343, -190, 338, -161, 333, -104, 335, -91, 337, 19, 337, 69, 324, 102, 275, 97, 235, 59, 189, -69, 121, -167, 102, -170, 94, -134, 78, -94, 70, -70, 54, -71, 40, -101, 5, -131, -1, -145, -9, -142, -33, -25, -54, 18, -54, 37, -50, 123, -34, 140, -39, 151, -34)
+
+[node name="CondorPath" parent="." unique_id=1695939000 instance=ExtResource("13_ut4hv")]
+spawn_probability = 2.5

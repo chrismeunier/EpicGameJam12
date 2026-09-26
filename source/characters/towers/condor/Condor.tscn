@@ -1,0 +1,47 @@
+[gd_scene format=3 uid="uid://dplsjlo88aqhw"]
+
+[ext_resource type="Texture2D" uid="uid://bnbniobdc707u" path="res://assets/visuals/Powers/FlyingCondor.png" id="1_mm3lg"]
+[ext_resource type="Script" uid="uid://bkdpnyh56fcfi" path="res://source/characters/towers/condor/condor.gd" id="1_wc7gy"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wc7gy"]
+atlas = ExtResource("1_mm3lg")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dhoe3"]
+atlas = ExtResource("1_mm3lg")
+region = Rect2(0, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uox6g"]
+atlas = ExtResource("1_mm3lg")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_vemod"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wc7gy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dhoe3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uox6g")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 8.0
+}]
+
+[node name="Condor" type="Node2D" unique_id=1947856381]
+script = ExtResource("1_wc7gy")
+condor_max_lifespan = 15.0
+condor_speed = 18.0
+condor_min_direction_time = 2.5
+condor_random_direction_change = 0.275
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=115550834]
+unique_name_in_owner = true
+sprite_frames = SubResource("SpriteFrames_vemod")
+autoplay = "default"
+frame = 1
+frame_progress = 0.7131589
