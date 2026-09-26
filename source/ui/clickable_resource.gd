@@ -5,8 +5,11 @@ extends Control
 @export var resource_scene : PackedScene
 @export var cost := 0
 @export var clearance_radius := 32.0
-
 @export var restrict_to_placement_zones: bool = true
+@export var shortcut_key: Key = KEY_NONE
+@export var shortcut_icon : Texture2D
+
+static var already_selected := false
 
 var available := false : set = refresh_availability
 var preview_resource : Area2D = null
@@ -15,8 +18,10 @@ var parent_node_for_placing : BaseLevel = null
 
 @onready var usable_resource: UsableResource = %UsableResource
 @onready var button: Button = %Button
+@onready var texture_rect: TextureRect = %TextureRect
 
 func _ready() -> void:
+	texture_rect.texture =  shortcut_icon
 	Events.money_updated.connect(update_availability)
 	button.size = Vector2(92.0, 168.0)
 	if not available:
@@ -41,6 +46,12 @@ func _process(_delta: float) -> void:
 			preview_resource.modulate = Color(1.0, 0.3, 0.3, 0.7) # Red
 
 func _input(event: InputEvent) -> void:
+	if event is InputEventKey and event.pressed and not event.echo:
+		if shortcut_key != KEY_NONE and event.keycode == shortcut_key:
+			if available and not placing_resource:
+				_on_button_pressed()
+			return
+			
 	if placing_resource and event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_RIGHT and event.pressed:
 		_cancel_placement()
 		return
@@ -61,11 +72,18 @@ func _input(event: InputEvent) -> void:
 			
 			placing_resource = false
 			preview_resource = null
+			already_selected = false
 			print("[PLACEMENT] Success! Tower deployed.")
 		else:
 			print("[PLACEMENT] Denied: Invalid ground or blocking another tower.")
+			if placing_resource and target_pos.y > 720:
+				_cancel_placement()
 
 func _on_button_pressed() -> void:
+	if already_selected:
+		return
+	already_selected = true
+	
 	Events.bought_resource.emit(cost)
 	preview_resource = resource_scene.instantiate() as Area2D
 	
@@ -95,7 +113,11 @@ func _is_spot_valid(pos: Vector2) -> bool:
 	var inside_valid_zone := false
 	
 	if not restrict_to_placement_zones:
-		return true
+		# For powers allow placement only upper the menu
+		if pos.y > 720:
+			return false
+		else:
+			return true
 	else:
 		if preview_resource and preview_resource.get_parent():
 			var lvl1_node = preview_resource.get_parent()
@@ -125,6 +147,7 @@ func _cancel_placement() -> void:
 		preview_resource.queue_free()
 	preview_resource = null
 	placing_resource = false
+	already_selected = false
 	print(cost)
 	Events.money_added.emit(cost)
 	print("[PLACEMENT] Canceled.")

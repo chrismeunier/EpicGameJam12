@@ -91,6 +91,12 @@ to = NodePath("../../../GameOverFailed")
 event = &"wave_failed"
 delay_in_seconds = "0.0"
 
+[node name="ResetLevel" type="Node" parent="StateChart/CompoundState/Playing/EnemyWaveActive" unique_id=1917995735]
+script = ExtResource("4_6w3k4")
+to = NodePath("../..")
+event = &"level_selected"
+delay_in_seconds = "0.0"
+
 [node name="EnemyWaveOver" type="Node" parent="StateChart/CompoundState/Playing" unique_id=685856944]
 script = ExtResource("3_6w3k4")
 metadata/_custom_type_script = "uid://cytafq8i1y8qm"

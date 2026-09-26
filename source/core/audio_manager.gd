@@ -7,6 +7,7 @@ extends Node
 @onready var rock_2: AudioStreamPlayer = %Rock2
 @onready var steps: Node = $Ennemies/Alpinist/Steps
 @onready var guacano_theme: AudioStreamPlayer = %GuacanoTheme
+@onready var game_over: AudioStreamPlayer = %GameOver
 @onready var menu_loop: AudioStreamPlayer = %MenuLoop
 @onready var mountain: Node = %Mountain
 @onready var death: Node = %Death
