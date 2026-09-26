@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://cf7nwpn12x3rq"]
 
 [ext_resource type="Script" uid="uid://ddct46palaifa" path="res://source/powers/poop_effect.gd" id="1_j0mxn"]
-[ext_resource type="Texture2D" uid="uid://pdmmk47m7i13" path="res://assets/visuals/poop.png" id="1_r10co"]
+[ext_resource type="Texture2D" uid="uid://pdmmk47m7i13" path="res://assets/visuals/Powers/poop.png" id="1_r10co"]
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_r10co"]
 lifetime_randomness = 0.4
