@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://bm06ccdjpichw"]
+
+[ext_resource type="PackedScene" uid="uid://2mjnjvcsgtuh" path="res://source/core/core_controller.tscn" id="1_gwn8p"]
+[ext_resource type="PackedScene" uid="uid://c4px3y7abedpb" path="res://source/ui/menu.tscn" id="2_82l2d"]
+[ext_resource type="PackedScene" uid="uid://cvjwgpxux62ux" path="res://source/ui/game_overlay.tscn" id="3_82l2d"]
+
+[node name="GameRoot" type="Node" unique_id=1772907135]
+
+[node name="CoreController" parent="." unique_id=265263970 node_paths=PackedStringArray("menu", "level_root", "game_overlay") instance=ExtResource("1_gwn8p")]
+menu = NodePath("../Menu")
+level_root = NodePath("../LevelRoot")
+game_overlay = NodePath("../GameOverlay")
+
+[node name="Menu" parent="." unique_id=675254715 instance=ExtResource("2_82l2d")]
+
+[node name="LevelRoot" type="Node" parent="." unique_id=1999359200]
+
+[node name="GameOverlay" parent="." unique_id=142451924 instance=ExtResource("3_82l2d")]

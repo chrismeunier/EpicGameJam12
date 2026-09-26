@@ -1,7 +1,5 @@
 extends Area2D
 
-@export var damage: int = 25
-
 var targets: Array[Node2D] = []
 @onready var avalanche_timer: Timer = $AvalancheTimer
 @onready var snow_particles: CPUParticles2D = $SnowParticles
@@ -37,7 +35,3 @@ func trigger_avalanche() -> void:
 	snow_particles.restart()
 	if AudioManager:
 		AudioManager.play_avalanche() 
-
-	for enemy in targets:
-		if is_instance_valid(enemy) and enemy.has_method("take_damage"):
-			enemy.take_damage(damage)

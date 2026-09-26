@@ -1,0 +1,207 @@
+extends Node2D
+class_name AlpinisteBase
+
+@export var lvl: int = 1
+@export_range(0.0, 1.0, 0.01) var cold_coffee_chance: float = 0.2
+@export var cold_coffee_speed: float = 100.0
+@export var cold_coffee_duration: float = 5.0
+
+var speed: float = 50.0
+var health: float = 100.0
+var _base_speed: float = 50.0 
+var _max_health: float = 100.0
+
+@onready var animated_sprite: AnimatedSprite2D = %AnimatedSprite2D
+@onready var health_bar: TextureProgressBar = %HealthBar
+@onready var cold_coffee: Sprite2D = %Cold_coffee
+
+var _path: Path2D
+var _distance: float = 0.0
+var _isInStorm: bool
+var _isInAvalanch: bool
+var _is_looping_steps: bool = false
+
+var _current_direction_anim: String = "default"
+
+var _has_cold_coffee: bool = false
+var _has_used_coffee: bool = false
+var _coffee_boost_active: bool = false
+
+func setup(path: Path2D, enemy_level: int = 1, start_distance: float = 0.0) -> void:
+	_path = path
+	_distance = start_distance
+	lvl = enemy_level
+	
+	match lvl:
+		1:
+			health = 100.0
+			_base_speed = 50.0
+		2:
+			health = 220.0
+			_base_speed = 65.0
+		3:
+			health = 380.0
+			_base_speed = 80.0
+		_:
+			health = 100.0 + (lvl * 100.0)
+			_base_speed = 50.0 + (lvl * 15.0)
+	
+	_max_health = health
+	speed = _base_speed
+	global_position = _path.to_global(_path.curve.sample_baked(_distance))
+	
+	if health_bar:
+		health_bar.max_value = _max_health
+		health_bar.value = health
+		_update_health_bar()
+		
+	_update_sprite_animation()
+	
+	_is_looping_steps = true
+	_loop_footsteps()
+	
+	_has_cold_coffee = randf() < cold_coffee_chance
+	if cold_coffee:
+		cold_coffee.visible = _has_cold_coffee
+
+	if _has_cold_coffee:
+		_wait_and_offer_coffee()
+
+func _process(_delta: float) -> void:
+	if health <= 0.0:
+		die()
+		return
+	
+	if _coffee_boost_active:
+		speed = cold_coffee_speed
+		return
+		
+		
+	if _isInStorm:
+		speed = _base_speed * 0.2
+	elif _isInAvalanch:
+		speed = _base_speed * 0.55
+	else:
+		speed = _base_speed
+
+func _update_health_bar() -> void:
+	if not health_bar:
+		return
+		
+	health_bar.value = health
+	
+	var health_ratio = clamp(health / _max_health, 0.0, 1.0)
+	
+	if health_ratio > 0.5:
+		# Health is high: Blend from Yellow to Green
+		var weight = (health_ratio - 0.5) * 2.0
+		health_bar.modulate = Color(1.0, 1.0, 0.0).lerp(Color(0.0, 1.0, 0.0), weight)
+	else:
+		# Health is low: Blend from Red to Yellow
+		var weight = health_ratio * 2.0
+		health_bar.modulate = Color(1.0, 0.0, 0.0).lerp(Color(1.0, 1.0, 0.0), weight)
+
+
+func _loop_footsteps() -> void:
+	if not _is_looping_steps or health <= 0.0:
+		return
+	AudioManager.play_foot_step()
+	var footstep_delay: float = clamp(50.0 / speed, 0.4, 1.2)
+	await get_tree().create_timer(footstep_delay).timeout
+	_loop_footsteps()
+	
+func _physics_process(delta: float) -> void:
+	if _path == null:
+		return
+
+	_distance += speed * delta
+	global_position = _path.to_global(_path.curve.sample_baked(_distance))
+
+	var ahead := _path.to_global(_path.curve.sample_baked(_distance + 1.0))
+	var rot: float = - (ahead - global_position).angle()
+
+	if rot > -PI / 2 && rot < 0.75 * PI / 2:
+		_current_direction_anim = "GoingNorthEast"
+	elif rot > 1.25 * PI / 2 && rot < 1.5 * PI:
+		_current_direction_anim = "GoingNorthWest"
+	else:
+		_current_direction_anim = "default"
+
+	_update_sprite_animation()
+
+	if _distance >= _path.curve.get_baked_length():
+		reach_summit()
+
+func _update_sprite_animation() -> void:
+	# 1. Safety check to make sure the resource is loaded
+	if not animated_sprite or not animated_sprite.sprite_frames:
+		return
+		
+	var final_animation_name = "Lvl" + str(lvl) + "_" + _current_direction_anim
+	
+	if animated_sprite.sprite_frames.has_animation(final_animation_name):
+		animated_sprite.animation = final_animation_name
+	else:
+		var level_default = "Lvl" + str(lvl) + "_default"
+		if animated_sprite.sprite_frames.has_animation(level_default):
+			animated_sprite.animation = level_default
+		else:
+			# Ultimate fallback if no level assets are configured yet
+			animated_sprite.animation = "default"
+
+func reach_summit() -> void:
+	Events.summit_reached.emit(lvl)
+	queue_free()
+	
+func _wait_and_offer_coffee() -> void:
+	await get_tree().create_timer(0.2).timeout
+	if not is_instance_valid(self) or health <= 0.0:
+		return
+	_use_cold_coffee()
+
+func _use_cold_coffee() -> void:
+	if _has_used_coffee or not _has_cold_coffee:
+		return
+	_has_used_coffee = true
+	_coffee_boost_active = true
+	
+	if cold_coffee:
+		cold_coffee.visible = false
+		
+	if cold_coffee:
+		cold_coffee.visible = true
+
+	await get_tree().create_timer(cold_coffee_duration).timeout
+	if not is_instance_valid(self):
+		return
+	_coffee_boost_active = false
+	
+	if cold_coffee:
+		cold_coffee.visible = false
+
+func die() -> void:
+	Events.alpinist_died.emit(lvl)
+	AudioManager.play_alpinist_death()
+	speed = 0
+	queue_free()
+
+func _on_area_entered(area: Area2D) -> void:
+	if area.is_in_group("Projectile"):
+		health -= 25
+		_update_health_bar()
+	if area.is_in_group("RollingStone"):
+		print("Hit by rock")
+		health -= 150
+		_update_health_bar()
+	if area.is_in_group("Storm"):
+		_isInStorm = true
+	if area.is_in_group("Avalanche"):
+		health -= 50
+		_update_health_bar()
+		_isInAvalanch = true
+
+func _on_area_exited(area: Area2D) -> void:
+	if area.is_in_group("Storm"):
+		_isInStorm = false
+	if area.is_in_group("Avalanche"):
+		_isInAvalanch = false

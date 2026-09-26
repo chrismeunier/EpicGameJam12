@@ -1,0 +1,100 @@
+[gd_scene format=3 uid="uid://bmxc2x231r8il"]
+
+[ext_resource type="Script" uid="uid://dxa71ufduqdot" path="res://source/characters/mountain.gd" id="1_n2cd8"]
+[ext_resource type="Texture2D" uid="uid://b158i2iswples" path="res://assets/visuals/menu/menu_background.png" id="2_dkd8s"]
+[ext_resource type="Texture2D" uid="uid://br0jtdavywwon" path="res://assets/visuals/Hiker/igloo.png" id="3_xo1bs"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dkd8s"]
+bg_color = Color(0.36071643, 0.69760007, 0.1404576, 1)
+
+[sub_resource type="Theme" id="Theme_n2cd8"]
+ProgressBar/styles/fill = SubResource("StyleBoxFlat_dkd8s")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_dfq8l"]
+texture = ExtResource("2_dkd8s")
+texture_margin_left = 10.0
+texture_margin_top = 10.0
+texture_margin_right = 10.0
+texture_margin_bottom = 10.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h5itu"]
+bg_color = Color(1.8770993e-06, 0.72616464, 0.17428517, 1)
+border_width_left = 8
+border_width_top = 8
+border_width_right = 8
+border_width_bottom = 8
+border_color = Color(0.8, 0.8, 0.8, 0)
+corner_radius_top_left = 24
+corner_radius_top_right = 24
+corner_radius_bottom_right = 24
+corner_radius_bottom_left = 24
+
+[node name="Mountain" type="Node2D" unique_id=1464789632]
+texture_filter = 1
+script = ExtResource("1_n2cd8")
+
+[node name="MoneyTimer" type="Timer" parent="." unique_id=690057215]
+unique_name_in_owner = true
+wait_time = 2.0
+autostart = true
+
+[node name="CanvasGroup" type="CanvasGroup" parent="." unique_id=1944198085]
+
+[node name="LifeBar" type="ProgressBar" parent="CanvasGroup" unique_id=533947516]
+unique_name_in_owner = true
+offset_left = 742.0
+offset_top = 16.0
+offset_right = 1264.0
+offset_bottom = 59.0
+theme = SubResource("Theme_n2cd8")
+theme_override_constants/outline_size = 5
+theme_override_styles/background = SubResource("StyleBoxTexture_dfq8l")
+theme_override_styles/fill = SubResource("StyleBoxFlat_h5itu")
+step = 1.0
+value = 100.0
+rounded = true
+
+[node name="Igloos" type="Node2D" parent="CanvasGroup" unique_id=1209028750]
+unique_name_in_owner = true
+
+[node name="Sprite2D" type="Sprite2D" parent="CanvasGroup/Igloos" unique_id=583520608]
+position = Vector2(651, 71)
+texture = ExtResource("3_xo1bs")
+
+[node name="Sprite2D2" type="Sprite2D" parent="CanvasGroup/Igloos" unique_id=1019835443]
+position = Vector2(533, 114)
+texture = ExtResource("3_xo1bs")
+
+[node name="Sprite2D3" type="Sprite2D" parent="CanvasGroup/Igloos" unique_id=505705747]
+position = Vector2(496, 129)
+texture = ExtResource("3_xo1bs")
+
+[node name="Sprite2D4" type="Sprite2D" parent="CanvasGroup/Igloos" unique_id=1122281142]
+position = Vector2(464, 114)
+texture = ExtResource("3_xo1bs")
+
+[node name="Sprite2D5" type="Sprite2D" parent="CanvasGroup/Igloos" unique_id=1641171105]
+position = Vector2(486, 89)
+texture = ExtResource("3_xo1bs")
+
+[node name="Sprite2D6" type="Sprite2D" parent="CanvasGroup/Igloos" unique_id=969524018]
+position = Vector2(619, 115)
+texture = ExtResource("3_xo1bs")
+
+[node name="Sprite2D7" type="Sprite2D" parent="CanvasGroup/Igloos" unique_id=421849047]
+position = Vector2(670, 121)
+texture = ExtResource("3_xo1bs")
+
+[node name="Sprite2D8" type="Sprite2D" parent="CanvasGroup/Igloos" unique_id=1078550675]
+position = Vector2(637, 97)
+texture = ExtResource("3_xo1bs")
+
+[node name="Sprite2D9" type="Sprite2D" parent="CanvasGroup/Igloos" unique_id=337421744]
+position = Vector2(671, 99)
+texture = ExtResource("3_xo1bs")
+
+[node name="Sprite2D10" type="Sprite2D" parent="CanvasGroup/Igloos" unique_id=286886219]
+position = Vector2(745, 122)
+texture = ExtResource("3_xo1bs")
+
+[connection signal="timeout" from="MoneyTimer" to="." method="_on_timer_timeout"]

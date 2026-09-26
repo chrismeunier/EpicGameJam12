@@ -1,0 +1,281 @@
+[gd_scene format=3 uid="uid://c4px3y7abedpb"]
+
+[ext_resource type="Script" uid="uid://duymqcakvxl6e" path="res://source/ui/menu.gd" id="1_yy8f4"]
+[ext_resource type="Texture2D" uid="uid://lmy3itbihkc7" path="res://assets/visuals/background/TitleScreen.png" id="2_t7ove"]
+[ext_resource type="Texture2D" uid="uid://dg6f1psip68u5" path="res://assets/visuals/Buttons/Button_Play.png" id="3_a16jp"]
+[ext_resource type="Texture2D" uid="uid://4ew5jbav4iwl" path="res://assets/visuals/background/CreditBackground.png" id="4_857g8"]
+[ext_resource type="Texture2D" uid="uid://my0paofljpcm" path="res://assets/visuals/Buttons/Button_credit.png" id="4_yxeyj"]
+[ext_resource type="Texture2D" uid="uid://b158i2iswples" path="res://assets/visuals/menu/menu_background.png" id="5_v0gtr"]
+[ext_resource type="Texture2D" uid="uid://dh2c27ydu0chd" path="res://assets/visuals/Buttons/Button_Back.png" id="6_i7l54"]
+[ext_resource type="Texture2D" uid="uid://douvfajujxdrd" path="res://assets/visuals/Buttons/Button_stage_finished.png" id="7_a16jp"]
+[ext_resource type="FontFile" uid="uid://dve7mgsjik4dg" path="res://addons/phantom_camera/fonts/Nunito-Regular.ttf" id="7_fj6ig"]
+[ext_resource type="Texture2D" uid="uid://cyyqy6xhuaq8u" path="res://assets/visuals/Buttons/Button_stage_game_over.png" id="8_yxeyj"]
+[ext_resource type="Texture2D" uid="uid://b7em2jkevv2j6" path="res://assets/visuals/Buttons/Button_level_selection.png" id="9_0f1tw"]
+[ext_resource type="Texture2D" uid="uid://cg61qgbvmg8hl" path="res://assets/visuals/Buttons/Button_restart.png" id="10_fj6ig"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_fj6ig"]
+texture = ExtResource("5_v0gtr")
+texture_margin_left = 10.0
+texture_margin_top = 10.0
+texture_margin_right = 10.0
+texture_margin_bottom = 10.0
+
+[sub_resource type="Theme" id="Theme_0f1tw"]
+RichTextLabel/colors/default_color = Color(0.012617188, 0.012617188, 0.012617188, 1)
+RichTextLabel/font_sizes/normal_font_size = 24
+RichTextLabel/fonts/normal_font = ExtResource("7_fj6ig")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_v0gtr"]
+bg_color = Color(0.4862745, 0.6509804, 0.49411765, 0.33333334)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yxeyj"]
+bg_color = Color(0.6521025, 0.25212884, 0.25300962, 0.2509804)
+
+[node name="Menu" type="CanvasLayer" unique_id=675254715]
+script = ExtResource("1_yy8f4")
+level_uid_list = Array[String](["uid://nv7cetcrgglj", "uid://di6hmxbtn3c7w", "uid://e8pardncc0v8"])
+
+[node name="MainMenuPanel" type="PanelContainer" parent="." unique_id=1300155576]
+unique_name_in_owner = true
+texture_filter = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Background" type="TextureRect" parent="MainMenuPanel" unique_id=923419815]
+layout_mode = 2
+texture = ExtResource("2_t7ove")
+
+[node name="MarginContainer" type="MarginContainer" parent="MainMenuPanel" unique_id=354000506]
+layout_mode = 2
+theme_override_constants/margin_bottom = 64
+
+[node name="MainButtons" type="HBoxContainer" parent="MainMenuPanel/MarginContainer" unique_id=831017937]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+theme_override_constants/separation = 128
+alignment = 1
+
+[node name="PlayButton" type="TextureButton" parent="MainMenuPanel/MarginContainer/MainButtons" unique_id=1719025058]
+custom_minimum_size = Vector2(192, 64)
+layout_mode = 2
+size_flags_vertical = 8
+action_mode = 0
+texture_normal = ExtResource("3_a16jp")
+stretch_mode = 5
+
+[node name="CreditsButton" type="TextureButton" parent="MainMenuPanel/MarginContainer/MainButtons" unique_id=1871538139]
+custom_minimum_size = Vector2(192, 64)
+layout_mode = 2
+size_flags_vertical = 8
+action_mode = 0
+texture_normal = ExtResource("4_yxeyj")
+stretch_mode = 5
+
+[node name="LevelSelectPanel" type="PanelContainer" parent="." unique_id=196137283]
+unique_name_in_owner = true
+visible = false
+texture_filter = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Background" type="TextureRect" parent="LevelSelectPanel" unique_id=218712704]
+layout_mode = 2
+stretch_mode = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="LevelSelectPanel" unique_id=2063660292]
+layout_mode = 2
+theme_override_constants/margin_left = 64
+theme_override_constants/margin_top = 64
+theme_override_constants/margin_right = 64
+theme_override_constants/margin_bottom = 64
+
+[node name="MarginContainer" type="MarginContainer" parent="LevelSelectPanel/MarginContainer" unique_id=1783285055]
+layout_mode = 2
+theme_override_constants/margin_left = 100
+theme_override_constants/margin_right = 100
+theme_override_constants/margin_bottom = 480
+
+[node name="PanelContainer" type="PanelContainer" parent="LevelSelectPanel/MarginContainer/MarginContainer" unique_id=104626545]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_fj6ig")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="LevelSelectPanel/MarginContainer/MarginContainer/PanelContainer" unique_id=36671986]
+layout_mode = 2
+theme = SubResource("Theme_0f1tw")
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+text = "A travers les crêtes et les vallées de la Cordillère des Andes,
+Résonnent encore les échos d'une ancienne prophétie.
+Elle raconte la lutte héroïque que livra le Mont Guanaco,
+Fier symbole de la résistance à l'homme.
+Aidé d'une fière armée de guanacos, et de la force des éléments,
+Il sut préserver ses terres intactes des envahisseurs à crampons."
+scroll_active = false
+horizontal_alignment = 1
+
+[node name="LevelButtonContainer" type="HBoxContainer" parent="LevelSelectPanel/MarginContainer" unique_id=1410215189]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/separation = 128
+alignment = 1
+
+[node name="BackButton" type="TextureButton" parent="LevelSelectPanel/MarginContainer" unique_id=1777136711]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+texture_normal = ExtResource("6_i7l54")
+stretch_mode = 5
+
+[node name="CreditsPanel" type="PanelContainer" parent="." unique_id=1859113515]
+unique_name_in_owner = true
+visible = false
+texture_filter = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Background" type="TextureRect" parent="CreditsPanel" unique_id=1195944881]
+layout_mode = 2
+texture = ExtResource("4_857g8")
+
+[node name="MarginContainer" type="MarginContainer" parent="CreditsPanel" unique_id=1320289212]
+layout_mode = 2
+theme_override_constants/margin_left = 64
+theme_override_constants/margin_top = 64
+theme_override_constants/margin_right = 64
+theme_override_constants/margin_bottom = 64
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CreditsPanel/MarginContainer" unique_id=318834471]
+layout_mode = 2
+theme = SubResource("Theme_0f1tw")
+text = "Un jeu créé pour la Epic Game Jam 2026.
+
+Développeurs:
+Christophe Muller, Aurèle Jomini, Hugo Serdoura
+
+Graphisme: Valentin Kolly, Nicolas Fontaine
+
+Son et musique: Stefano Christen"
+horizontal_alignment = 1
+
+[node name="BackButton" type="TextureButton" parent="CreditsPanel/MarginContainer" unique_id=2056258468]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+texture_normal = ExtResource("6_i7l54")
+stretch_mode = 5
+
+[node name="LevelSuccessPanel" type="PanelContainer" parent="." unique_id=1701067057]
+unique_name_in_owner = true
+visible = false
+texture_filter = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_v0gtr")
+
+[node name="PopupContainer" type="MarginContainer" parent="LevelSuccessPanel" unique_id=1259226386]
+layout_mode = 2
+theme_override_constants/margin_top = 150
+theme_override_constants/margin_bottom = 200
+
+[node name="Background" type="TextureRect" parent="LevelSuccessPanel/PopupContainer" unique_id=775300172]
+layout_mode = 2
+texture = ExtResource("7_a16jp")
+stretch_mode = 5
+
+[node name="MarginContainer" type="MarginContainer" parent="LevelSuccessPanel" unique_id=1541325783]
+layout_mode = 2
+theme_override_constants/margin_bottom = 64
+
+[node name="MainButtons" type="HBoxContainer" parent="LevelSuccessPanel/MarginContainer" unique_id=731415892]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = 760
+alignment = 1
+
+[node name="RetryButton" type="TextureButton" parent="LevelSuccessPanel/MarginContainer/MainButtons" unique_id=1648506887]
+custom_minimum_size = Vector2(192, 120)
+layout_mode = 2
+size_flags_vertical = 8
+action_mode = 0
+texture_normal = ExtResource("10_fj6ig")
+stretch_mode = 5
+
+[node name="LevelSelectButton" type="TextureButton" parent="LevelSuccessPanel/MarginContainer/MainButtons" unique_id=872918537]
+custom_minimum_size = Vector2(220, 120)
+layout_mode = 2
+action_mode = 0
+texture_normal = ExtResource("9_0f1tw")
+stretch_mode = 5
+
+[node name="GameOverPanel" type="PanelContainer" parent="." unique_id=494127973]
+unique_name_in_owner = true
+visible = false
+texture_filter = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_yxeyj")
+
+[node name="PopupContainer" type="MarginContainer" parent="GameOverPanel" unique_id=206518320]
+layout_mode = 2
+theme_override_constants/margin_top = 150
+theme_override_constants/margin_bottom = 200
+
+[node name="Background" type="TextureRect" parent="GameOverPanel/PopupContainer" unique_id=2112749069]
+layout_mode = 2
+texture = ExtResource("8_yxeyj")
+stretch_mode = 5
+
+[node name="MarginContainer" type="MarginContainer" parent="GameOverPanel" unique_id=684218194]
+layout_mode = 2
+theme_override_constants/margin_bottom = 64
+
+[node name="MainButtons" type="HBoxContainer" parent="GameOverPanel/MarginContainer" unique_id=545758009]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = 760
+alignment = 1
+
+[node name="RetryButton" type="TextureButton" parent="GameOverPanel/MarginContainer/MainButtons" unique_id=827563882]
+custom_minimum_size = Vector2(192, 120)
+layout_mode = 2
+size_flags_vertical = 8
+action_mode = 0
+texture_normal = ExtResource("10_fj6ig")
+stretch_mode = 5
+
+[node name="LevelSelectButton" type="TextureButton" parent="GameOverPanel/MarginContainer/MainButtons" unique_id=213304081]
+custom_minimum_size = Vector2(220, 120)
+layout_mode = 2
+action_mode = 0
+texture_normal = ExtResource("9_0f1tw")
+stretch_mode = 5
+
+[connection signal="pressed" from="MainMenuPanel/MarginContainer/MainButtons/PlayButton" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="MainMenuPanel/MarginContainer/MainButtons/CreditsButton" to="." method="_on_credits_button_pressed"]
+[connection signal="visibility_changed" from="LevelSelectPanel" to="." method="_on_level_select_panel_visibility_changed"]
+[connection signal="pressed" from="LevelSelectPanel/MarginContainer/BackButton" to="." method="_on_back_button_pressed"]
+[connection signal="pressed" from="CreditsPanel/MarginContainer/BackButton" to="." method="_on_back_button_pressed"]
+[connection signal="pressed" from="LevelSuccessPanel/MarginContainer/MainButtons/RetryButton" to="." method="_on_retry_button_pressed"]
+[connection signal="pressed" from="LevelSuccessPanel/MarginContainer/MainButtons/LevelSelectButton" to="." method="_on_level_select_button_pressed"]
+[connection signal="pressed" from="GameOverPanel/MarginContainer/MainButtons/RetryButton" to="." method="_on_retry_button_pressed"]
+[connection signal="pressed" from="GameOverPanel/MarginContainer/MainButtons/LevelSelectButton" to="." method="_on_level_select_button_pressed"]
