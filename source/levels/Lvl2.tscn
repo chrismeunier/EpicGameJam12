@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://ct6y4ncc6conj" path="res://source/levels/base_level.gd" id="1_6g3kw"]
 [ext_resource type="Texture2D" uid="uid://cdw3275orcyfg" path="res://assets/visuals/background/Map_Layer_1.png" id="2_6g3kw"]
-[ext_resource type="Texture2D" uid="uid://c544inh1vn5n7" path="res://assets/visuals/background/Map_Layer_2.png" id="3_7iwte"]
+[ext_resource type="Texture2D" uid="uid://b6diwwps18ekw" path="res://assets/visuals/background/Map_Layer_2_old.png" id="3_7iwte"]
 [ext_resource type="Texture2D" uid="uid://baddiwipdwcul" path="res://assets/visuals/background/Map_Layer_3.1.png" id="4_wjop4"]
 [ext_resource type="Texture2D" uid="uid://d0ty4g58sugtj" path="res://assets/visuals/background/Map_Layer_3.2.png" id="5_cq3bw"]
 [ext_resource type="Texture2D" uid="uid://pfo0in8wyiun" path="res://assets/visuals/background/Map_Layer_3.3.png" id="6_ouy2h"]
@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://c3c7huhvesjeh" path="res://source/levels/Road1.tscn" id="11_6mk8v"]
 [ext_resource type="PackedScene" uid="uid://bv02flu7k67vf" path="res://source/levels/Road2.tscn" id="12_6g3kw"]
 [ext_resource type="PackedScene" uid="uid://bmxc2x231r8il" path="res://source/characters/Mountain.tscn" id="13_7iwte"]
+[ext_resource type="PackedScene" uid="uid://bw1l5own4cpln" path="res://source/characters/Mountain_Head.tscn" id="14_wjop4"]
 
 [node name="Lvl2" type="Node2D" unique_id=1327002182 node_paths=PackedStringArray("wave_spawners")]
 script = ExtResource("1_6g3kw")
@@ -112,3 +113,7 @@ polygon = PackedVector2Array(157, -21, 199, -3, 224, 15, 261, 40, 308, 62, 339, 
 [node name="PlacementZone_Left" type="CollisionPolygon2D" parent="PlacementZone" unique_id=2115629016]
 position = Vector2(28, 295)
 polygon = PackedVector2Array(-28, 152, -28, 425, 66, 425, 65, 412, 69, 404, 43, 376, 42, 347, 57, 326, 99.81439, 311.23645, 121, 306, 144, 296, 155, 288, 160, 279, 158, 269, 143, 250, 81, 190, 69, 163, 69, 131, 83, 118, 107, 117, 147, 135, 164, 140, 182, 144, 205, 146, 225, 145, 242, 139, 251, 132, 262, 115, 263, 98, 254, 75, 238, 56, 218, 16, 216, -14, 236, -33, 273, -51, 290, -62, 301, -86, 332, -104, 367, -130, 371, -137, 371, -153, 362, -155, 354, -145, 343, -136, 276, -101, 233, -87, 210, -75, 203, -70, 195, -60, 175, -30, 153, -12, 144, -7, 120, 13, 113, 23, 104, 48, 73, 71, 57, 81, 56, 81, 56, 78, 51, 78, 42, 90, 23, 102, 17, 102, 17, 107, 2, 117, -11, 144)
+
+[node name="MountainHead" parent="." unique_id=1449337146 instance=ExtResource("14_wjop4")]
+position = Vector2(580, 67)
+scale = Vector2(0.55, 0.55)
