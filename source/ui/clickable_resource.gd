@@ -7,7 +7,6 @@ extends Control
 @export var clearance_radius := 32.0
 @export var restrict_to_placement_zones: bool = true
 @export var shortcut_key: Key = KEY_NONE
-@export var shortcut_icon : Texture2D
 
 static var already_selected := false
 
@@ -19,9 +18,11 @@ var parent_node_for_placing : BaseLevel = null
 @onready var usable_resource: UsableResource = %UsableResource
 @onready var button: Button = %Button
 @onready var texture_rect: TextureRect = %TextureRect
+@onready var shortcut_label: Label = %ShortcutLabel
 
 func _ready() -> void:
-	texture_rect.texture =  shortcut_icon
+	texture_rect.visible = shortcut_key != KEY_NONE
+	shortcut_label.text = OS.get_keycode_string(shortcut_key)
 	Events.money_updated.connect(update_availability)
 	button.size = Vector2(92.0, 168.0)
 	if not available:
