@@ -30,6 +30,7 @@ func setup(path: Path2D, start_left: bool = true) -> void:
 
 	global_position = get_current_position()
 	update_sprite_direction()
+	AudioManager.condor_scream.play()
 
 func _physics_process(delta: float) -> void:
 

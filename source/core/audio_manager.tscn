@@ -13,12 +13,15 @@
 [ext_resource type="AudioStream" uid="uid://6bpt8sopocf0" path="res://assets/sound/avalanche2.wav" id="9_3h3aq"]
 [ext_resource type="AudioStream" uid="uid://ccptsqk5dosdq" path="res://assets/sound/avalanche3.wav" id="10_2jmt1"]
 [ext_resource type="AudioStream" uid="uid://dms21s8pdhi77" path="res://assets/sound/dead3.wav" id="10_k6ex4"]
+[ext_resource type="AudioStream" uid="uid://blfaqhw4f5d17" path="res://assets/sound/buldozer.wav" id="11_7j4x8"]
 [ext_resource type="AudioStream" uid="uid://cqfinqxh16kx6" path="res://assets/sound/tempête.wav" id="11_k6ex4"]
 [ext_resource type="AudioStream" uid="uid://bjtcds3q0sc2v" path="res://assets/sound/rocher1.wav" id="12_7j4x8"]
 [ext_resource type="AudioStream" uid="uid://s101priy022f" path="res://assets/sound/rocher2.wav" id="13_ngd6x"]
 [ext_resource type="AudioStream" uid="uid://cya7kjfn5re43" path="res://assets/sound/GameOverLoop.wav" id="14_2jmt1"]
 [ext_resource type="AudioStream" uid="uid://bhjubpoholy60" path="res://assets/sound/GuanacoMounTheme-loop.wav" id="14_40g7s"]
 [ext_resource type="AudioStream" uid="uid://dh0lstequrd2j" path="res://assets/sound/GuanacoTheme_Menu-loop.wav" id="15_j3ftw"]
+[ext_resource type="AudioStream" uid="uid://c47b8udxg3jmy" path="res://assets/sound/cri-condor-reshape.wav" id="15_ngd6x"]
+[ext_resource type="AudioStream" uid="uid://dj7i32fhpdf6v" path="res://assets/sound/biglaser.wav" id="16_40g7s"]
 [ext_resource type="AudioStream" uid="uid://753rtgcqdiqq" path="res://assets/sound/GuanacoMount-cri1.wav" id="19_3h3aq"]
 [ext_resource type="AudioStream" uid="uid://bi22jh0rc1k7h" path="res://assets/sound/GuanacoMount-cri2.wav" id="20_2jmt1"]
 
@@ -74,6 +77,10 @@ volume_db = -8.0
 stream = ExtResource("10_k6ex4")
 volume_db = -8.0
 
+[node name="Bulldozer" type="AudioStreamPlayer" parent="Ennemies" unique_id=652086654]
+unique_name_in_owner = true
+stream = ExtResource("11_7j4x8")
+
 [node name="Powers" type="Node" parent="." unique_id=1563277405]
 
 [node name="Storm" type="Node" parent="Powers" unique_id=1517278263]
@@ -94,6 +101,17 @@ volume_db = -2.0
 unique_name_in_owner = true
 stream = ExtResource("13_ngd6x")
 volume_db = -2.0
+
+[node name="Condor" type="Node" parent="Powers" unique_id=191118580]
+unique_name_in_owner = true
+
+[node name="CondorScream" type="AudioStreamPlayer" parent="Powers/Condor" unique_id=63791152]
+unique_name_in_owner = true
+stream = ExtResource("15_ngd6x")
+
+[node name="CondorLaser" type="AudioStreamPlayer" parent="Powers/Condor" unique_id=1812277139]
+unique_name_in_owner = true
+stream = ExtResource("16_40g7s")
 
 [node name="Music" type="Node" parent="." unique_id=1914217787]
 

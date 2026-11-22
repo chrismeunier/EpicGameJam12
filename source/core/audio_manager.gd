@@ -14,6 +14,9 @@ extends Node
 @onready var avalanche_1: AudioStreamPlayer = %Avalanche1
 @onready var avalanche_2: AudioStreamPlayer = %Avalanche2
 @onready var avalanche_3: AudioStreamPlayer = %Avalanche3
+@onready var bulldozer: AudioStreamPlayer = %Bulldozer
+@onready var condor_scream: AudioStreamPlayer = %CondorScream
+@onready var condor_laser: AudioStreamPlayer = %CondorLaser
 
 func play_guanaco_spit():
 	var soundCount = guanaco_spit.get_child_count()
