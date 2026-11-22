@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://c3c7huhvesjeh" path="res://source/levels/Road1.tscn" id="2_7e3jk"]
 [ext_resource type="Texture2D" uid="uid://cdw3275orcyfg" path="res://assets/visuals/background/Map_Layer_1.png" id="2_jo00v"]
 [ext_resource type="PackedScene" uid="uid://c24doqkcokf4y" path="res://source/characters/enemies/AlpinisteBase.tscn" id="3_6ak7w"]
-[ext_resource type="Texture2D" uid="uid://c544inh1vn5n7" path="res://assets/visuals/background/Map_Layer_2.png" id="3_p5ntp"]
+[ext_resource type="Texture2D" uid="uid://b6diwwps18ekw" path="res://assets/visuals/background/Map_Layer_2_old.png" id="3_ut4hv"]
 [ext_resource type="Texture2D" uid="uid://baddiwipdwcul" path="res://assets/visuals/background/Map_Layer_3.1.png" id="4_mapb2"]
 [ext_resource type="Texture2D" uid="uid://d0ty4g58sugtj" path="res://assets/visuals/background/Map_Layer_3.2.png" id="5_pxcyk"]
 [ext_resource type="Texture2D" uid="uid://pfo0in8wyiun" path="res://assets/visuals/background/Map_Layer_3.3.png" id="6_3gyc1"]
@@ -12,6 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://bhwxnrko4ae12" path="res://assets/visuals/background/Map_Layer_5.png" id="8_00ivx"]
 [ext_resource type="PackedScene" uid="uid://c8oeykur3eedm" path="res://source/characters/enemies/CampSpawner.tscn" id="8_yx8tq"]
 [ext_resource type="PackedScene" uid="uid://d6on83eabdpl" path="res://source/characters/towers/condor/CondorPath.tscn" id="13_ut4hv"]
+[ext_resource type="PackedScene" uid="uid://bw1l5own4cpln" path="res://source/characters/Mountain_Head.tscn" id="14_my00l"]
 [ext_resource type="PackedScene" uid="uid://bmxc2x231r8il" path="res://source/characters/Mountain.tscn" id="16_mapb2"]
 
 [node name="Lvl1" type="Node2D" unique_id=1327002182 node_paths=PackedStringArray("wave_spawners")]
@@ -34,7 +35,7 @@ texture = ExtResource("2_jo00v")
 [node name="Sprite2D" type="Sprite2D" parent="Background/Mountain" unique_id=320205480]
 texture_filter = 1
 position = Vector2(640, 360)
-texture = ExtResource("3_p5ntp")
+texture = ExtResource("3_ut4hv")
 
 [node name="Road1" type="Parallax2D" parent="Background" unique_id=112097638]
 
@@ -105,3 +106,8 @@ polygon = PackedVector2Array(157, -21, 199, -3, 224, 15, 261, 40, 308, 62, 339, 
 [node name="CondorPath" parent="." unique_id=1695939000 instance=ExtResource("13_ut4hv")]
 position = Vector2(0, -50)
 spawn_probability = 2.0
+
+[node name="MountainHead" parent="." unique_id=1449337146 instance=ExtResource("14_my00l")]
+process_mode = 3
+position = Vector2(580, 67)
+scale = Vector2(0.55, 0.55)

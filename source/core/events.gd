@@ -9,6 +9,7 @@ signal selected_level(level_id: int)
 signal start_level
 
 signal summit_reached(climber_lvl: int)
+signal mountain_life_changed(ratio: float)
 
 signal game_over
 signal all_waves_ended

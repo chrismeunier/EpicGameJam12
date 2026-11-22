@@ -33,9 +33,11 @@ func _on_summit_reached(climber_lvl: int) -> void:
 	AudioManager.play_mountain_scream()
 	_lifePoints -= (climber_lvl*2)
 	life_bar.value = _lifePoints
+	Events.mountain_life_changed.emit(life_bar.value / life_bar.max_value)
 	_update_lifebar_color()
 	_update_igloo_visibility()
 	if _lifePoints <= 0:
+		Events.mountain_life_changed.emit(0.0)
 		Events.game_over.emit()
 
 func _update_lifebar_color():
