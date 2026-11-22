@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bufbq0ha5e8g5"
-path="res://.godot/imported/Button_Q.png-bdc339a45631f9a0d80030fcbfd55d3a.ctex"
+uid="uid://chsxw8hdmfngn"
+path="res://.godot/imported/Powers_Bar.png-4fb0735ae58688a14605ba007e5d0f39.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/visuals/Buttons/Button_Q.png"
-dest_files=["res://.godot/imported/Button_Q.png-bdc339a45631f9a0d80030fcbfd55d3a.ctex"]
+source_file="res://assets/visuals/menu/Powers_Bar.png"
+dest_files=["res://.godot/imported/Powers_Bar.png-4fb0735ae58688a14605ba007e5d0f39.ctex"]
 
 [params]
 

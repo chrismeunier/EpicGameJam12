@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://d6on83eabdpl"]
+
+[ext_resource type="Script" uid="uid://dcvlucmnr3xbe" path="res://source/characters/towers/condor/condor_path.gd" id="1_i1whu"]
+[ext_resource type="PackedScene" uid="uid://dplsjlo88aqhw" path="res://source/characters/towers/condor/Condor.tscn" id="2_qajfx"]
+
+[sub_resource type="Curve2D" id="Curve2D_oyk8v"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 20, 200, 0, 0, 0, 0, 1260, 200)
+}
+point_count = 2
+
+[node name="CondorPath" type="Path2D" unique_id=1695939000]
+curve = SubResource("Curve2D_oyk8v")
+script = ExtResource("1_i1whu")
+condor_scene = ExtResource("2_qajfx")
