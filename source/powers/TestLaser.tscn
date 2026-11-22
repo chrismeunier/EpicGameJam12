@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://m5lpwcrfp4sm"]
+
+[ext_resource type="Script" uid="uid://r21ou6cbsld5" path="res://source/powers/test_laser.gd" id="1_0w3ks"]
+[ext_resource type="PackedScene" uid="uid://djbobulf8omjm" path="res://source/powers/LaserPoop.tscn" id="2_mciih"]
+[ext_resource type="PackedScene" uid="uid://cf7nwpn12x3rq" path="res://source/powers/PoopEffect.tscn" id="3_88gxg"]
+[ext_resource type="PackedScene" uid="uid://c24doqkcokf4y" path="res://source/characters/enemies/AlpinisteBase.tscn" id="4_88gxg"]
+
+[node name="TestLaser" type="Node2D" unique_id=536972095]
+script = ExtResource("1_0w3ks")
+laser_scene = ExtResource("2_mciih")
+impact_scene = ExtResource("3_88gxg")
+
+[node name="AlpinisteBase" parent="." unique_id=628476547 instance=ExtResource("4_88gxg")]
+position = Vector2(231, 471)
+
+[node name="AlpinisteBase2" parent="." unique_id=1206138847 instance=ExtResource("4_88gxg")]
+position = Vector2(350, 417)
+
+[node name="AlpinisteBase3" parent="." unique_id=1294838639 instance=ExtResource("4_88gxg")]
+position = Vector2(496, 515)
+
+[node name="AlpinisteBase4" parent="." unique_id=735619703 instance=ExtResource("4_88gxg")]
+position = Vector2(723, 431)

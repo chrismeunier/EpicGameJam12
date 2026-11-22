@@ -1,3 +1,4 @@
+class_name PoopVisualEffect
 extends Node2D
 
 @onready var poop_impact: GPUParticles2D = %PoopImpact

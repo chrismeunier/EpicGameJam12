@@ -195,19 +195,21 @@ func _on_area_entered(area: Area2D) -> void:
 	if area.is_in_group("Projectile"):
 		health -= 25
 		_update_health_bar()
-	if area.is_in_group("RollingStone"):
-		print("Hit by rock")
+	elif area.is_in_group("RollingStone"):
+		#print("Hit by rock")
 		health -= 150
 		_update_health_bar()
-	if area.is_in_group("Storm"):
+	elif area.is_in_group("Storm"):
 		_isInStorm = true
-	if area.is_in_group("Avalanche"):
+	elif area.is_in_group("Avalanche"):
 		health -= 50
 		_update_health_bar()
 		_isInAvalanch = true
+	elif area.is_in_group("Laser"):
+		health -= 5000
 
 func _on_area_exited(area: Area2D) -> void:
 	if area.is_in_group("Storm"):
 		_isInStorm = false
-	if area.is_in_group("Avalanche"):
+	elif area.is_in_group("Avalanche"):
 		_isInAvalanch = false
