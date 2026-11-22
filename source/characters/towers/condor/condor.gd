@@ -3,7 +3,7 @@ extends Node2D
 @export var condor_max_lifespan: float = 12.0
 @export var condor_speed: float = 100.0
 @export var condor_min_direction_time:float = 1.0
-@export var condor_random_direction_change: float = 0.02
+@export var condor_random_direction_change: float = 0.025
 
 @onready var animated_sprite: AnimatedSprite2D = %AnimatedSprite2D
 

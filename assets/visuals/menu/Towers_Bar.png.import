@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://db16f0v55wgbg"
-path="res://.godot/imported/Button_W.png-b28e146e4ece1ffe0c467b3c93098626.ctex"
+uid="uid://bicxve14pplxo"
+path="res://.godot/imported/Towers_Bar.png-548414c6c540bc3fa2fcaa5afd4ef4dc.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/visuals/Buttons/Button_W.png"
-dest_files=["res://.godot/imported/Button_W.png-b28e146e4ece1ffe0c467b3c93098626.ctex"]
+source_file="res://assets/visuals/menu/Towers_Bar.png"
+dest_files=["res://.godot/imported/Towers_Bar.png-548414c6c540bc3fa2fcaa5afd4ef4dc.ctex"]
 
 [params]
 

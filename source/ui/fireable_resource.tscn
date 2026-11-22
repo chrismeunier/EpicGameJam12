@@ -2,21 +2,46 @@
 
 [ext_resource type="Script" uid="uid://g41ho0eai6b3" path="res://source/ui/fireable_resource.gd" id="1_5qhm4"]
 [ext_resource type="PackedScene" uid="uid://d04dlq1y8qapc" path="res://source/ui/usable_resource.tscn" id="2_qsd7r"]
+[ext_resource type="Texture2D" uid="uid://bbhjoga1lpner" path="res://assets/visuals/Buttons/Shortcut_icon.png" id="9_shkey"]
 
 [node name="FireableResource" type="Control" unique_id=332417982]
+texture_filter = 1
+custom_minimum_size = Vector2(128, 64)
 layout_mode = 3
 anchors_preset = 0
 script = ExtResource("1_5qhm4")
 
 [node name="UsableResource" parent="." unique_id=1247662254 instance=ExtResource("2_qsd7r")]
+unique_name_in_owner = true
 layout_mode = 0
 
 [node name="Button" type="Button" parent="." unique_id=1210709290]
+unique_name_in_owner = true
 layout_mode = 0
 offset_right = 8.0
 offset_bottom = 8.0
+flat = true
 
 [node name="TextureRect" type="TextureRect" parent="." unique_id=1275987392]
+unique_name_in_owner = true
 layout_mode = 0
+offset_left = 16.0
+offset_top = 54.0
 offset_right = 40.0
-offset_bottom = 40.0
+offset_bottom = 78.0
+texture = ExtResource("9_shkey")
+
+[node name="ShortcutLabel" type="Label" parent="TextureRect" unique_id=623427015]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 14
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

@@ -17,13 +17,16 @@ func _ready() -> void:
 # Allows to have new towers and power added in the level scene
 func apply_current_level(level: BaseLevel):
 	for tower in towers.get_children():
-		tower.parent_node_for_placing = level
+		if tower is ClickableResource:
+			tower.parent_node_for_placing = level
 	for power in powers.get_children():
-		power.parent_node_for_placing = level
+		if power is ClickableResource:
+			power.parent_node_for_placing = level
 
 func disable_powers():
 	for power in powers.get_children():
-		power.available = false
+		if power is ClickableResource:
+			power.available = false
 
 func _on_start_level_button_pressed() -> void:
 	Events.start_level.emit()

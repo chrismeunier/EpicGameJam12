@@ -2,20 +2,19 @@
 
 [ext_resource type="Script" uid="uid://bawigsubev76o" path="res://source/ui/game_overlay.gd" id="1_8u6aj"]
 [ext_resource type="Texture2D" uid="uid://dbc1q8bqreire" path="res://assets/visuals/Buttons/Button_Start_Game.png" id="2_ht8o4"]
-[ext_resource type="Texture2D" uid="uid://543qr1xffve2" path="res://assets/visuals/menu/BarreMenu.png" id="3_3oe6q"]
 [ext_resource type="Texture2D" uid="uid://cg61qgbvmg8hl" path="res://assets/visuals/Buttons/Button_restart.png" id="3_dfq8l"]
 [ext_resource type="Texture2D" uid="uid://cxssrb0af4mgg" path="res://assets/visuals/bloodyhikingshoes.png" id="3_pfxqu"]
+[ext_resource type="Texture2D" uid="uid://kbnli206pu02" path="res://assets/visuals/menu/Resources_Bar.png" id="4_g85ib"]
 [ext_resource type="PackedScene" uid="uid://club6y110m5hq" path="res://source/ui/clickable_resource.tscn" id="4_kyklt"]
 [ext_resource type="Texture2D" uid="uid://duou30jbxnn75" path="res://assets/visuals/Buttons/Button_Mountain.png" id="5_4pves"]
-[ext_resource type="Texture2D" uid="uid://bufbq0ha5e8g5" path="res://assets/visuals/Buttons/Button_Q.png" id="6_dfq8l"]
+[ext_resource type="Texture2D" uid="uid://bicxve14pplxo" path="res://assets/visuals/menu/Towers_Bar.png" id="6_q2wqc"]
 [ext_resource type="PackedScene" uid="uid://d21pnayqd5j7x" path="res://source/characters/towers/avalanche.tscn" id="6_tjsy6"]
 [ext_resource type="Texture2D" uid="uid://byfvakg38xdih" path="res://assets/visuals/Buttons/Button_Falling_rock.png" id="7_ht8o4"]
 [ext_resource type="PackedScene" uid="uid://ca3561hf63udf" path="res://source/powers/RollingStone.tscn" id="8_3oe6q"]
 [ext_resource type="Texture2D" uid="uid://by8nvjmdn7dad" path="res://assets/visuals/Buttons/Button_Storm.png" id="9_dfq8l"]
-[ext_resource type="Texture2D" uid="uid://db16f0v55wgbg" path="res://assets/visuals/Buttons/Button_W.png" id="9_n7jk4"]
 [ext_resource type="PackedScene" uid="uid://ffojj7sgkjug" path="res://source/powers/Storm.tscn" id="10_h5itu"]
-[ext_resource type="Texture2D" uid="uid://b1iipa0w5bttx" path="res://assets/visuals/Buttons/Button_E.png" id="12_288it"]
-[ext_resource type="Texture2D" uid="uid://bl31vlgv1n77l" path="res://assets/visuals/Buttons/Button_R.png" id="15_wptga"]
+[ext_resource type="Texture2D" uid="uid://chsxw8hdmfngn" path="res://assets/visuals/menu/Powers_Bar.png" id="12_x83gq"]
+[ext_resource type="Texture2D" uid="uid://rdubl31akvk2" path="res://assets/visuals/Buttons/button_eagle.jpg" id="16_288it"]
 [ext_resource type="PackedScene" uid="uid://g5orhtbundxj" path="res://source/ui/fireable_resource.tscn" id="17_wptga"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_uiud0"]
@@ -26,7 +25,16 @@ bg_color = Color(0.004019165, 0.004019165, 0.004019165, 1)
 [sub_resource type="Theme" id="Theme_dfq8l"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_7wt8e"]
-texture = ExtResource("3_3oe6q")
+texture = ExtResource("4_g85ib")
+axis_stretch_horizontal = 1
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_wptga"]
+texture = ExtResource("6_q2wqc")
+axis_stretch_horizontal = 1
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_rc6tr"]
+texture = ExtResource("12_x83gq")
+axis_stretch_horizontal = 1
 
 [node name="GameOverlay" type="CanvasLayer" unique_id=142451924]
 script = ExtResource("1_8u6aj")
@@ -46,12 +54,12 @@ layout_mode = 2
 size_flags_vertical = 8
 theme_override_styles/panel = SubResource("StyleBoxFlat_jxkye")
 
-[node name="MarginContainer" type="HBoxContainer" parent="MainPanel/PanelContainer" unique_id=1561495676]
+[node name="HBoxContainer" type="HBoxContainer" parent="MainPanel/PanelContainer" unique_id=1561495676]
 layout_mode = 2
 size_flags_vertical = 8
 theme_override_constants/separation = 0
 
-[node name="StartLevelButton" type="TextureButton" parent="MainPanel/PanelContainer/MarginContainer" unique_id=327561670]
+[node name="StartLevelButton" type="TextureButton" parent="MainPanel/PanelContainer/HBoxContainer" unique_id=327561670]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(128, 128)
 layout_mode = 2
@@ -63,7 +71,7 @@ texture_normal = ExtResource("2_ht8o4")
 texture_disabled = ExtResource("2_ht8o4")
 stretch_mode = 5
 
-[node name="ResetButton" type="TextureButton" parent="MainPanel/PanelContainer/MarginContainer" unique_id=289554514]
+[node name="ResetButton" type="TextureButton" parent="MainPanel/PanelContainer/HBoxContainer" unique_id=289554514]
 unique_name_in_owner = true
 visible = false
 custom_minimum_size = Vector2(128, 128)
@@ -75,88 +83,102 @@ action_mode = 0
 texture_normal = ExtResource("3_dfq8l")
 stretch_mode = 5
 
-[node name="ResourcesPanel" type="PanelContainer" parent="MainPanel/PanelContainer/MarginContainer" unique_id=1188973910]
+[node name="ResourcesPanel" type="PanelContainer" parent="MainPanel/PanelContainer/HBoxContainer" unique_id=1188973910]
+custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 4
 theme_override_styles/panel = SubResource("StyleBoxTexture_7wt8e")
 
-[node name="MarginContainer" type="MarginContainer" parent="MainPanel/PanelContainer/MarginContainer/ResourcesPanel" unique_id=756690072]
+[node name="MarginContainer" type="MarginContainer" parent="MainPanel/PanelContainer/HBoxContainer/ResourcesPanel" unique_id=756690072]
 layout_mode = 2
-theme_override_constants/margin_left = 150
+theme_override_constants/margin_left = 40
 theme_override_constants/margin_top = 48
-theme_override_constants/margin_right = 0
-theme_override_constants/margin_bottom = 16
+theme_override_constants/margin_right = 40
 
-[node name="MountainResources" type="HBoxContainer" parent="MainPanel/PanelContainer/MarginContainer/ResourcesPanel/MarginContainer" unique_id=1821782290]
+[node name="Resources" type="HBoxContainer" parent="MainPanel/PanelContainer/HBoxContainer/ResourcesPanel/MarginContainer" unique_id=151956742]
+layout_mode = 2
+
+[node name="BootIcon" type="TextureRect" parent="MainPanel/PanelContainer/HBoxContainer/ResourcesPanel/MarginContainer/Resources" unique_id=519949277]
+custom_minimum_size = Vector2(64, 64)
+custom_maximum_size = Vector2(64, 64)
 layout_mode = 2
 size_flags_horizontal = 0
-theme_override_constants/separation = 30
-
-[node name="Resources" type="HBoxContainer" parent="MainPanel/PanelContainer/MarginContainer/ResourcesPanel/MarginContainer/MountainResources" unique_id=151956742]
-layout_mode = 2
-
-[node name="BootIcon" type="TextureRect" parent="MainPanel/PanelContainer/MarginContainer/ResourcesPanel/MarginContainer/MountainResources/Resources" unique_id=519949277]
-layout_mode = 2
+size_flags_vertical = 0
 texture = ExtResource("3_pfxqu")
+expand_mode = 5
+stretch_mode = 5
 
-[node name="ResourcesCount" type="Label" parent="MainPanel/PanelContainer/MarginContainer/ResourcesPanel/MarginContainer/MountainResources/Resources" unique_id=931299786]
+[node name="ResourcesCount" type="Label" parent="MainPanel/PanelContainer/HBoxContainer/ResourcesPanel/MarginContainer/Resources" unique_id=931299786]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 32
 text = "x ..."
 
-[node name="Spacer" type="Control" parent="MainPanel/PanelContainer/MarginContainer/ResourcesPanel/MarginContainer/MountainResources" unique_id=769009647]
-custom_minimum_size = Vector2(64, 0)
+[node name="TowersPanel" type="PanelContainer" parent="MainPanel/PanelContainer/HBoxContainer" unique_id=675443917]
+custom_maximum_size = Vector2(400, -1)
 layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxTexture_wptga")
 
-[node name="Towers" type="HBoxContainer" parent="MainPanel/PanelContainer/MarginContainer/ResourcesPanel/MarginContainer/MountainResources" unique_id=1450293438]
+[node name="MarginContainer" type="MarginContainer" parent="MainPanel/PanelContainer/HBoxContainer/TowersPanel" unique_id=588224692]
+layout_mode = 2
+theme_override_constants/margin_left = 40
+theme_override_constants/margin_top = 48
+theme_override_constants/margin_right = 40
+
+[node name="Towers" type="HBoxContainer" parent="MainPanel/PanelContainer/HBoxContainer/TowersPanel/MarginContainer" unique_id=1450293438]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="ClickableResource" parent="MainPanel/PanelContainer/MarginContainer/ResourcesPanel/MarginContainer/MountainResources/Towers" unique_id=909371157 instance=ExtResource("4_kyklt")]
+[node name="ClickableResource" parent="MainPanel/PanelContainer/HBoxContainer/TowersPanel/MarginContainer/Towers" unique_id=909371157 instance=ExtResource("4_kyklt")]
 layout_mode = 2
 cost = 100
 shortcut_key = 81
-shortcut_icon = ExtResource("6_dfq8l")
 
-[node name="ClickableResource2" parent="MainPanel/PanelContainer/MarginContainer/ResourcesPanel/MarginContainer/MountainResources/Towers" unique_id=1866389719 instance=ExtResource("4_kyklt")]
+[node name="ClickableResource2" parent="MainPanel/PanelContainer/HBoxContainer/TowersPanel/MarginContainer/Towers" unique_id=1866389719 instance=ExtResource("4_kyklt")]
 layout_mode = 2
 icon = ExtResource("5_4pves")
 resource_scene = ExtResource("6_tjsy6")
 cost = 180
 shortcut_key = 87
-shortcut_icon = ExtResource("9_n7jk4")
 
-[node name="Spacer2" type="Control" parent="MainPanel/PanelContainer/MarginContainer/ResourcesPanel/MarginContainer/MountainResources" unique_id=1308595605]
-custom_minimum_size = Vector2(32, 0)
+[node name="PowersPanel" type="PanelContainer" parent="MainPanel/PanelContainer/HBoxContainer" unique_id=719208630]
 layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxTexture_rc6tr")
 
-[node name="Powers" type="HBoxContainer" parent="MainPanel/PanelContainer/MarginContainer/ResourcesPanel/MarginContainer/MountainResources" unique_id=694875128]
+[node name="MarginContainer" type="MarginContainer" parent="MainPanel/PanelContainer/HBoxContainer/PowersPanel" unique_id=360567747]
+layout_mode = 2
+theme_override_constants/margin_left = 40
+theme_override_constants/margin_top = 48
+theme_override_constants/margin_right = 40
+
+[node name="Powers" type="HBoxContainer" parent="MainPanel/PanelContainer/HBoxContainer/PowersPanel/MarginContainer" unique_id=694875128]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="ClickableResource3" parent="MainPanel/PanelContainer/MarginContainer/ResourcesPanel/MarginContainer/MountainResources/Powers" unique_id=617719879 instance=ExtResource("4_kyklt")]
+[node name="ClickableResource3" parent="MainPanel/PanelContainer/HBoxContainer/PowersPanel/MarginContainer/Powers" unique_id=617719879 instance=ExtResource("4_kyklt")]
 layout_mode = 2
 icon = ExtResource("7_ht8o4")
 resource_scene = ExtResource("8_3oe6q")
 cost = 50
 restrict_to_placement_zones = false
 shortcut_key = 69
-shortcut_icon = ExtResource("12_288it")
 
-[node name="ClickableResource4" parent="MainPanel/PanelContainer/MarginContainer/ResourcesPanel/MarginContainer/MountainResources/Powers" unique_id=775875819 instance=ExtResource("4_kyklt")]
+[node name="ClickableResource4" parent="MainPanel/PanelContainer/HBoxContainer/PowersPanel/MarginContainer/Powers" unique_id=775875819 instance=ExtResource("4_kyklt")]
 layout_mode = 2
 icon = ExtResource("9_dfq8l")
 resource_scene = ExtResource("10_h5itu")
 cost = 40
 restrict_to_placement_zones = false
 shortcut_key = 82
-shortcut_icon = ExtResource("15_wptga")
 
-[node name="FireableResource" parent="MainPanel/PanelContainer/MarginContainer/ResourcesPanel/MarginContainer/MountainResources/Powers" unique_id=332417982 instance=ExtResource("17_wptga")]
+[node name="FireableResource" parent="MainPanel/PanelContainer/HBoxContainer/PowersPanel/MarginContainer/Powers" unique_id=332417982 instance=ExtResource("17_wptga")]
 layout_mode = 2
+icon = ExtResource("16_288it")
+cost = 220
+restrict_to_placement_zones = false
+shortcut_key = 84
 
-[connection signal="pressed" from="MainPanel/PanelContainer/MarginContainer/StartLevelButton" to="." method="_on_start_level_button_pressed"]
-[connection signal="pressed" from="MainPanel/PanelContainer/MarginContainer/ResetButton" to="." method="_on_restart_button_pressed"]
+[connection signal="pressed" from="MainPanel/PanelContainer/HBoxContainer/StartLevelButton" to="." method="_on_start_level_button_pressed"]
+[connection signal="pressed" from="MainPanel/PanelContainer/HBoxContainer/ResetButton" to="." method="_on_restart_button_pressed"]
