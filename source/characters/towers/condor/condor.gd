@@ -16,6 +16,9 @@ var _last_direction_change:float = 0.0
 var _lifespan:float = 0.0
 var _is_moving: bool = true
 
+func _ready() -> void:
+	Events.condor_entered.emit()
+
 func setup(path: Path2D, start_left: bool = true) -> void:
 	if path == null:
 		push_error(Error.ERR_INVALID_PARAMETER)
@@ -80,4 +83,5 @@ func stop_moving():
 	_is_moving = false
 
 func disappear() -> void:
+	Events.condor_exited.emit()
 	queue_free()

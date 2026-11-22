@@ -19,3 +19,6 @@ signal alpinist_died(climber_lvl: int)
 signal money_updated(new_value: int)
 signal money_added(new_value: int)
 signal bought_resource(price: int)
+
+signal condor_entered
+signal condor_exited

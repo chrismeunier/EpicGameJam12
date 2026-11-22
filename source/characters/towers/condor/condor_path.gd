@@ -43,4 +43,5 @@ func stop_condor():
 	_condor.stop_moving()
 
 func remove_condor():
-	_condor.disappear()
+	if _condor != null:
+		_condor.disappear()
