@@ -1,3 +1,4 @@
+class_name CondorPath
 extends Path2D
 
 @export var condor_scene: PackedScene
@@ -6,6 +7,7 @@ extends Path2D
 
 var _is_condor_alive: bool = false
 var _no_condor_since: float = 0.0
+var _condor: Condor
 
 func _process(delta: float) -> void:
 	if _is_condor_alive && self.get_child_count() == 0:
@@ -25,8 +27,20 @@ func _process(delta: float) -> void:
 
 func spawn_condor() -> void:
 	
-	var c = condor_scene.instantiate()
-	self.add_child(c)
+	_condor = condor_scene.instantiate()
+	self.add_child(_condor)
 
-	if c.has_method("setup"):
-		c.setup(self, randf() > 0.5)
+	if _condor.has_method("setup"):
+		_condor.setup(self, randf() > 0.5)
+
+func has_condor() -> bool:
+	return _is_condor_alive
+
+func get_condor_position() -> Vector2:
+	return _condor.global_position
+
+func stop_condor():
+	_condor.stop_moving()
+
+func remove_condor():
+	_condor.disappear()

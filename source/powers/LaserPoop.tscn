@@ -34,7 +34,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_q8e66")
 }, {
-"duration": 1.0,
+"duration": 0.01,
 "texture": null
 }],
 "loop": 0,
@@ -46,6 +46,7 @@ animations = [{
 size = Vector2(64, 848)
 
 [node name="LaserPoop" type="Area2D" unique_id=607384902 groups=["Laser"]]
+collision_layer = 8
 script = ExtResource("1_68ect")
 impact_scene = ExtResource("2_lw14o")
 auto_delete_scene_timeout = 5.0

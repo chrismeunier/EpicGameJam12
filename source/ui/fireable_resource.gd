@@ -24,8 +24,15 @@ func _on_button_pressed() -> void:
 		var target: Node = parent_node_for_placing
 		if target == null:
 			target = get_tree().current_scene
+		# Get the condor position through the CondorPath
+		for child in target.get_children():
+			if child is CondorPath: 
+				if child.has_condor():
+					instance.global_position = child.get_condor_position()
+					instance.ready.connect(child.stop_condor)
+					instance.animation_ended.connect(child.remove_condor)
 		target.add_child(instance)
-
+		
 		if instance.has_method("start_audio"):
 			instance.start_audio()
 		if instance.has_method("fire"):

@@ -1,3 +1,4 @@
+class_name Condor
 extends Node2D
 
 @export var condor_max_lifespan: float = 12.0
@@ -13,9 +14,10 @@ var _distance: float = 0.0
 var _is_moving_right: bool = true
 var _last_direction_change:float = 0.0
 var _lifespan:float = 0.0
+var _is_moving: bool = true
 
 func setup(path: Path2D, start_left: bool = true) -> void:
-	if _path == null:
+	if path == null:
 		push_error(Error.ERR_INVALID_PARAMETER)
 
 	_path = path
@@ -27,15 +29,16 @@ func setup(path: Path2D, start_left: bool = true) -> void:
 	else:
 		_distance = 100
 		_is_moving_right = false
+	_is_moving = true
 
-	global_position = get_current_position()
+	update_position()
 	update_sprite_direction()
 
-func _physics_process(delta: float) -> void:
+func _process(delta: float) -> void:
 
 	_lifespan += delta
 	if _lifespan >= condor_max_lifespan:
-		disapear()
+		disappear()
 		return
 
 	if _is_moving_right:
@@ -56,7 +59,7 @@ func _physics_process(delta: float) -> void:
 			_is_moving_right = not _is_moving_right
 
 	update_sprite_direction()
-	global_position = get_current_position()
+	update_position()
 
 func update_sprite_direction() -> void:
 	if _is_moving_right:
@@ -64,10 +67,17 @@ func update_sprite_direction() -> void:
 	else:
 		animated_sprite.flip_h = true
 
+func update_position():
+	if _is_moving:
+		global_position = get_current_position()
+
 func get_current_position() -> Vector2:
 	var curve_offset: float = _path_length * _distance/100.0
 	var curve_position: Vector2 = _path.curve.sample_baked(curve_offset)
 	return _path.to_global(curve_position)
 
-func disapear() -> void:
+func stop_moving():
+	_is_moving = false
+
+func disappear() -> void:
 	queue_free()

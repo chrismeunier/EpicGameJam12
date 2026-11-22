@@ -1,5 +1,7 @@
 extends Area2D
 
+signal animation_ended
+
 @export var impact_scene : PackedScene
 @export var auto_delete_scene_timeout : float
 
@@ -18,15 +20,17 @@ func _auto_delete():
 func _on_animation_animation_finished() -> void:
 	# Stop detecting impacts when the laser animation is over 
 	monitoring = false
+	monitorable = false
+	animation_ended.emit()
 
 func create_poop_impact_at_location(location: Vector2) -> void:
 	var poop_effect : PoopVisualEffect = impact_scene.instantiate()
 	poop_effect.global_position = location
-	print(poop_effect.name, poop_effect.global_position)
+	#print(poop_effect.name, poop_effect.global_position)
 	add_child(poop_effect)
 
 func _on_area_entered(area: Area2D) -> void:
 	if area.is_in_group("Enemy"):
-		print(area.name, area.global_position)
+		#print(area.name, area.global_position)
 		var vec_to_enemy = global_position - area.global_position
 		create_poop_impact_at_location(-vec_to_enemy)

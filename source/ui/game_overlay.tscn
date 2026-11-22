@@ -15,6 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://ffojj7sgkjug" path="res://source/powers/Storm.tscn" id="10_h5itu"]
 [ext_resource type="Texture2D" uid="uid://chsxw8hdmfngn" path="res://assets/visuals/menu/Powers_Bar.png" id="12_x83gq"]
 [ext_resource type="Texture2D" uid="uid://rdubl31akvk2" path="res://assets/visuals/Buttons/button_eagle.jpg" id="16_288it"]
+[ext_resource type="PackedScene" uid="uid://djbobulf8omjm" path="res://source/powers/LaserPoop.tscn" id="17_rc6tr"]
 [ext_resource type="PackedScene" uid="uid://g5orhtbundxj" path="res://source/ui/fireable_resource.tscn" id="17_wptga"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_uiud0"]
@@ -176,6 +177,7 @@ shortcut_key = 82
 [node name="FireableResource" parent="MainPanel/PanelContainer/HBoxContainer/PowersPanel/MarginContainer/Powers" unique_id=332417982 instance=ExtResource("17_wptga")]
 layout_mode = 2
 icon = ExtResource("16_288it")
+resource_scene = ExtResource("17_rc6tr")
 cost = 220
 restrict_to_placement_zones = false
 shortcut_key = 84

@@ -206,7 +206,8 @@ func _on_area_entered(area: Area2D) -> void:
 		_update_health_bar()
 		_isInAvalanch = true
 	elif area.is_in_group("Laser"):
-		health -= 5000
+		health = 0
+		_update_health_bar()
 
 func _on_area_exited(area: Area2D) -> void:
 	if area.is_in_group("Storm"):
