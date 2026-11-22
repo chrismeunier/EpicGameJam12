@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://dfcvhutgyngax"]
+
+[ext_resource type="Script" uid="uid://bbnkjcap3ygpn" path="res://source/characters/enemies/buldozer_spawner.gd" id="1_j3ou4"]
+
+[node name="BuldozerSpawner" type="Node2D" unique_id=1656538325]
+script = ExtResource("1_j3ou4")

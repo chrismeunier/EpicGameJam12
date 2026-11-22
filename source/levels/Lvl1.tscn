@@ -12,6 +12,8 @@
 [ext_resource type="Texture2D" uid="uid://bhwxnrko4ae12" path="res://assets/visuals/background/Map_Layer_5.png" id="8_00ivx"]
 [ext_resource type="PackedScene" uid="uid://c8oeykur3eedm" path="res://source/characters/enemies/CampSpawner.tscn" id="8_yx8tq"]
 [ext_resource type="PackedScene" uid="uid://d6on83eabdpl" path="res://source/characters/towers/condor/CondorPath.tscn" id="13_ut4hv"]
+[ext_resource type="PackedScene" uid="uid://dfcvhutgyngax" path="res://source/characters/enemies/BuldozerSpawner.tscn" id="13_ut4hv"]
+[ext_resource type="PackedScene" uid="uid://0n5chjc8i2jw" path="res://source/characters/enemies/BuldozerBase.tscn" id="14_my00l"]
 [ext_resource type="PackedScene" uid="uid://bmxc2x231r8il" path="res://source/characters/Mountain.tscn" id="16_mapb2"]
 
 [node name="Lvl1" type="Node2D" unique_id=1327002182 node_paths=PackedStringArray("wave_spawners")]
@@ -82,6 +84,11 @@ position = Vector2(559, 704)
 scale = Vector2(2, 2)
 alpiniste_scene = ExtResource("3_6ak7w")
 road = NodePath("../Road1")
+
+[node name="BuldozerSpawner" parent="." unique_id=1656538325 instance=ExtResource("13_ut4hv")]
+bulldozer_scene = ExtResource("14_my00l")
+stop_at_y = 100.0
+edge_margin = null
 
 [node name="Road1" parent="." unique_id=804101482 instance=ExtResource("2_7e3jk")]
 position = Vector2(640, 360)

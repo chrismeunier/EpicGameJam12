@@ -18,6 +18,7 @@ func _ready() -> void:
 	money_timer.wait_time = money_wait_time
 	Events.summit_reached.connect(_on_summit_reached)
 	Events.alpinist_died.connect(on_dead_alpinist)
+	Events.buldozer_died.connect(on_dead_buldozer)
 	Events.bought_resource.connect(buy_something)
 	Events.money_added.connect(on_add_money)
 	Events.money_updated.emit(money)
@@ -63,6 +64,10 @@ func _update_igloo_visibility():
 
 func on_dead_alpinist(climber_lvl: int) -> void:
 	money += climber_lvl * dead_enemy_money_multiplier
+	Events.money_updated.emit(money)
+
+func on_dead_buldozer() -> void:
+	money += 10 * dead_enemy_money_multiplier
 	Events.money_updated.emit(money)
 
 func on_add_money(moneyToAdd: int) -> void:

@@ -82,7 +82,6 @@ func _process(_delta: float) -> void:
 		speed = cold_coffee_speed
 		return
 		
-		
 	if _isInStorm:
 		speed = _base_speed * 0.2
 	elif _isInAvalanch:
@@ -196,7 +195,6 @@ func _on_area_entered(area: Area2D) -> void:
 		health -= 25
 		_update_health_bar()
 	if area.is_in_group("RollingStone"):
-		print("Hit by rock")
 		health -= 150
 		_update_health_bar()
 	if area.is_in_group("Storm"):
